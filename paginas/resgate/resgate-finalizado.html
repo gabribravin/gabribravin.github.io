@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Resgate Enviada - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    
+    <style>
+        /* Container Centralizado da Mensagem */
+        .sucesso-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%;
+            box-sizing: border-box;
+        }
+
+        /* Ícone Centralizado de Patinhas */
+        .icone-patinhas-sucesso {
+            font-size: 60px;
+            margin-bottom: 25px;
+        }
+
+        /* Texto Descritivo */
+        .texto-sucesso {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0 0 12px 0;
+            max-width: 600px;
+        }
+
+        /* Protocolo em Destaque Laranja */
+        .protocolo-destaque {
+            color: #e2871e;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        /* Grid dos Dois Primeiros Botões Lado a Lado */
+        .grid-botoes-superiores {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 680px;
+            margin-bottom: 16px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 680px) {
+            .grid-botoes-superiores {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="../Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="solicitação-resgate.html" class="active">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="sucesso-container">
+
+        <div class="painel-conteudo-central" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            
+            <div class="icone-patinhas-sucesso">🐾</div>
+
+            <h1 class="titulo-pagina-principal">Pedido de Resgate Enviado!</h1>
+            <p class="texto-sucesso">Agradecemos o seu relato. Nossa equipe técnica analisará as fotos e a descrição para priorizar o atendimento conforme a gravidade e disponibilidade de vagas.</p>
+            <div class="protocolo-destaque">Protocolo: #RES-2026-00912</div>
+
+            <div class="grid-botoes-superiores">
+                <button type="button" class="botao-acao-secundaria" id="btn-outro-resgate" style="max-width: 100%;">Solicitar outro resgate</button>
+                <button type="button" class="botao-acao-secundaria" id="btn-acompanhar-painel" style="max-width: 100%;">Acompanhar no meu painel</button>
+            </div>
+
+            <button type="button" class="botao-acao-principal" id="btn-voltar-inicio" style="max-width: 300px;">Voltar ao início</button>
+
+        </div>
+
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <!-- Rodapé padrão omitido aqui para brevidade, mas segue o mesmo das outras telas -->
+    </footer>
+
+    <script src="../../script.js"></script>
+    <script>
+        document.getElementById('btn-outro-resgate').addEventListener('click', () => {
+            window.location.href = 'solicitação-resgate.html';
+        });
+        document.getElementById('btn-acompanhar-painel').addEventListener('click', () => {
+            window.location.href = '../Perfil/solicitacoes.html';
+        });
+        document.getElementById('btn-voltar-inicio').addEventListener('click', () => {
+            window.location.href = '../../index.html';
+        });
+    </script>
+</body>
+</html>

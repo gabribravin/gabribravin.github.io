@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Denúncia - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    
+    <style>
+        /* Container do Painel Centralizado */
+        .container-pagina-denuncia {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%;
+            min-height: 60vh;
+            box-sizing: border-box;
+        }
+
+        /* Indicador de Etapas Superior (Steppers) */
+        .indicador-fluxo-progresso {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .item-etapa-progresso {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #718096;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        a.item-etapa-progresso:hover {
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        .circulo-numero-etapa {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .circulo-numero-etapa.concluido {
+            background-color: var(--verde-navbar);
+            color: var(--branco);
+        }
+
+        .circulo-numero-etapa.ativo {
+            background-color: var(--amarelo-primario);
+            color: #000;
+        }
+
+        .linha-vinculo-etapas {
+            width: 60px;
+            height: 2px;
+            background-color: var(--verde-navbar);
+            margin-top: 13px;
+        }
+
+        /* Botão Secundário Branco com Borda Verde (Estilo botão GPS) */
+        .botao-atalho-localizacao {
+            background-color: var(--branco);
+            border: 1px solid var(--borda-card);
+            border-radius: 6px;
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            color: #1a202c;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .botao-atalho-localizacao span {
+            color: #e53e3e;
+        }
+
+        /* Subtítulos de Inputs */
+        .label-input {
+            display: block;
+            color: #1a202c;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* Container de Seleção Dropdown Customizado */
+        .container-selecao-customizada {
+            position: relative;
+            max-width: 280px;
+            margin-bottom: 20px;
+        }
+
+        .campo-selecao-lista {
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+            background-color: var(--branco);
+            border: 1px solid var(--borda-card);
+            border-radius: 6px;
+            padding: 12px 40px 12px 14px;
+            font-size: 0.95rem;
+            color: #4a5568;
+            cursor: pointer;
+            font-weight: 500;
+            box-sizing: border-box;
+        }
+
+        .container-selecao-customizada::after {
+            content: 'v';
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #4a5568;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%) scaleX(1.2);
+            pointer-events: none;
+        }
+
+        /* Grid de Seleção por Tags Arredondadas (Idêntico ao Tipo de Ocorrência) */
+        .grade-opcoes-selecao {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .opcao-selecao-tag {
+            background-color: var(--branco);
+            border: 1px solid var(--borda-card);
+            border-radius: 20px;
+            padding: 10px 22px;
+            font-size: 0.88rem;
+            color: #2d3748;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.15s, border-color 0.15s;
+        }
+
+        /* Estado ativo selecionado das tags */
+        .opcao-selecao-tag.ativa {
+            background-color: #fff9eb;
+            border-color: var(--amarelo-primario);
+            color: var(--texto-escuro);
+            font-weight: 600;
+        }
+
+        /* Área do upload de mídia tracejado (Idêntico ao Evidências Visuais) */
+        .area-upload-arquivos {
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            background-color: #ffffff;
+            padding: 35px 20px;
+            text-align: center;
+            cursor: pointer;
+            box-sizing: border-box;
+            margin-top: 15px;
+        }
+
+        .upload-titulo {
+            color: var(--verde-navbar);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin: 10px 0 4px 0;
+        }
+
+        .upload-subtexto {
+            color: #a0aec0;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        /* Rodapé de Ações Inferiores (Voltar e Enviar) */
+        .rodape-botoes-arca {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .botao-finalizar-denuncia {
+            background-color: var(--amarelo-primario);
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            padding: 14px 45px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+            transition: background-color 0.2s;
+        }
+
+        .botao-finalizar-denuncia:hover {
+            background-color: var(--amarelo-hover);
+        }
+
+        /* Ajustes de Responsividade */
+        @media (max-width: 700px) {
+            .painel-conteudo-central { padding: 25px 20px; }
+            .campo-texto-estilizado, .container-selecao-customizada, .botao-finalizar-denuncia { max-width: 100%; width: 100%; }
+            .grade-opcoes-selecao { flex-direction: column; }
+            .opcao-selecao-tag { width: 100%; justify-content: center; }
+            .rodape-botoes-arca { flex-direction: column-reverse; gap: 15px; }
+        }
+    </style>
+</head>
+ div<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="escolha-denuncia.html" class="active">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-pagina-denuncia">
+
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <h1 class="titulo-pagina-principal">Nova Denúncia</h1>
+
+        <div class="indicador-fluxo-progresso">
+            <a href="escolha-denuncia.html" class="item-etapa-progresso">
+                <div class="circulo-numero-etapa concluido">✓</div>
+                <span>Tipo</span>
+            </a>
+            <div class="linha-vinculo-etapas"></div>
+            <div class="item-etapa-progresso">
+                <div class="circulo-numero-etapa ativo">2</div>
+                <span>Fatos &<br>Evidências</span>
+            </div>
+        </div>
+
+        <div class="painel-conteudo-central">
+            
+            <div class="caixa-aviso-importante">
+                <span>⚠️</span> Forneça o máximo de detalhes possível. Informações precisas aceleram a resposta dos agentes.
+            </div>
+
+            <div class="subtitulo-secao-numerada">
+                <span class="indicador-numero-secao">1</span> Onde está acontecendo?
+            </div>
+
+            <button type="button" class="botao-atalho-localizacao">
+                <span>📍</span> Usar minha localização atual pelo GPS
+            </button>
+
+            <div style="margin: 15px 0; font-size: 0.85rem; font-weight: 700; color: #4a5568; text-align: center; max-width: 400px;">OU</div>
+
+            <div>
+                <label class="rotulo-campo-formulario">CEP</label>
+                <input type="text" class="campo-texto-estilizado" placeholder="Ex: 00000-000" autocomplete="off">
+            </div>
+
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                    <label class="rotulo-campo-formulario">Rua / Avenida</label>
+                    <input type="text" class="campo-texto-estilizado" style="max-width: 100%;" placeholder="Ex: Av. Talma Rodrigues Ribeiro" autocomplete="off">
+                </div>
+                <div style="width: 150px;">
+                    <label class="rotulo-campo-formulario">Número</label>
+                    <input type="text" class="campo-texto-estilizado" style="max-width: 100%;" placeholder="Ex: 4600" autocomplete="off">
+                </div>
+                <div style="flex: 1; min-width: 250px;">
+                    <label class="rotulo-campo-formulario">Bairro</label>
+                    <input type="text" class="campo-texto-estilizado" style="max-width: 100%;" placeholder="Ex: 4600" autocomplete="off">
+                </div>
+            </div>
+
+            <div>
+                <label class="rotulo-campo-formulario">Ponto de Referência</label>
+                <input type="text" class="campo-texto-estilizado" style="max-width: 100%;" placeholder="Ex: Casa de portão azul ao lado da padaria Estrela" autocomplete="off">
+            </div>
+
+
+            <div class="subtitulo-secao-numerada">
+                <span class="indicador-numero-secao">2</span> O que está acontecendo?
+            </div>
+
+            <label class="rotulo-campo-formulario">Tipo de Ocorrência (Selecione as tags aplicáveis)</label>
+            <div class="grade-opcoes-selecao" id="grupo-sexo">
+                <button type="button" class="opcao-selecao-tag"><span>🐕</span> Abandono</button>
+                <button type="button" class="opcao-selecao-tag"><span>👊</span> Agressão Física</button>
+                <button type="button" class="opcao-selecao-tag"><span>💧</span> Sem Água / Comida</button>
+                <button type="button" class="opcao-selecao-tag"><span>⛓️</span> Preso em Corrente</button>
+                <button type="button" class="opcao-selecao-tag"><span>🏚️</span> Local Inadequado</button>
+                <button type="button" class="opcao-selecao-tag"><span>🪹</span> Sem Abrigo</button>
+                <button type="button" class="opcao-selecao-tag"><span>🩸</span> Ferimento Visível</button>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <label class="rotulo-campo-formulario">Descreva detalhadamente a situação</label>
+                <textarea class="campo-texto-estilizado" style="max-width: 100%; height: 120px; resize: none; font-family: inherit;" placeholder="Relate o que está acontecendo com a maior riqueza de detalhes possível..."></textarea>
+            </div>
+
+
+            <div class="subtitulo-secao-numerada">
+                <span class="indicador-numero-secao">3</span> Evidências Visuais
+            </div>
+            <p style="color: #4a5568; font-size: 0.9rem; margin: 0 0 15px 0;">Fotos e vídeos ajudam a priorizar e agilizar o atendimento do caso.</p>
+
+            <div class="area-upload-arquivos">
+                <div style="font-size: 1.8rem;">📷</div>
+                <div class="upload-titulo">Clique para anexar <span>Fotos ou Vídeos do Local</span></div>
+                <div class="upload-subtexto">JPG, PNG, MP4 — até 20MB por arquivo</div>
+            </div>
+
+            <div class="rodape-botoes-arca">
+                <button type="button" class="botao-finalizar-denuncia botao-estado-bloqueado" id="btn-enviar-denuncia">Enviar Denúncia</button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+
+    <script>
+        // Permite marcar e desmarcar múltiplas tags simulando o comportamento original
+        const tags = document.querySelectorAll('.opcao-selecao-tag');
+        const btnEnviar = document.getElementById('btn-enviar-denuncia');
+
+        // Função para validar se pelo menos uma tag foi selecionada
+        function validarSelecao() {
+            const temTagAtiva = document.querySelector('.opcao-selecao-tag.ativa');
+            if (temTagAtiva) {
+                btnEnviar.classList.remove('botao-estado-bloqueado');
+            } else {
+                btnEnviar.classList.add('botao-estado-bloqueado');
+            }
+        }
+
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.classList.toggle('ativa');
+                validarSelecao();
+            });
+        });
+
+        btnEnviar.addEventListener('click', () => {
+            window.location.href = "denuncia-feita.html";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,748 @@
+/* ==========================================================================
+   RESET CSS UNIVERSAL
+   ========================================================================== */
+* {
+    margin: 0; /* Remove margens padrões de todos os elementos */
+    padding: 0; /* Remove paddings padrões de todos os elementos */
+    box-sizing: border-box; /* Garante que padding e border estejam inclusos no cálculo da largura/altura */
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Define família tipográfica sans-serif limpa e próxima ao Figma */
+}
+
+/* ==========================================================================
+   VARIÁVEIS DE AMBIENTE (DESIGN SYSTEM)
+   ========================================================================== */
+:root {
+    --verde-institucional: #113f3c; /* "Apelido" para o verde oficial da prefeitura */
+    --verde-navbar: #3a817a; /* Verde água intermediário da barra de navegação do Programa Arca */
+    --amarelo-primario: #f2a922; /* Amarelo ouro dos botões de ação principal */
+    --amarelo-hover: #d99316; /* Tom levemente mais escuro para efeito hover no botão principal */
+    --fundo-card: #f0f6fa; /* Cor de fundo suave para os cards de animais */
+    --borda-card: #d3e2ee; /* Cor das bordas suaves dos inputs e contornos */
+    --texto-escuro: #0d2c29; /* Cor predominante dos textos e títulos principais */
+    --texto-mutado: #5a6e72; /* Cor cinza para textos menos importantes */
+    --branco: #ffffff; /* Branco puro para contrastes e fundos limpos */
+    --sucesso: #28a745; /* Verde padrão para status de aprovação/sucesso */
+}
+
+/* Configuração base da página para evitar quebras de scroll lateral */
+body {
+    background-color: var(--branco);
+    color: var(--texto-escuro);
+    overflow-x: hidden; /* Garante que a página não "balance" para os lados no celular */
+    line-height: 1.5; /* Altura de linha ergonômica para leitura */
+}
+
+/* ==========================================================================
+   BARRA INSTITUCIONAL SUPERIOR (PREFEITURA DA SERRA)
+   ========================================================================== */
+.topo-governo-institucional {
+    background-color: var(--verde-institucional); /* Fundo verde escuro oficial */
+    color: var(--branco);
+    padding: 10px 4%; /* Margem interna proporcional */
+    display: flex;
+    justify-content: space-between; /* Separa o logo à esquerda dos links à direita */
+    align-items: center;
+    font-size: 13px; /* Texto pequeno institucional */
+    font-weight: 500;
+}
+
+.logotipo-prefeitura {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o brasão e o texto */
+}
+
+.logotipo-prefeitura img {
+    height: 32px; /* Altura exata calibrada para o brasão institucional */
+}
+
+.logotipo-prefeitura div {
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.nav-institucional-links {
+    display: flex;
+    gap: 15px; /* Espaçamento simétrico entre os itens numéricos */
+}
+
+.nav-institucional-links a {
+    color: var(--branco);
+    text-decoration: none; /* Remove sublinhado padrão */
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-institucional-links span {
+    background: rgba(255, 255, 255, 0.2); /* Fundo sutil para destacar o número do atalho */
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+/* ==========================================================================
+   NAVBAR PRINCIPAL (PROGRAMA ARCA)
+   ========================================================================== */
+.menu-navegacao-principal {
+    background-color: var(--verde-navbar); /* Tom verde água característico do programa */
+    padding: 15px 4%;
+    display: flex;
+    justify-content: space-between; /* Logo à esquerda e links à direita */
+    align-items: center;
+    position: sticky; /* Diz para o menu seguir o usuário e travar no topo (0) */
+    top: 0; /* Ponto onde o menu "cola" na tela */
+    z-index: 1000; /* Mantém o menu sempre na camada acima de tudo */
+}
+
+.link-logotipo-projeto {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--branco);
+    text-decoration: none;
+}
+
+.link-logotipo-projeto img {
+    height: 52px; /* Aumentado para dar mais destaque */
+}
+
+.logo-texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.logo-texto span {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.logo-texto strong {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.lista-links-menu {
+    display: flex;
+    gap: 25px; /* Gaps horizontais idênticos aos espaçamentos do Figma */
+    align-items: center;
+    list-style: none;
+}
+
+.lista-links-menu a {
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: opacity 0.2s ease; /* Transição leve para interações */
+    border-bottom: 2px solid transparent; /* Evita que o texto se mova ao passar o mouse */
+    padding-bottom: 4px;
+}
+
+.lista-links-menu a:hover, .lista-links-menu a.active {
+    opacity: 0.85;
+    border-bottom: 2px solid var(--branco); /* Linha de indicação ativa */
+    padding-bottom: 4px;
+    border-bottom-color: var(--branco); /* Apenas altera a cor da borda existente */
+}
+
+/* ==========================================================================
+   DROPDOWN MENU (CASTRAÇÃO)
+   ========================================================================== */
+.dropdown {
+    position: relative;
+}
+
+.sub-menu-suspenso {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--fundo-card); /* Azul clarinho */
+    list-style: none;
+    padding: 0;
+    min-width: 180px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 1001;
+    overflow: hidden; /* Garante que o fundo não ultrapasse os cantos arredondados */
+}
+
+.dropdown:hover .sub-menu-suspenso {
+    display: block;
+}
+
+/* Alinha o último dropdown à direita no desktop para evitar que o menu saia da tela */
+@media (min-width: 769px) {
+    .lista-links-menu li:last-child.dropdown .sub-menu-suspenso {
+        left: auto;
+        right: 0;
+    }
+    .lista-links-menu li:last-child.dropdown .sub-menu-suspenso li a {
+        text-align: right;
+    }
+}
+
+.sub-menu-suspenso li a.logout-link {
+    color: #ff4b4b !important; /* Cor vermelha para indicar saída/ação crítica */
+    font-weight: 700;
+}
+
+.sub-menu-suspenso li {
+    width: 100%;
+    border-bottom: 1px solid var(--borda-card); /* Linha separando cada opção */
+}
+
+.sub-menu-suspenso li:last-child {
+    border-bottom: none;
+}
+
+.sub-menu-suspenso li a {
+    padding: 8px 15px !important;
+    display: block;
+    font-size: 13px;
+    color: var(--texto-escuro) !important; /* Texto escuro para fundo claro */
+    font-weight: 500;
+    border-bottom: none !important; /* Garante que não herde a borda do menu principal */
+}
+
+.sub-menu-suspenso li a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    opacity: 1;
+}
+
+/* Menu Hambúrguer Oculto por padrão no Desktop */
+.menu-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.menu-hamburger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: var(--branco);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.hero-logo-destaque {
+    width: 100%;
+    max-width: 900px; /* Reduzido levemente para um visual mais equilibrado */
+    height: auto;
+    display: block;
+    border-radius: 15px; /* Bordas arredondadas para um visual mais limpo */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra suave para dar profundidade */
+}
+
+/* ==========================================================================
+   ELEMENTOS DE BOTÕES E UI GLOBAL
+   ========================================================================== */
+.botao-acao-principal {
+    background-color: var(--amarelo-primario);
+    color: var(--texto-escuro);
+    border: none;
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 6px; /* Cantos levemente arredondados fiéis à imagem */
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%; /* Ocupa totalidade do container por padrão, responsivo */
+    max-width: 240px; /* Limite padrão para botões soltos */
+}
+
+.botao-acao-principal:hover {
+    background-color: var(--amarelo-hover);
+}
+
+.botao-acao-secundaria {
+    background-color: var(--verde-institucional);
+    color: var(--branco);
+    border: none;
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+    width: 100%;
+    max-width: 240px;
+}
+
+.botao-acao-secundaria:hover {
+    opacity: 0.9;
+}
+
+.botao-voltar-estilizado {
+    background-color: var(--verde-institucional);
+    color: var(--branco);
+    border: none;
+    padding: 10px 35px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, opacity 0.2s;
+}
+
+.botao-voltar-estilizado:hover {
+    opacity: 0.9;
+}
+
+/* Botão Desativado (Padronização para Fluxos de Seleção) */
+.botao-estado-bloqueado {
+    opacity: 0.4 !important;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+}
+
+/* Container para alinhar o botão voltar à direita */
+.btn-voltar-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   COMPONENTES DE UI TIPO "PAINEL" E FORMULÁRIOS (PADRONIZAÇÃO GLOBAL)
+   ========================================================================== */
+
+/* Título Principal de Páginas Internas */
+.titulo-pagina-principal {
+    color: var(--verde-institucional);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 30px 0;
+    letter-spacing: -0.5px;
+}
+
+/* Card de Fundo Padrão (Usado em Denúncias, Cadastros e Info) */
+.painel-conteudo-central {
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda-card);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+    box-sizing: border-box;
+}
+
+/* Alertas de Atenção Amarelos */
+.caixa-aviso-importante {
+    background-color: #fffaf0;
+    border: 1px solid #feebc8;
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: #2d3748;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.caixa-aviso-importante span { color: #dd6b20; font-weight: 700; }
+
+/* Títulos de Seção com Número (Ex: 1 Onde está acontecendo?) */
+.subtitulo-secao-numerada {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--verde-institucional);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 30px 0 20px 0;
+}
+
+.indicador-numero-secao {
+    background-color: var(--verde-institucional);
+    color: var(--branco);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Labels e Inputs Padronizados */
+.rotulo-campo-formulario {
+    display: block;
+    color: #1a202c;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.campo-texto-estilizado {
+    width: 100%;
+    background-color: var(--branco);
+    border: 1px solid var(--borda-card);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    color: #4a5568;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   CLASSES DE ESTRUTURA REUTILIZÁVEIS (PADRONIZAÇÃO)
+   ========================================================================== */
+.container-arca-padrao {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 4%;
+}
+
+.titulo-secao-padrao {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--texto-escuro);
+    margin-bottom: 30px;
+}
+
+.painel-informativo-padrao {
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda-card);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+}
+
+/* Padronização de Formulários */
+.form-grid-padrao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+/* ==========================================================================
+   MODAL DE ACESSO OBRIGATÓRIO (LOGIN/CADASTRO)
+   ========================================================================== */
+.camada-fundo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none; /* Escondido por padrão */
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    backdrop-filter: blur(5px);
+}
+
+.caixa-card-modal {
+    background: var(--branco);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.2);
+    animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-arca-card h2 {
+    color: var(--verde-institucional);
+    margin-bottom: 15px;
+}
+
+.modal-arca-card p {
+    margin-bottom: 30px;
+    color: var(--texto-mutado);
+}
+
+.chamada-ver-mais {
+    font-size: 36px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   VITRINE DE CARDS DE ANIMAIS (REUTILIZÁVEL)
+   ========================================================================== */
+.grade-vitrine-animais {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Divide o espaço em 3 colunas iguais no desktop */
+    gap: 30px; /* Distanciamento idêntico observado nas telas completas */
+    margin-top: 25px;
+}
+
+.cartao-perfil-pet {
+    background-color: var(--fundo-card);
+    border-radius: 20px; /* Bordas arredondadas pronunciadas conforme o mockup */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+}
+
+.card-imagem-wrapper {
+    width: 100%;
+    position: relative;
+    border-radius: 20px 20px 0 0; /* Acompanha perfeitamente o topo do card */
+    overflow: hidden; /* Trunca cantos da imagem interna */
+    aspect-ratio: 3 / 4; /* Garante que a foto do animal seja sempre um retângulo vertical */
+}
+
+.card-imagem-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Adapta a imagem sem distorcer as proporções do animal */
+}
+
+.card-info {
+    padding: 20px; /* Espaçamento interno apenas para os textos e botões */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-nome {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--texto-escuro);
+}
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--texto-escuro);
+    font-weight: 500;
+}
+
+.card-meta img {
+    width: 16px;
+    height: 16px;
+}
+
+.card-acoes {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-botoes-row {
+    display: flex;
+    gap: 8px;
+}
+
+.card-botoes-row .botao-acao-principal {
+    flex: 1; /* Faz o botão de adotar ocupar o espaço restante */
+}
+
+.btn-favorito {
+    width: 35px;
+    height: 35px;
+    background-color: var(--verde-institucional);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--branco);
+    transition: all 0.2s ease;
+}
+
+.btn-favorito:hover {
+    transform: scale(1.1);
+}
+
+.btn-favorito.favoritado {
+    color: #ff4b4b; /* Cor vermelha para o coração */
+}
+
+.btn-favorito-grande {
+    width: 54px; /* Altura calculada para alinhar com o btn-central-adocao */
+    height: 54px;
+    font-size: 22px;
+}
+
+.card-acoes .botao-acao-principal, .card-acoes .botao-acao-secundaria {
+    max-width: 100%; /* Botões preenchem a largura total interna do card */
+    padding: 8px 15px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+
+/* ==========================================================================
+   RODAPÉ INSTITUCIONAL PARCEIRO E GOVERNAMENTAL
+   ========================================================================== */
+.rodape-institucional-site {
+    background-color: var(--verde-institucional); /* Cor escura corporativa */
+    color: var(--branco);
+    padding: 40px 4% 30px 4%;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 60px; /* Garante separação saudável do término do fluxo de dados */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Divisão exata em 3 blocos de informação */
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 25px;
+}
+
+.footer-coluna h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: none;
+}
+
+.footer-coluna p {
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 6px;
+}
+
+.footer-coluna a {
+    color: var(--branco);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   SISTEMA DE MEDIA QUERIES (RESPONSIVIDADE COMPLETA)
+   ========================================================================== */
+
+/* Notebooks e Desktops menores (Abaixo de 1024px) */
+@media (max-width: 1024px) {
+    .grade-vitrine-animais {
+        grid-template-columns: repeat(2, 1fr); /* Transiciona para duas colunas para preservar legibilidade */
+        gap: 20px;
+    }
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablets (Abaixo de 768px) */
+@media (max-width: 768px) {
+    .topo-governo-institucional {
+        flex-direction: column; /* Alinha marcas verticalmente no ambiente mobile */
+        gap: 10px;
+        text-align: center;
+    }
+    .nav-institucional-links {
+        display: none; /* Oculta atalhos avançados para limpar visual mobile */
+    }
+    .menu-hamburger {
+        display: flex; /* Exibe gatilho do menu colapsável */
+    }
+    .lista-links-menu {
+        display: none; /* Esconde lista padrão horizontal */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--verde-navbar);
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .lista-links-menu.active {
+        display: flex; /* Acionado dinamicamente via JS */
+    }
+    .lista-links-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    .sub-menu-suspenso {
+        position: static;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.2); /* Fundo um pouco mais profundo */
+        box-shadow: none;
+        padding: 2px 0;
+        width: 60%; /* Ainda mais estreito para um visual minimalista */
+        margin: 2px auto 8px auto; /* Aproxima do item pai e afasta do item de baixo */
+        text-align: center;
+        border-radius: 8px;
+    }
+    .sub-menu-suspenso li a {
+        color: var(--branco) !important;
+        font-size: 14px; /* Diminui levemente para criar hierarquia */
+        padding: 4px 10px !important; /* Diminui a altura de cada link interno */
+    }
+    .dropdown.active .sub-menu-suspenso {
+        display: block;
+    }
+    .grade-vitrine-animais {
+        grid-template-columns: 1fr; /* Coluna única centralizada */
+        max-width: 300px; /* Card e imagem do gato menores */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card-imagem-wrapper {
+        aspect-ratio: 1 / 1; /* Torna a imagem quadrada no mobile, reduzindo a altura */
+    }
+    .card-imagem-wrapper img {
+        object-position: center top; /* Prioriza a parte superior da foto (onde fica o rosto) */
+    }
+    .card-nome {
+        font-size: 15px;
+    }
+    .card-meta {
+        font-size: 12px;
+    }
+    .card-acoes .botao-acao-principal, .card-acoes .botao-acao-secundaria {
+        font-size: 13px;
+        padding: 10px;
+    }
+    .rodape-institucional-site {
+        font-size: 11px; /* Texto do rodapé reduzido */
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+/* Mobile Dispositivos Pequenos (Abaixo de 480px) */
+@media (max-width: 480px) {
+    .botao-acao-principal, .botao-acao-secundaria {
+        max-width: 100%; /* Força botões a ocuparem largura inteira para clique facilitado via touch */
+    }
+}

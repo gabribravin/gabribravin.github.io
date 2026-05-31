@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa ARCA - Política Pública de Bem-Estar Animal</title>
+    <!-- PUXA O SEU STYLE.CSS PRONTO SEM ALTERAR NADA DELE -->
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- CSS ESPECÍFICO PARA A PÁGINA DE TEXTO INFORMATIVO -->
+    <style>
+        .info-main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 4%;
+        }
+
+        /* Card Branco Centralizado que envolve todo o conteúdo */
+        .info-card-container {
+            background-color: var(--fundo-card);
+            border: 1px solid var(--borda-card);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            margin: 40px 0;
+        }
+
+        /* Configurações de Tipografia da Página */
+        .info-card-container h1 {
+            color: #0d3c35;
+            font-size: 1.65rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 30px;
+        }
+
+        .info-card-container h2 {
+            color: #3b7a6f;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .info-card-container p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+            opacity: 0.8;
+        }
+
+        /* Listas Ordenadas e Elementos de Passos */
+        .info-list-ol {
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-list-ol li {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        /* Listas de Perfis e Prioridades (Marcadores) */
+        .perfil-title {
+            font-weight: 700;
+            color: #2d3748;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .info-list-ul {
+            padding-left: 35px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            list-style-type: disc;
+        }
+
+        .info-list-ul li {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        /* Remove a margem do último item para não "empurrar" o fundo da caixa além do padding */
+        .info-list-ul:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Ajustes de Responsividade para Celular */
+        @media (max-width: 768px) {
+            .info-main {
+                margin: 20px auto;
+                padding: 0 4%;
+            }
+
+            .info-card-container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .info-card-container h1 {
+                font-size: 1.35rem;
+                text-align: left;
+            }
+
+            .info-card-container h2 {
+                font-size: 1.15rem;
+            }
+
+            .info-card-container p, 
+            .info-list-ol li, 
+            .info-list-ul li {
+                font-size: 0.9rem;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle active">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="informacoes.html">Como funciona</a></li>
+                    <li><a href="selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTEÚDO INFORMATIVO PRINCIPAL -->
+    <main class="info-main">
+        <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        <div style="clear: both;"></div>
+        <div class="info-card-container">
+            
+            <h1>Programa ARCA: A política pública permanente de bem-estar e controle populacional de cães e gatos da Serra</h1>
+            
+            <p>O Programa ARCA (Animais Resgatados, Cuidados e Acolhidos) foi instituído pela Prefeitura da Serra pelo Decreto Municipal nº 2.274/2022 e consiste em uma política pública permanente voltada para o bem-estar animal e o controle populacional de cães e gatos, integrando ações de saúde pública e proteção.</p>
+            
+            <p>Os serviços oferecidos pelo Programa englobam microchipagem, esterilização cirúrgica de cães e gatos, com a realização de exames laboratoriais pré-operatórios, fornecimento de medicamentos e materiais utilizados durante os procedimentos cirúrgicos e pré-cirúrgicos, assim como a medicação pós-cirúrgica a ser entregue aos tutores.</p>
+            
+            <p>Além dos serviços citados acima, o programa prevê o recolhimento seletivo e tratamento veterinário de animais sem tutores em situação de maus-tratos ou gravemente feridos, mantendo o registro dos animais e promovendo ações voltadas para a adoção responsável. O cadastro também visa a futura construção do censo populacional de cães e gatos do município.</p>
+            
+            <p>O programa também tem como diferencial o fluxo contínuo na prestação do serviço, se diferenciando dos antigos mutirões. Com foco no reconhecimento da atuação dos protetores de animais no combate ao abandono e maus-tratos, estes formam um dos grupos prioritários. No entanto, todos os munícipes residentes na Serra podem se cadastrar e terão acesso aos serviços conforme a disponibilidade de vagas e o avanço das fases do Programa.</p>
+
+            <h2>Serviço prestado por empresas credenciadas</h2>
+            
+            <p>A primeira fase do Programa é a do credenciamento de clínicas veterinárias interessadas na prestação dos serviços, conforme especificado em Edital de Credenciamento da Secretaria Municipal de Meio Ambiente (Semma).</p>
+            
+            <p>A quantidade de serviços a ser realizada, por empresa credenciada, será definida de acordo com a demanda e o número de credenciados, observada a capacidade instalada de cada prestador de serviço.</p>
+            
+            <p>As castrações, exames clínicos e laboratoriais e demais procedimentos ocorrerão nas dependências das empresas credenciadas, devendo estas disporem de local adequado para a prestação dos serviços na Serra ou nos municípios vizinhos: Vila Velha, Vitória e Cariacica.</p>
+            
+            <p>Para a execução do programa, as empresas contratadas ou conveniadas deverão atender às especificações contidas nas resoluções do Conselho Federal de Medicina Veterinária (CFMV) quanto aos equipamentos e materiais necessários.</p>
+            
+            <p>Conforme o planejamento das etapas de atendimento do programa, está prevista a oferta de 2.100 vagas gratuitas para os procedimentos de castração.</p>
+
+            <h2>Conheça as etapas do Programa</h2>
+            
+            <p>Para ter acesso aos serviços é preciso realizar o cadastro individual de tutores, com criação de login e senha no portal oficial e preenchimento das informações conforme enquadramento nos perfis prioritários. Veja abaixo:</p>
+
+            <p><strong>Etapas do programa:</strong></p>
+            <ol class="info-list-ol">
+                <li>Cadastro individual de tutores e de animais exclusivamente pela internet, no site oficial (programaarca.serra.es.gov.br) ou via aplicativo Colab;</li>
+                <li>Triagem e validação dos dados cadastrados pela equipe técnica do Departamento de Bem-Estar Animal (DBEA);</li>
+                <li>Seleção dos beneficiados conforme os critérios de prioridade social e indicadores de maior densidade populacional de animais ou incidência de zoonoses na região;</li>
+                <li>Participação obrigatória em palestra educativa conduzida pela Semma sobre guarda responsável e cuidados pré e pós-operatórios;</li>
+                <li>Assinatura do Termo de Responsabilidade pelo tutor;</li>
+                <li>Entrega de Guia de Autorização para agendamento dos procedimentos junto à clínica credenciada indicada;</li>
+                <li>Realização dos procedimentos na clínica parceira: avaliação clínica e laboratorial, castração, microchipagem para identificação, registro do animal e entrega da medicação pós-cirúrgica;</li>
+                <li>Acompanhamento pós-cirúrgico clínico de 24 horas fornecido pela clínica.</li>
+            </ol>
+
+            <p><strong>Perfis do público-alvo e prioridades:</strong></p>
+            
+            <span class="perfil-title">I – Protetores Independentes, que residam no Município da Serra e tenham animais sob sua tutela ou realizem resgates comunitários.</span>
+            <ul class="info-list-ul">
+                <li>Comprovação por meio de cadastro validado pela equipe técnica da Prefeitura.</li>
+            </ul>
+
+            <span class="perfil-title">II – Munícipe em situação de vulnerabilidade social (baixa renda), inscrito no Cadastro Único (CadÚnico).</span>
+            <ul class="info-list-ul">
+                <li>Comprovação por meio do Número de Identificação Social (NIS), renda familiar compatível ou residência em área de interesse social.</li>
+            </ul>
+
+            <span class="perfil-title">III – Organizações Não Governamentais (ONGs), pessoa jurídica de direito privado, com comprovada atuação no município da Serra dedicada à proteção, defesa e bem-estar animal.</span>
+            <ul class="info-list-ul">
+                <li>Comprovação por meio de documentos institucionais.</li>
+            </ul>
+
+            <span class="perfil-title">IV – Munícipe geral, morador da Serra que não se enquadre nos critérios anteriores, cuja liberação de vagas ocorrerá de forma complementar e gradual.</span>
+            <ul class="info-list-ul">
+                <li>Cadastro simples no sistema.</li>
+            </ul>
+
+        </div>
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

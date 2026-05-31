@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Adoção - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .header-formulario-titulo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--texto-escuro);
+            margin-bottom: 10px;
+        }
+        .subtitulo-formulario {
+            font-size: 16px;
+            color: var(--verde-navbar);
+            font-weight: 600;
+            margin-bottom: 35px;
+            opacity: 0.7;
+        }
+        .pergunta-enunciado {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--verde-navbar);
+            margin-bottom: 15px;
+        }
+        .opcao-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: var(--texto-escuro);
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .opcao-checkbox-label:last-child {
+            margin-bottom: 0;
+        }
+        .opcao-checkbox-label input[type="checkbox"],
+        .opcao-checkbox-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--verde-navbar); /* Aplica cor da identidade nos inputs */
+        }
+        .termo-guarda-box {
+            margin: 40px 0;
+            font-size: 14px;
+            color: var(--texto-escuro);
+            opacity: 0.7;
+        }
+        .termo-titulo {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--texto-mutado);
+        }
+        .btn-enviar-solicitacao {
+            max-width: 100%;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+        }
+        /* Se algum campo 'required' estiver vazio, o botão fica transparente e bloqueado */
+        form:invalid .btn-enviar-solicitacao {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="adocao.html" class="active">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/agendar-cast.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-formulario">
+        <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        <div style="clear: both;"></div>
+
+        <h2 class="header-formulario-titulo">Falta pouco para o início de uma grande amizade! 🐾</h2>
+        <p class="subtitulo-formulario">Responda essas perguntinhas rápidas para sabermos se você e o André combinam.</p>
+
+        <form action="solicitacoes.html" method="GET">
+            
+            <div class="bloco-pergunta-card">
+                <h3 class="pergunta-enunciado">1. Como é a sua residência?</h3>
+                <label class="opcao-checkbox-label"><input type="radio" name="residencia" required> Casa com Quintal</label>
+                <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Casa sem Quintal</label>
+                <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Apartamento</label>
+                <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Sítio / Chácara</label>
+            </div>
+
+            <div class="bloco-pergunta-card">
+                <h3 class="pergunta-enunciado">2. A casa possui telas de proteção ou muros altos?</h3>
+                <label class="opcao-checkbox-label"><input type="radio" name="telas" required> Sim</label>
+                <label class="opcao-checkbox-label"><input type="radio" name="telas"> Não</label>
+            </div>
+
+            <div class="bloco-pergunta-card">
+                <h3 class="pergunta-enunciado">3. Você já possui outros animais em casa?</h3>
+                <label class="opcao-checkbox-label"><input type="radio" name="outros_pets" required> Sim, cães/gatos</label>
+                <label class="opcao-checkbox-label"><input type="radio" name="outros_pets"> Não possuo</label>
+            </div>
+
+            <div class="bloco-pergunta-card">
+                <h3 class="pergunta-enunciado">4. O animal passará muito tempo sozinho?</h3>
+                <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho" required> Não, sempre tem alguém</label>
+                <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho"> Período Curto</label>
+                <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho"> O dia todo</label>
+            </div>
+
+            <div class="termo-guarda-box">
+                <div class="termo-titulo">Termo de Guarda Responsável</div>
+                <p style="margin-bottom: 15px; color: #333;">Adotar é um ato de amor, mas também de responsabilidade. Você se compromete a oferecer alimentação, vacinas e espaço seguro?</p>
+                <label class="opcao-checkbox-label">
+                    <input type="checkbox" required> Li e concordo com o Termo de Guarda Responsável
+                </label>
+            </div>
+
+            <button type="submit" class="botao-acao-principal btn-enviar-solicitacao">Enviar Solicitação de Adoção</button>
+        </form>
+    </main>
+
+    <footer class="footer-arca">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

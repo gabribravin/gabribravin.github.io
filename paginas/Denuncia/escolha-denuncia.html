@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canal de Denúncias de Maus-Tratos</title>
+    <link rel="stylesheet" href="../../style.css">
+    
+    <style>
+        /* Container de Alinhamento do Painel */
+        .container-escolha-tipo-denuncia {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%;
+            min-height: 60vh;
+            box-sizing: border-box;
+        }
+
+        /* Card Grande com Fundo Azul Claro Sutil */
+        .painel-escolha-denuncia {
+            background-color: var(--fundo-card);
+            border: 1px solid var(--borda-card);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+            box-sizing: border-box;
+        }
+
+        /* Título do Canal de Denúncias */
+        .titulo-canal {
+            color: var(--verde-institucional);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* Tag de Proteção de Dados (Fundo Verde Claro, Texto Verde Escuro) */
+        .selo-seguranca-dados {
+            opacity: 0.7;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--branco);
+            color: var(--verde-navbar);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+        }
+
+        .tag-protecao-icone {
+            font-size: 0.85rem;
+        }
+
+        /* Pergunta de Direcionamento */
+        .pergunta-diretriz {
+            color: var(--verde-institucional);
+            opacity: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 25px 0;
+        }
+
+        /* Grid de Distribuição das Duas Opções Lado a Lado */
+        .grade-cartoes-escolha {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        /* Estrutura das Caixas de Opção (Brancas com Borda Fina) */
+        .cartao-opcao-denuncia {
+            background-color: var(--branco);
+            border: 1px solid var(--borda-card);
+            border-radius: 10px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Estado Selecionado Ativo da Caixa */
+        .cartao-opcao-denuncia.selecionado {
+            border-color: var(--amarelo-primario);
+            box-shadow: 0 4px 15px rgba(245, 166, 35, 0.15);
+        }
+
+        /* Ícones Customizados Vetoriais no Centro Superior */
+        .icone-wrapper {
+            margin-bottom: 20px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Escudo da Denúncia Anônima */
+        .icone-escudo {
+            width: 30px;
+            height: 38px;
+            background-color: #cbd5e1;
+            position: relative;
+            border-radius: 0 0 15px 15px;
+        }
+        .icone-escudo::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 15px; height: 38px;
+            background-color: #ef4444; /* Detalhe vermelho do escudo */
+            border-radius: 0 0 0 15px;
+        }
+
+        /* Silhueta de Usuário da Denúncia Identificada */
+        .icone-usuario {
+            width: 24px;
+            height: 24px;
+            background-color: #475569;
+            border-radius: 50%;
+            position: relative;
+            margin-top: -12px; /* Nudge para cima para compensar os ombros e alinhar visualmente com o escudo */
+        }
+        .icone-usuario::after {
+            content: '';
+            position: absolute;
+            bottom: -20px; left: -12px;
+            width: 48px; height: 18px;
+            background-color: #475569;
+            border-radius: 24px 24px 0 0;
+        }
+
+        /* Títulos Internos das Caixas */
+        .titulo-opcao {
+            color: #1a202c;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        /* Descrições das Caixas */
+        .descricao-opcao {
+            color: #4a5568;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin: 0;
+            max-width: 320px;
+            opacity: 0.7;
+        }
+
+        /* Texto de Rodapé Informativo */
+        .texto-rodape-info {
+            color: #4a5568;
+            font-size: 0.92rem;
+            font-weight: 500;
+            opacity: 0.7;
+            margin: 0;
+            align-self: center;
+        }
+
+        /* Bloco Inferior de Alinhamento de Ações */
+        .area-botoes-rodape {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Botão Continuar em Formato de Pílula Amarela/Laranja */
+        .botao-prosseguir-fluxo {
+            background-color: var(--amarelo-primario);
+            color: #000000;
+            border: none;
+            border-radius: 25px; /* Formato pílula arredondado */
+            padding: 12px 35px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.2s;
+        }
+
+        .botao-prosseguir-fluxo:hover {
+            background-color: var(--amarelo-hover);
+        }
+
+        /* Seta para a direita do botão (->) */
+        .seta-botao {
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        /* Responsividade para Manter a Proporção */
+        @media (max-width: 768px) {
+            .painel-escolha-denuncia {
+                padding: 25px 20px;
+            }
+            .grade-cartoes-escolha {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .area-botoes-rodape {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .botao-prosseguir-fluxo {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="escolha-denuncia.html" class="active">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-escolha-tipo-denuncia">
+
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <div class="painel-escolha-denuncia">
+            
+            <h1 class="titulo-canal">Canal de Denúncias de Maus-Tratos</h1>
+            
+            <div class="selo-seguranca-dados">
+                <span class="tag-protecao-icone">🔒</span> Seus dados e localização estão protegidos por lei
+            </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--borda-card); margin-bottom: 30px;">
+
+            <h2 class="pergunta-diretriz">Como você deseja prosseguir com a sua denúncia?</h2>
+
+            <div class="grade-cartoes-escolha">
+                
+                <div class="cartao-opcao-denuncia" id="card-anonima" data-opcao="anonima">
+                    <div class="icone-wrapper">
+                        <div class="icone-escudo"></div>
+                    </div>
+                    <div class="titulo-opcao">Denúncia Anônima</div>
+                    <p class="descricao-opcao">Seu nome não é salvo em nenhum momento. Não permite acompanhar o andamento pelo painel do site.</p>
+                </div>
+
+                <div class="cartao-opcao-denuncia" id="card-identificada" data-opcao="identificada">
+                    <div class="icone-wrapper">
+                        <div class="icone-usuario"></div>
+                    </div>
+                    <div class="titulo-opcao">Denúncia Identificada</div>
+                    <p class="descricao-opcao">Seus dados ficam em sigilo. Permite acompanhar o andamento completo pelo seu painel pessoal.</p>
+                </div>
+
+            </div>
+
+            <div class="area-botoes-rodape">
+                <p class="texto-rodape-info" id="status-selecao">Selecione uma opção para continuar</p>
+                <button type="button" class="botao-prosseguir-fluxo botao-estado-bloqueado" id="btn-prosseguir">
+                    Continuar <span class="seta-botao">&rarr;</span>
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <script>
+        const cards = document.querySelectorAll('.cartao-opcao-denuncia');
+        const statusTexto = document.getElementById('status-selecao');
+        const btnProsseguir = document.getElementById('btn-prosseguir');
+        let opcaoSelecionada = null;
+
+        // Gerencia a marcação visual ativa ao clicar em uma das duas caixas
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const opcao = card.getAttribute('data-opcao');
+
+                cards.forEach(c => c.classList.remove('selecionado'));
+                card.classList.add('selecionado');
+                
+                opcaoSelecionada = opcao;
+                sessionStorage.setItem('tipoDenuncia', opcaoSelecionada);
+                
+                // Habilita o botão e oculta a mensagem de status
+                statusTexto.style.visibility = 'hidden';
+                btnProsseguir.classList.remove('botao-estado-bloqueado');
+            });
+        });
+
+        // Ação de clique do botão Continuar
+        btnProsseguir.addEventListener('click', (e) => {
+            if (opcaoSelecionada === 'identificada') {
+                // Se o usuário escolheu 'identificada', verificamos o login antes de avançar
+                if (typeof checkAccess === 'function' && !checkAccess(e)) {
+                    return; // Interrompe o fluxo se o modal de acesso for exibido
+                }
+            }
+
+            if (opcaoSelecionada) {
+                window.location.href = 'Formulario-denuncia.html';
+            }
+        });
+    </script>
+</body>
+</html>

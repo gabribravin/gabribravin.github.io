@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <style>
+        .cadastro-wrapper {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Seletor de Tipo de Perfil (Ong ou Cidadão) */
+        .tipo-usuario-selector {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            justify-content: center;
+       }
+
+        .radio-box {
+            border: 2px solid #cbd5e1;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #4a5568;
+            transition: all 0.2s;
+        }
+
+        .radio-box input {
+            cursor: pointer;
+        }
+
+        .radio-box.active {
+            border-color: #0d3c35;
+            background-color: #f0f7fd;
+            color: #0d3c35;
+        }
+
+        /* Inputs e Formulários */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        /* Seção do Pet */
+        .pet-section-box {
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .pet-section-box h3 {
+            color: #3b7a6f;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        /* Estilo idêntico ao Termo de Guarda do formulário de adoção */
+        .termo-guarda-box {
+            margin: 40px 0;
+            font-size: 14px;
+            color: var(--texto-escuro);
+        }
+        .termo-titulo {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--texto-mutado);
+        }
+        .opcao-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: var(--texto-escuro);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Responsividade para Telas Menores */
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+            .tipo-usuario-selector {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTEÚDO DE CADASTRO -->
+    <main class="container-arca-padrao">
+        <div class="cadastro-wrapper">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+            <div style="clear: both;"></div>
+
+            <div class="painel-conteudo-central">
+            <h2 class="titulo-pagina-principal" style="text-align: center;">Criar Conta no Programa ARCA</h2>
+
+            <!-- Pergunta se é ONG ou Cidadão -->
+            <div class="tipo-usuario-selector">
+                <label class="radio-box active" id="label-cidadao">
+                    <input type="radio" name="tipo_perfil" value="cidadao" checked onchange="mudarPerfil('cidadao')">
+                    Sou Cidadão
+                </label>
+                <label class="radio-box" id="label-ong">
+                    <input type="radio" name="tipo_perfil" value="ong" onchange="mudarPerfil('ong')">
+                    Sou uma ONG
+                </label>
+            </div>
+
+            <form>
+                <!-- DADOS DO USUÁRIO (Muda dinamicamente via JS abaixo) -->
+                <div class="painel-informativo-padrao">
+                    <div class="form-grid" id="campos-usuario">
+                        <!-- Os campos padrão do Cidadão começam aqui -->
+                        <div class="full-width">
+                            <label class="rotulo-campo-formulario" id="lbl-nome">Nome Completo</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="Digite seu nome" required>
+                        </div>
+                        <div id="container-cpf">
+                            <label class="rotulo-campo-formulario">CPF</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="000.000.000-00">
+                        </div>
+                        <div id="container-cnpj" style="display: none;">
+                            <label class="rotulo-campo-formulario">CNPJ</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="00.00.000.000/0001-00">
+                        </div>
+                        <div>
+                            <label class="rotulo-campo-formulario">Telefone</label>
+                            <input type="tel" class="campo-texto-estilizado" placeholder="(27) 99999-9999" required>
+                        </div>
+                        
+                        <!-- Endereço comum a ambos -->
+                        <div>
+                            <label class="rotulo-campo-formulario">CEP</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="Ex: 00000-000" required>
+                        </div>
+                        <div>
+                            <label class="rotulo-campo-formulario">Bairro</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="Ex: Laranjeiras" required>
+                        </div>
+                        <div class="full-width">
+                            <label class="rotulo-campo-formulario">Rua e Número</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="Av. Principal, nº 123" required>
+                        </div>
+
+                        <!-- Credenciais com dupla validação (Email e Senha) -->
+                        <div>
+                            <label class="rotulo-campo-formulario">E-mail</label>
+                            <input type="email" class="campo-texto-estilizado" placeholder="seu@email.com" required>
+                        </div>
+                        <div>
+                            <label class="rotulo-campo-formulario">Confirme seu E-mail</label>
+                            <input type="email" class="campo-texto-estilizado" placeholder="Repita o e-mail" required>
+                        </div>
+                        <div>
+                            <label class="rotulo-campo-formulario">Senha</label>
+                            <input type="password" class="campo-texto-estilizado" placeholder="Crie uma senha" required>
+                        </div>
+                        <div>
+                            <label class="rotulo-campo-formulario">Confirme sua Senha</label>
+                            <input type="password" class="campo-texto-estilizado" placeholder="Repita a senha" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pergunta se tem animais -->
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; color: #4a5568;">
+                        <input type="checkbox" id="possui-animais" onchange="togglePetSection(this.checked)" style="width: 18px; height: 18px;">
+                        Possuo animais e desejo cadastrá-los agora
+                    </label>
+                </div>
+
+                <!-- SEÇÃO ADICIONAR ANIMAL -->
+                <div class="pet-section-box" id="pet-section-box" style="display: none;">
+                    <h3 id="pet-box-titulo">Meus Animais</h3>
+                    <div id="lista-animais-container">
+                        <!-- Bloco Repetível do Animal -->
+                        <div class="pet-item" style="border-bottom: 2px solid #e2e8f0; margin-bottom: 30px; padding-bottom: 20px;">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Nome do Animal</label>
+                                    <input type="text" placeholder="Nome do pet">
+                                </div>
+                                <div class="form-group">
+                                    <label>Espécie</label>
+                                    <select>
+                                        <option value="cachorro">Cachorro</option>
+                                        <option value="gato">Gato</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sexo</label>
+                                    <select>
+                                        <option value="macho">Macho</option>
+                                        <option value="femea">Fêmea</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Idade Estimada</label>
+                                    <select>
+                                        <option value="menos_3m">Menos de 3 meses</option>
+                                        <option value="3m_5m">De 03 meses a 05 meses</option>
+                                        <option value="6m_7a">06 meses a 07 anos</option>
+                                        <option value="acima_7a">Acima de 07 anos</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Porte</label>
+                                    <select>
+                                        <option value="minusculo">Minúsculo</option>
+                                        <option value="pequeno">Pequeno</option>
+                                        <option value="medio">Médio</option>
+                                        <option value="grande">Grande</option>
+                                        <option value="gigante">Gigante</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Peso</label>
+                                    <select>
+                                        <option value="ate_5kg">Até 5kg</option>
+                                        <option value="6_15kg">De 06 a 15kg</option>
+                                        <option value="acima_15kg">Acima de 15kg</option>
+                                    </select>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>Comportamento do Animal</label>
+                                    <select>
+                                        <option value="docil">Dócil e sociável</option>
+                                        <option value="agressivo">Protetor / Bravo com estranhos</option>
+                                        <option value="assustado">Muito medroso / Arisco</option>
+                                        <option value="agitado">Hiperativo / Muita energia</option>
+                                    </select>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>Já fez algum tipo de cirurgia?</label>
+                                    <select onchange="verificarCirurgia(this)">
+                                        <option value="nao">Não</option>
+                                        <option value="sim">Sim</option>
+                                    </select>
+                                </div>
+                                <div class="form-group full-width qual-cirurgia-box" style="display: none;">
+                                    <label>Caso tenha feito, qual cirurgia?</label>
+                                    <input type="text" placeholder="Descreva as cirurgias anteriores">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>Informações Adicionais</label>
+                                    <textarea rows="3" placeholder="Algum detalhe importante sobre a saúde ou história do animal..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" onclick="adicionarNovoPet()" class="btn-escuro" style="max-width: 250px; font-size: 14px; padding: 10px;">+ Adicionar Outro Animal</button>
+                </div>
+
+                <!-- Caixa de confirmação de residência na Serra -->
+                <div class="termo-guarda-box">
+                    <div class="termo-titulo">Compromisso de Residência</div>
+                    <p style="margin-bottom: 15px; color: #333;">Para utilizar os serviços do Programa ARCA, é necessário residir no município.</p>
+                    <label class="opcao-checkbox-label">
+                        <input type="checkbox" id="chk-serra" required style="width: 18px; height: 18px; accent-color: var(--amarelo-primario);"> 
+                        Li e confirmo que resido ou possuo atividade ativa na Serra - ES.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-cadastrar btn-desativado" id="btn-concluir-cadastro">Concluir Cadastro</button>
+            </form>
+        </div>
+        </div>
+    </main>
+
+    <!-- INTERAÇÃO DINÂMICA VIA JAVASCRIPT -->
+    <script>
+        // Controle do botão de cadastro baseado no aceite do termo
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnCadastrar = document.getElementById('btn-concluir-cadastro');
+            const chkSerra = document.getElementById('chk-serra');
+            
+            chkSerra.addEventListener('change', function() {
+                if (this.checked) btnCadastrar.classList.remove('btn-desativado');
+                else btnCadastrar.classList.add('btn-desativado');
+            });
+        });
+
+        function mudarPerfil(tipo) {
+            const labelCidadao = document.getElementById('label-cidadao');
+            const labelOng = document.getElementById('label-ong');
+            const containerCnpj = document.getElementById('container-cnpj');
+            const containerCpf = document.getElementById('container-cpf');
+            const lblNome = document.getElementById('lbl-nome');
+            const petBoxTitulo = document.getElementById('pet-box-titulo');
+
+            if (tipo === 'ong') {
+                labelOng.classList.add('active');
+                labelCidadao.classList.remove('active');
+                containerCnpj.style.display = 'flex';
+                containerCpf.style.display = 'none';
+                lblNome.innerText = 'Nome da ONG / Instituição';
+                petBoxTitulo.innerText = 'Animais para Acolhimento';
+            } else {
+                labelCidadao.classList.add('active');
+                labelOng.classList.remove('active');
+                containerCnpj.style.display = 'none';
+                containerCpf.style.display = 'flex';
+                lblNome.innerText = 'Nome Completo';
+                petBoxTitulo.innerText = 'Meus Animais';
+            }
+        }
+
+        function togglePetSection(checked) {
+            const petBox = document.getElementById('pet-section-box');
+            petBox.style.display = checked ? 'block' : 'none';
+        }
+
+        function verificarCirurgia(selectElement) {
+            const petItem = selectElement.closest('.pet-item');
+            const boxQual = petItem.querySelector('.qual-cirurgia-box');
+            if (selectElement.value === 'sim') {
+                boxQual.style.display = 'flex';
+            } else {
+                boxQual.style.display = 'none';
+            }
+        }
+
+        function adicionarNovoPet() {
+            const container = document.getElementById('lista-animais-container');
+            const primeiroPet = container.querySelector('.pet-item');
+            const novoPet = primeiroPet.cloneNode(true);
+            
+            novoPet.querySelectorAll('input, textarea').forEach(el => el.value = '');
+            novoPet.querySelectorAll('select').forEach(el => el.selectedIndex = 0);
+            novoPet.querySelector('.qual-cirurgia-box').style.display = 'none';
+            
+            container.appendChild(novoPet);
+        }
+    </script>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Novo Pet - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <style>
+        /* Container de Alinhamento Principal */
+        .adicionar-pet-corpo {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 24px 80px 24px;
+            min-height: 60vh;
+            box-sizing: border-box;
+        }
+
+        .grupo-campo {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .label-campo {
+            color: var(--verde-navbar);
+            font-size: 1rem;
+            font-weight: 700;
+            opacity: 0.7;
+        }
+
+        .input-texto, .select-opcao, .textarea-info {
+            width: 100%;
+            background-color: var(--branco);
+            border: 1px solid var(--borda-card);
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            color: var(--texto-escuro);
+            box-sizing: border-box;
+            font-weight: 500;
+            opacity: 0.7;
+        }
+
+        .form-grid-pet {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+        
+        @media (max-width: 600px) {
+            .form-grid-pet { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="solicitacoes.html" class="active">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="adicionar-pet-corpo">
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+        
+        <h1 class="titulo-secao-padrao">Adicionar novo pet</h1>
+
+        <div class="card-informativo-padrao">
+            
+            <form id="form-adicionar-pet" class="form-grid-pet">
+                <div class="grupo-campo full-width">
+                    <label class="label-campo" for="nome-pet">Nome do Animal</label>
+                    <input type="text" id="nome-pet" class="input-texto" placeholder="Nome do pet" required>
+                </div>
+
+                <div class="grupo-campo">
+                    <label class="label-campo">Espécie</label>
+                    <select id="especie-pet" class="select-opcao" required>
+                        <option value="">Selecionar opção</option>
+                        <option value="cachorro">Cachorro</option>
+                        <option value="gato">Gato</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo">
+                    <label class="label-campo">Sexo</label>
+                    <select id="sexo-pet" class="select-opcao" required>
+                        <option value="">Selecionar opção</option>
+                        <option value="macho">Macho</option>
+                        <option value="femea">Fêmea</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo">
+                    <label class="label-campo">Idade Estimada</label>
+                    <select id="idade-pet" class="select-opcao" required>
+                        <option value="">Selecionar opção</option>
+                        <option value="menos_3m">Menos de 3 meses</option>
+                        <option value="3m_5m">De 03 meses a 05 meses</option>
+                        <option value="6m_7a">06 meses a 07 anos</option>
+                        <option value="acima_7a">Acima de 07 anos</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo">
+                    <label class="label-campo">Porte</label>
+                    <select id="porte-pet" class="select-opcao" required>
+                        <option value="">Selecionar opção</option>
+                        <option value="minusculo">Minúsculo</option>
+                        <option value="pequeno">Pequeno</option>
+                        <option value="medio">Médio</option>
+                        <option value="grande">Grande</option>
+                        <option value="gigante">Gigante</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo">
+                    <label class="label-campo">Peso</label>
+                    <select id="peso-pet" class="select-opcao" required>
+                        <option value="">Selecionar opção</option>
+                        <option value="ate_5kg">Até 5kg</option>
+                        <option value="6_15kg">De 06 a 15kg</option>
+                        <option value="acima_15kg">Acima de 15kg</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo">
+                    <label class="label-campo">Comportamento</label>
+                    <select id="comportamento-pet" class="select-opcao" required>
+                        <option value="">Selecionar opção</option>
+                        <option value="docil">Dócil e sociável</option>
+                        <option value="agressivo">Protetor / Bravo com estranhos</option>
+                        <option value="assustado">Muito medroso / Arisco</option>
+                        <option value="agitado">Hiperativo / Muita energia</option>
+                    </select>
+                </div>
+
+                <div class="grupo-campo full-width">
+                    <label class="label-campo">Já fez algum tipo de cirurgia?</label>
+                    <select id="cirurgia-pet" class="select-opcao" onchange="verificarCirurgia(this)" required>
+                        <option value="nao">Não</option>
+                        <option value="sim">Sim</option>
+                    </select>
+                </div>
+
+                <div id="qual-cirurgia-box" class="grupo-campo full-width" style="display: none;">
+                    <label class="label-campo">Caso tenha feito, qual cirurgia?</label>
+                    <input type="text" id="desc-cirurgia" class="input-texto" placeholder="Descreva as cirurgias anteriores">
+                </div>
+
+                <div class="grupo-campo full-width">
+                    <label class="label-campo">Informações Adicionais</label>
+                    <textarea id="info-pet" class="textarea-info" rows="3" placeholder="Algum detalhe importante..."></textarea>
+                </div>
+
+                <div class="full-width" style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button type="submit" class="botao-acao-principal" id="btn-cadastrar-pet" style="max-width: 320px;">
+                        Salvar animal no perfil
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <script>
+        function verificarCirurgia(select) {
+            const box = document.getElementById('qual-cirurgia-box');
+            box.style.display = select.value === 'sim' ? 'flex' : 'none';
+        }
+
+        document.getElementById('form-adicionar-pet').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Animal salvo no perfil com sucesso!");
+            window.location.href = "solicitacoes.html";
+        });
+    </script>
+</body>
+</html>

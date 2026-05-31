@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Programa ARCA</title>
+    <!-- PUXA O SEU STYLE.CSS PRONTO SEM ALTERAR NADA DELE -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .login-container {
+            max-width: 450px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .login-card {
+            background-color: var(--fundo-card);
+            border: 1px solid var(--borda-card);
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 450px;
+            margin: 15px auto 0 auto;
+        }
+
+        .login-card h2 {
+            color: #0d3c35;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+            opacity: 0.7;
+        }
+
+        .form-group input:focus {
+            border-color: #3b7a6f;
+        }
+
+        .login-links {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+        }
+
+        .login-links a {
+            color: #3b7a6f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-links a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-entrar {
+            width: 100%;
+            background-color: var(--amarelo-primario);
+            color: #000000;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-entrar:hover {
+            background-color: var(--amarelo-hover);
+        }
+
+        .cadastro-alternativo {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .cadastro-alternativo a {
+            color: #0d3c35;
+            font-weight: 700;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="./imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="index.html" class="link-logotipo-projeto">
+            <img src="./imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="informacoes.html">Como funciona</a></li>
+                    <li><a href="paginas/castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="paginas/Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="paginas/resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="solicitacoes.html" class="active">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <!-- FORMULÁRIO DE LOGIN -->
+    <main class="login-container">
+        <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        <div style="clear: both;"></div>
+
+        <div class="login-card">
+            <h2>Entrar no Programa ARCA</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">E-mail ou CNPJ/CPF</label>
+                    <input type="text" id="usuario" placeholder="Digite seus dados de acesso" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Digite sua senha" required>
+                </div>
+
+                <div class="login-links">
+                    <label style="color: #718096;"><input type="checkbox"> Lembrar-me</label>
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+
+                <button type="submit" class="btn-entrar">Entrar</button>
+            </form>
+
+            <p class="cadastro-alternativo">
+                Não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a>
+            </p>
+        </div>
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

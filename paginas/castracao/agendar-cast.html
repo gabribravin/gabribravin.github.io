@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Castração</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../style.css">
+    
+    <style>
+        /* Ajustes específicos para a lógica do Calendário */
+        .secao-oculta {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Container de Distribuição Principal */
+        .agendamento-corpo {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 24px 80px 24px;
+            min-height: 60vh;
+            box-sizing: border-box;
+        }
+
+        /* Título Principal */
+        .titulo-agendamento {
+            font-size: 1.6rem;
+            color: #0d3c35;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        .titulo-agendamento span {
+            color: #0d3c35;
+            font-weight: 800;
+        }
+
+        /* Caixas/Cards de Etapas do Formulário */
+        .cartao-etapa {
+            background-color: var(--fundo-card);
+            border: 1px solid #e1ebf0;
+            border-radius: 10px;
+            padding: 28px 35px;
+            margin-bottom: 24px;
+            box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+            box-sizing: border-box;
+        }
+
+        .titulo-etapa {
+            color: var(--verde-navbar);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 18px;
+        }
+
+        /* customização do Select de Clínica (Bloco 1) */
+        .select-container {
+            position: relative;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .select-clinica {
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 10px 35px 10px 15px;
+            font-size: 0.95rem;
+            color: #334155;
+            cursor: pointer;
+            font-weight: 500;
+            opacity: 0.7;
+        }
+
+        .select-container::after {
+            content: 'v';
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #000000;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%) scaleX(1.3);
+            pointer-events: none;
+            font-weight: bold;
+        }
+
+        .texto-ajuda {
+            font-size: 0.9rem;
+            color: #475569;
+            margin: 0;
+            opacity: 0.7;
+        }
+
+        .texto-ajuda a {
+            color: #475569;
+            text-decoration: underline;
+        }
+
+        /* Ícone do Calendário (Bloco 2) */
+        .calendario-wrapper {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .icone-calendario {
+            font-size: 2.5rem;
+            color: #0c4a54;
+        }
+
+        /* Alinhamento dos botões de Horários (Bloco 3) */
+        .horarios-grid {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-horario {
+            border: none;
+            border-radius: 20px;
+            padding: 10px 35px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            min-width: 110px;
+            text-align: center;
+            box-sizing: border-box;
+            transition: opacity 0.2s;
+        }
+
+        /* Estilos do Calendário Customizado */
+        .calendario-popover {
+            display: none;
+            background: white;
+            border: 1px solid var(--borda-card);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 320px;
+        }
+        .cal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--verde-institucional);
+        }
+        .cal-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--verde-institucional);
+            padding: 5px;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+        .cal-btn:hover { opacity: 0.7; }
+        .cal-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+        .cal-dia {
+            padding: 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .cal-dia.inativo {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        .cal-dia.disponivel { background: #e6f4ea; color: #1e7e34; }
+        .cal-dia.cheio { background: #fce8e6; color: #d93025; cursor: not-allowed; }
+        .cal-dia.selecionado { outline: 2px solid var(--amarelo-primario); }
+        
+        .dia-semana { font-size: 11px; color: var(--texto-mutado); font-weight: 700; }
+
+        /* Horários disponíveis padrão (Verde fosco) */
+        .horario-disponivel {
+            background-color: #4b8a81;
+            color: #ffffff;
+        }
+
+        /* Horário Selecionado (Amarelo/Laranja) */
+        .horario-selecionado {
+            background-color: #f5a623;
+            color: #000000;
+        }
+
+        /* Bloco do Termo de Aceite (Checkbox) */
+        .container-declaracao {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 35px;
+            margin-bottom: 35px;
+            cursor: pointer;
+            user-select: none;
+            opacity: 0.7;
+        }
+
+        .container-declaracao input {
+            margin-top: 4px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: #4b8a81;
+        }
+
+        .texto-declaracao {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.4;
+        }
+
+        /* Botão de Envio Centralizado Inferior */
+        .bloco-acao-final {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-confirmar-agendamento {
+            background-color: #f5a623;
+            color: #000000;
+            border: none;
+            border-radius: 6px;
+            padding: 14px 40px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.2s;
+        }
+
+        .btn-confirmar-agendamento:hover {
+            background-color: #e09216;
+        }
+
+        /* Responsividade para manter a proporção exata em telas mobile */
+        @media (max-width: 600px) {
+            .cartao-etapa {
+                padding: 20px;
+            }
+            .horarios-grid {
+                flex-direction: column;
+            }
+            .btn-horario {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle active">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="informacoes.html">Como funciona</a></li>
+                    <li><a href="selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="../Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-arca-padrao" style="max-width: 960px;">
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <h1 class="titulo-agendamento">Agendamento para: <span>André</span></h1>
+
+        <section class="cartao-etapa">
+            <h2 class="titulo-etapa">1.Escolha o Local</h2>
+            <div class="select-container">
+                <select class="select-clinica" id="clinica-select">
+                    <option value="">Selecione uma Clínica</option>
+                    <option value="1">Clínica Veterinária Patas & Pelos</option>
+                    <option value="2">Hospital Veterinário Amigo Fiel</option>
+                    <option value="3">Centro Cirúrgico VetSerra</option>
+                    <option value="4">Clínica Cuidado Animal</option>
+                    <option value="5">Instituto Pet Saúde</option>
+                    <option value="6">Diagnóstico e Clínica VetLitoral</option>
+                    <option value="7">Centro Veterinário Metropolitano</option>
+                </select>
+            </div>
+            <p class="texto-ajuda">Não sabe qual escolher? <a href="clinicas.html">Clique aqui</a> para mais sobre as Clínicas</p>
+        </section>
+
+        <section class="cartao-etapa secao-oculta" id="secao-data">
+            <h2 class="titulo-etapa">2.Escolha a Data</h2>
+            <div class="calendario-wrapper" id="calendario-trigger">
+                <i class="fa-regular fa-calendar-days icone-calendario"></i>
+            </div>
+            <div id="calendar-popover" class="calendario-popover">
+                <div class="cal-header">
+                    <button type="button" id="prev-month" class="cal-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div id="cal-month-year">Junho 2026</div>
+                    <button type="button" id="next-month" class="cal-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <div class="cal-grid" id="cal-days-grid">
+                    <!-- Preenchido via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section class="cartao-etapa secao-oculta" id="secao-horarios">
+            <h2 class="titulo-etapa" id="texto-horario-dia">Horários Disponíveis:</h2>
+            <div class="horarios-grid">
+                <button type="button" class="btn-horario horario-disponivel">08:00</button>
+                <button type="button" class="btn-horario horario-disponivel">09:30</button>
+                <button type="button" class="btn-horario horario-disponivel">11:00</button>
+                <button type="button" class="btn-horario horario-disponivel">14:15</button>
+                <button type="button" class="btn-horario horario-disponivel">16:00</button>
+            </div>
+        </section>
+
+        <label class="container-declaracao">
+            <input type="checkbox" id="check-jejum">
+            <span class="texto-declaracao">
+                Declaro estar ciente de que o animal deve cumprir o jejum obrigatório de água e comida antes da cirurgia.
+            </span>
+        </label>
+
+        <div class="bloco-acao-final">
+            <button type="button" class="btn-confirmar-agendamento" id="btn-enviar">
+                Confirmar agendamento da castração
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <script>
+        // Captura o nome do animal enviado via URL e atualiza o título
+        const urlParams = new URLSearchParams(window.location.search);
+        const animalNome = urlParams.get('animal');
+        if (animalNome) {
+            document.querySelector('.titulo-agendamento span').innerText = animalNome;
+        }
+
+        const clinicaSelect = document.getElementById('clinica-select');
+        const secaoData = document.getElementById('secao-data');
+        const secaoHorarios = document.getElementById('secao-horarios');
+        const calendarTrigger = document.getElementById('calendario-trigger');
+        const calendarPopover = document.getElementById('calendar-popover');
+        const daysGrid = document.getElementById('cal-days-grid');
+        let currentViewDate = new Date();
+
+        // 1. Mostrar Data após selecionar clínica
+        clinicaSelect.addEventListener('change', () => {
+            if(clinicaSelect.value) secaoData.style.display = 'block';
+        });
+
+        // 2. Abrir Calendário
+        calendarTrigger.addEventListener('click', () => {
+            calendarPopover.style.display = calendarPopover.style.display === 'block' ? 'none' : 'block';
+            renderCalendar();
+        });
+
+        // Navegação de meses
+        document.getElementById('prev-month').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentViewDate.setMonth(currentViewDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        document.getElementById('next-month').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentViewDate.setMonth(currentViewDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        function renderCalendar() {
+            const now = new Date();
+            const viewYear = currentViewDate.getFullYear();
+            const viewMonth = currentViewDate.getMonth();
+            const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+            
+            document.getElementById('cal-month-year').innerText = `${monthNames[viewMonth]} ${viewYear}`;
+            
+            daysGrid.innerHTML = '';
+            const diasSemana = ['D','S','T','Q','Q','S','S'];
+            diasSemana.forEach(d => daysGrid.innerHTML += `<div class="dia-semana">${d}</div>`);
+
+            const firstDayIndex = new Date(viewYear, viewMonth, 1).getDay();
+            const lastDay = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+            // Espaços vazios para alinhar o primeiro dia do mês
+            for (let x = 0; x < firstDayIndex; x++) {
+                daysGrid.innerHTML += `<div></div>`;
+            }
+
+            for(let i = 1; i <= lastDay; i++) {
+                const diaEl = document.createElement('div');
+                diaEl.classList.add('cal-dia');
+                diaEl.innerText = i;
+
+                const dateInGrid = new Date(viewYear, viewMonth, i);
+                const todayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+                if(dateInGrid < todayDate) {
+                    diaEl.classList.add('inativo');
+                } else {
+                    const isAvailable = Math.random() > 0.3;
+                    diaEl.classList.add(isAvailable ? 'disponivel' : 'cheio');
+                    
+                    if(isAvailable) {
+                        diaEl.addEventListener('click', () => {
+                            document.querySelectorAll('.cal-dia').forEach(d => d.classList.remove('selecionado'));
+                            diaEl.classList.add('selecionado');
+                            selecionarDia(i, viewMonth, viewYear);
+                        });
+                    }
+                }
+                daysGrid.appendChild(diaEl);
+            }
+        }
+
+        function selecionarDia(dia, mes, ano) {
+            const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+            secaoHorarios.style.display = 'block';
+            document.getElementById('texto-horario-dia').innerText = `Horários Disponíveis para o dia ${dia} de ${monthNames[mes]}:`;
+            // Reseta seleções de horário
+            document.querySelectorAll('.btn-horario').forEach(b => {
+                b.classList.remove('horario-selecionado');
+                b.classList.add('horario-disponivel');
+            });
+            calendarPopover.style.display = 'none';
+        }
+
+        // Gerencia seleção de horário (nenhum vem selecionado)
+        document.querySelectorAll('.btn-horario').forEach(botao => {
+            botao.addEventListener('click', () => {
+                document.querySelectorAll('.btn-horario').forEach(b => {
+                    b.classList.remove('horario-selecionado');
+                    b.classList.add('horario-disponivel');
+                });
+                botao.classList.remove('horario-disponivel');
+                botao.classList.add('horario-selecionado');
+            });
+        });
+
+        // Evento de envio simulado seguindo as validações nativas do formulário
+        document.getElementById('btn-enviar').addEventListener('click', () => {
+            const clinica = document.getElementById('clinica-select').value;
+            const jejum = document.getElementById('check-jejum').checked;
+
+            if(!clinica) {
+                alert("Por favor, selecione uma clínica no Passo 1.");
+                return;
+            }
+            if(!jejum) {
+                alert("Você precisa declarar estar ciente sobre o jejum obrigatório do animal.");
+                return;
+            }
+            
+            window.location.href = "castracao-sucesso.html";
+        });
+    </script>
+</body>
+</html>

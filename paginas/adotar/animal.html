@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu nome é André! - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .container-detalhes-animal {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 4%;
+        }
+        .card-perfil-completo {
+            background-color: var(--fundo-card);
+            border-radius: 16px;
+            padding: 35px;
+            display: flex;
+            gap: 40px;
+            margin-top: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .foto-perfil-pet {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+        .foto-perfil-pet img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ficha-tecnica-pet {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+        }
+        .nome-pet-titulo {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--texto-escuro);
+            margin-bottom: 25px;
+        }
+        .grid-atributos-tecnicos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px 15px;
+            margin-bottom: 35px;
+        }
+        .atributo-item {
+            font-size: 15px;
+            color: var(--texto-escuro);
+        }
+        .atributo-item strong {
+            font-weight: 700;
+        }
+        .titulo-complementar {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--verde-navbar);
+            margin-bottom: 15px;
+        }
+        .texto-complementar-corpo {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--texto-escuro);
+            margin-bottom: 40px;
+        }
+        .btn-central-adocao {
+            max-width: 100%;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+        }
+        @media (max-width: 850px) {
+            .card-perfil-completo {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .foto-perfil-pet {
+                max-width: 320px; /* Limita o tamanho em tablets para não ficar gigante */
+                margin: 0 auto; /* Centraliza a foto no topo antes do texto */
+            }
+            .grid-atributos-tecnicos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="adocao.html" class="active">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/agendar-cast.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="../Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-detalhes-animal">
+        <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        <div style="clear: both;"></div>
+
+        <section class="card-perfil-completo">
+            <div class="foto-perfil-pet">
+                <img src="../../imagens/gato.png" alt="Gato André em close">
+            </div>
+
+            <div class="ficha-tecnica-pet">
+                <h2 class="nome-pet-titulo">Meu nome é André!</h2>
+                
+                <div class="grid-atributos-tecnicos">
+                    <div class="atributo-item">Espécie: <strong>Gato</strong></div>
+                    <div class="atributo-item">Peso: <strong>De 06 a 15Kg</strong></div>
+                    <div class="atributo-item">Castrado: <strong>Sim</strong></div>
+                    <div class="atributo-item">Sexo: <strong>Macho</strong></div>
+                    <div class="atributo-item">Porte: <strong>Médio</strong></div>
+                    <div class="atributo-item">Vacinado: <strong>Sim</strong></div>
+                    <div class="atributo-item">Idade: <strong>06 meses a 07 anos</strong></div>
+                    <div class="atributo-item">Raça: <strong>Laranja</strong></div>
+                    <div class="atributo-item">Vermifugado: <strong>Sim</strong></div>
+                    <div class="atributo-item">Temperamento: <strong>Carinhoso</strong></div>
+                    <div class="atributo-item">Código do animal: <strong>47731</strong></div>
+                </div>
+
+                <h3 class="titulo-complementar">Informações complementares</h3>
+                <div class="texto-complementar-corpo">
+                    Oi, eu sou André! 🐾 Sou um gatinho muito carinhoso, companheiro e estou à procura de uma família humana para chamar de minha e encher de ronrons. Já sou castrado, vacinado e vermifugado, prontinho para ganhar um lar seguro e cheio de amor. ❤️ Tudo o que eu mais quero é uma chance de receber carinho e fazer parte da sua vida. Que tal me levar para casa?
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--borda-card); margin-bottom: 25px;">
+
+                <div class="card-botoes-row">
+                    <a href="formulario-adocao.html" class="botao-acao-principal btn-central-adocao">Quero adotar</a>
+                    <button class="btn-favorito btn-favorito-grande" aria-label="Favoritar">🤍</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa ARCA - Prefeitura da Serra</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            padding: 0 4%;
+        }
+        .hero-conteudo {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .chamada-home {
+            text-align: center;
+            margin: 10px auto 30px auto;
+            font-size: 36px;
+            font-weight: 800;
+            color: #000000;
+        }
+        .home-botoes-centro {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .secao-vitrine {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 4% 40px 4%;
+            background-color: var(--branco);
+        }
+        .secao-titulo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .ver-mais-container {
+            text-align: center;
+            margin-top: 80px;
+        }
+        .chamada-ver-mais {
+            font-size: 36px; /* Ajustado para o tamanho das outras letras grandes */
+            font-weight: 800;
+            color: #000000; /* Preto puro */
+            margin-bottom: 30px; /* Distância sincronizada com a seção superior */
+            text-align: center;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .hero-section {
+                display: none; /* Oculta o banner arca.png no mobile */
+            }
+            .home-botoes-centro {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 40px;
+            }
+            .chamada-home {
+                font-size: 26px; /* Texto menor no mobile */
+            }
+            .secao-titulo {
+                font-size: 20px; /* Título menor no mobile */
+                text-align: center;
+            }
+            .chamada-ver-mais {
+                font-size: 22px !important; /* Retorna ao tamanho menor que estava bom */
+                margin-bottom: 20px !important; /* Reduz o espaço no mobile */
+                color: var(--texto-escuro) !important; /* Retorna à cor padrão suave */
+                text-align: center !important;
+            }
+            .ver-mais-container {
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="./imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="index.html" class="link-logotipo-projeto">
+            <img src="./imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="paginas/adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="paginas/castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="paginas/castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="paginas/castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="paginas/Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="paginas/resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="paginas/Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-conteudo">
+            <img src="./imagens/arca.png" alt="Programa ARCA" class="hero-logo-destaque">
+        </div>
+    </header>
+
+    <main class="secao-vitrine">
+        <h2 class="chamada-home">Faça parte dessa<br>mudança!</h2>
+        <div class="home-botoes-centro">
+            <a href="#" class="botao-acao-secundaria">Cadastrar abrigo</a>
+            <a href="paginas/adotar/adocao.html" class="botao-acao-principal">Adotar agora</a>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--borda-card); margin-bottom: 40px;">
+
+        <h3 class="secao-titulo">Animais disponíveis para adoção</h3>
+        <div class="grade-vitrine-animais">
+            <article class="cartao-perfil-pet">
+                <div class="card-imagem-wrapper">
+                    <img src="./imagens/gato.png" alt="Gato André para adoção">
+                </div>
+                <div class="card-info">
+                    <h4 class="card-nome">André</h4>
+                    <div class="card-meta">
+                        <span>🐾</span> Bom lar
+                    </div>
+                    <div class="card-meta">
+                        <span>📍</span> Osasco
+                    </div>
+                    <div class="card-acoes">
+                        <div class="card-botoes-row">
+                            <a href="paginas/adotar/formulario-adocao.html" class="botao-acao-principal">Adotar</a>
+                            <button class="btn-favorito" aria-label="Favoritar">🤍</button>
+                        </div>
+                        <a href="paginas/adotar/animal.html" class="botao-acao-secundaria">Sobre o animal</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cartao-perfil-pet">
+                <div class="card-imagem-wrapper">
+                    <img src="./imagens/gato.png" alt="Gato André para adoção">
+                </div>
+                <div class="card-info">
+                    <h4 class="card-nome">André</h4>
+                    <div class="card-meta">
+                        <span>🐾</span> Bom lar
+                    </div>
+                    <div class="card-meta">
+                        <span>📍</span> Osasco
+                    </div>
+                    <div class="card-acoes">
+                        <div class="card-botoes-row">
+                            <a href="paginas/adotar/formulario-adocao.html" class="botao-acao-principal">Adotar</a>
+                            <button class="btn-favorito" aria-label="Favoritar">🤍</button>
+                        </div>
+                        <a href="paginas/adotar/animal.html" class="botao-acao-secundaria">Sobre o animal</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cartao-perfil-pet">
+                <div class="card-imagem-wrapper">
+                    <img src="./imagens/gato.png" alt="Gato André para adoção">
+                </div>
+                <div class="card-info">
+                    <h4 class="card-nome">André</h4>
+                    <div class="card-meta">
+                        <span>🐾</span> Bom lar
+                    </div>
+                    <div class="card-meta">
+                        <span>📍</span> Osasco
+                    </div>
+                    <div class="card-acoes">
+                        <div class="card-botoes-row">
+                            <a href="paginas/adotar/formulario-adocao.html" class="botao-acao-principal">Adotar</a>
+                            <button class="btn-favorito" aria-label="Favoritar">🤍</button>
+                        </div>
+                        <a href="paginas/adotar/animal.html" class="botao-acao-secundaria">Sobre o animal</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="ver-mais-container">
+            <h3 class="chamada-ver-mais">Confira todos os nossos animais</h3>
+            <a href="paginas/adotar/adocao.html" class="botao-acao-secundaria" style="max-width: 280px;">Conferir animais</a>
+        </div>
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

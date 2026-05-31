@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Resgate - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    
+    <style>
+        /* Container de Alinhamento do Painel */
+        .painel-resgate-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%;
+            min-height: 60vh;
+            box-sizing: border-box;
+        }
+
+        .titulo-pagina-principal {
+            margin-bottom: 8px; /* Reduz o espaço para aproximar do subtítulo */
+        }
+
+        .subtitulo-resgate {
+            color: var(--texto-mutado);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin: 0 0 35px 0;
+        }
+
+        /* Pergunta Diretriz */
+        .pergunta-diretriz {
+            color: var(--verde-navbar);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 0 0 25px 0;
+        }
+
+        /* Bloco de Opção 1: Urgência Médica (Borda Vermelha) */
+        .box-opcao-urgencia {
+            background-color: #ffffff;
+            border: 1.5px solid #c53030; /* Borda vermelha marcante */
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Bloco de Opção 2: Resgate Programado (Borda Azul Esverdeado) */
+        .box-opcao-programado {
+            background-color: #ffffff;
+            border: 1.5px solid var(--verde-navbar);
+            border-radius: 10px;
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Círculos Indicadores Coloridos */
+        .circulo-status {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .circulo-vermelho {
+            background-color: #c53030;
+        }
+
+        .circulo-verde-escuro {
+            background-color: var(--verde-institucional);
+        }
+
+        /* Conteúdo Interno dos Blocos */
+        .conteudo-bloco {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .titulo-bloco-urgencia {
+            color: #c53030;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .titulo-bloco-programado {
+            color: var(--verde-institucional);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .descricao-bloco {
+            color: var(--texto-mutado);
+            font-size: 0.92rem;
+            margin: 0 0 14px 0;
+            font-weight: 500;
+        }
+
+        /* Botão Vermelho de Plantão */
+        .btn-plantao-urgencia {
+            background-color: #c53030;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 24px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: fit-content;
+            transition: background-color 0.2s;
+        }
+
+        .btn-plantao-urgencia:hover {
+            background-color: #9b1c1c;
+        }
+
+        /* Botão Verde Escuro de Formulário */
+        .btn-formulario-programado {
+            background-color: var(--verde-institucional);
+            color: var(--branco);
+            border: none;
+            border-radius: 6px;
+            padding: 12px 24px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: fit-content;
+            transition: background-color 0.2s;
+        }
+
+        .btn-formulario-programado:hover {
+            background-color: #12332e;
+        }
+
+        /* Responsividade */
+        @media (max-width: 650px) {
+            .box-opcao-urgencia, .box-opcao-programado {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+            }
+            .circulo-status {
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
+            .conteudo-bloco {
+                align-items: center;
+            }
+            .btn-plantao-urgencia, .btn-formulario-programado {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="../Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="solicitação-resgate.html" class="active">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="painel-resgate-container">
+
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <!-- CABEÇALHO DA PÁGINA -->
+        <h1 class="titulo-pagina-principal">Solicitação de Resgate Animal</h1>
+        <p class="subtitulo-resgate">Se o animal corre risco de vida imediato, use o canal de emergência.</p>
+
+        <!-- CARD PRINCIPAL INTEGRADO -->
+        <div class="painel-conteudo-central">
+            
+            <h2 class="pergunta-diretriz">Qual é a situação atual do animal?</h2>
+
+            <!-- OPÇÃO 1: URGÊNCIA MÉDICA -->
+            <div class="box-opcao-urgencia">
+                <div class="circulo-status circulo-vermelho"></div>
+                <div class="conteudo-bloco">
+                    <h3 class="titulo-bloco-urgencia">URGÊNCIA MÉDICA</h3>
+                    <p class="descricao-bloco">Animal atropelado, sangrando ou sofrendo risco de morte agora.</p>
+                    <button type="button" class="btn-plantao-urgencia" id="btn-ligar-plantao">
+                        LIGAR PARA O PLANTÃO: (27) 99200-1122
+                    </button>
+                </div>
+            </div>
+
+            <!-- OPÇÃO 2: RESGATE PROGRAMADO -->
+            <div class="box-opcao-programado">
+                <div class="circulo-status circulo-verde-escuro"></div>
+                <div class="conteudo-bloco">
+                    <h3 class="titulo-bloco-programado">RESGATE PROGRAMADO</h3>
+                    <p class="descricao-bloco">Animal abandonado, muito debilitado, filhotes sem a mãe, etc.</p>
+                    <button type="button" class="btn-formulario-programado" id="btn-abrir-formulario">
+                        Preencher Formulário de Solicitação
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+
+    <!-- INTERAÇÕES JAVASCRIPT -->
+    <script>
+        document.getElementById('btn-ligar-plantao').addEventListener('click', () => {
+            window.location.href = "tel:27992001122";
+        });
+
+        document.getElementById('btn-abrir-formulario').addEventListener('click', (e) => {
+            // Aplica o "combinado": verifica se o usuário está logado antes de abrir o formulário
+            if (typeof checkAccess === 'function') {
+                if (!checkAccess(e)) return;
+            }
+            window.location.href = "formulario-resgate.html";
+        });
+    </script>
+</body>
+</html>

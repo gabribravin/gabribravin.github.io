@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Resgate Programado - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <style>
+        /* Indicador de Etapas (Stepper) */
+        .indicador-fluxo-progresso {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .item-etapa-progresso {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #718096;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .circulo-numero-etapa {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .circulo-numero-etapa.concluido {
+            background-color: var(--verde-navbar);
+            color: var(--branco);
+        }
+
+        .circulo-numero-etapa.ativo {
+            background-color: var(--amarelo-primario);
+            color: #000;
+        }
+
+        .linha-vinculo-etapas {
+            width: 60px;
+            height: 2px;
+            background-color: var(--verde-navbar);
+            margin-top: 13px;
+        }
+
+        .botao-atalho-localizacao {
+            background-color: var(--branco);
+            border: 1px solid var(--borda-card);
+            border-radius: 6px;
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            color: #1a202c;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .botao-atalho-localizacao span { color: #e53e3e; }
+
+        .grade-opcoes-selecao {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .opcao-selecao-tag {
+            background-color: var(--branco);
+            border: 1px solid var(--borda-card);
+            border-radius: 20px;
+            padding: 10px 22px;
+            font-size: 0.88rem;
+            color: #2d3748;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.15s, border-color 0.15s;
+        }
+
+        .opcao-selecao-tag.ativa {
+            background-color: #fff9eb;
+            border-color: var(--amarelo-primario);
+            color: var(--texto-escuro);
+            font-weight: 700;
+        }
+
+        .area-upload-arquivos {
+            border: 2px dashed var(--borda-card);
+            border-radius: 12px;
+            background-color: var(--branco);
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .upload-titulo { color: var(--verde-navbar); font-weight: 700; margin-top: 10px; }
+        .upload-subtexto { color: var(--texto-mutado); font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .opcao-selecao-tag { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="../Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="solicitação-resgate.html" class="active">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-arca-padrao">
+
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <h1 class="titulo-pagina-principal">Solicitação de Resgate Programado</h1>
+
+        <div class="indicador-fluxo-progresso">
+            <a href="solicitação-resgate.html" class="item-etapa-progresso">
+                <div class="circulo-numero-etapa concluido">✓</div>
+                <span>Situação</span>
+            </a>
+            <div class="linha-vinculo-etapas"></div>
+            <div class="item-etapa-progresso">
+                <div class="circulo-numero-etapa ativo">2</div>
+                <span>Dados do<br>Resgate</span>
+            </div>
+        </div>
+
+        <div class="painel-conteudo-central">
+
+            <div class="caixa-aviso-importante">
+                <span>💡</span> Quanto mais detalhes você fornecer, mais rápido conseguimos processar o agendamento do procedimento.
+            </div>
+
+            <!-- SEÇÃO 1: ONDE O ANIMAL ESTÁ? -->
+            <div class="subtitulo-secao-numerada">
+                <span class="indicador-numero-secao">1</span> Onde o animal está localizado?
+            </div>
+
+            <button type="button" class="botao-atalho-localizacao">
+                <span>📍</span> Capturar minha localização atual
+            </button>
+
+            <div style="margin: 15px 0; font-size: 0.85rem; font-weight: 700; color: #4a5568; text-align: center; max-width: 400px;">OU</div>
+
+            <div style="margin-bottom: 20px;">
+                <label class="rotulo-campo-formulario">CEP</label>
+                <input type="text" class="campo-texto-estilizado" style="max-width: 300px;" placeholder="Ex: 00000-000">
+            </div>
+
+            <div class="form-grid-padrao">
+                <div class="full-width">
+                    <label class="rotulo-campo-formulario">Rua / Avenida</label>
+                    <input type="text" class="campo-texto-estilizado" placeholder="Ex: Av. Talma Rodrigues Ribeiro">
+                </div>
+                <div>
+                    <label class="rotulo-campo-formulario">Bairro</label>
+                    <input type="text" class="campo-texto-estilizado" placeholder="Ex: Portal de Jacaraípe">
+                </div>
+                <div>
+                    <label class="rotulo-campo-formulario">Ponto de Referência</label>
+                    <input type="text" class="campo-texto-estilizado" placeholder="Ex: Ao lado da praça principal">
+                </div>
+            </div>
+
+            <!-- SEÇÃO 2: DETALHES DO ANIMAL -->
+            <div class="subtitulo-secao-numerada">
+                <span class="indicador-numero-secao">2</span> Sobre o Animal
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label class="rotulo-campo-formulario">Espécie</label>
+                <div class="grade-opcoes-selecao">
+                    <button type="button" class="opcao-selecao-tag"><span>🐕</span> Cachorro</button>
+                    <button type="button" class="opcao-selecao-tag"><span>🐈</span> Gato</button>
+                    <button type="button" class="opcao-selecao-tag"><span>🐾</span> Outros</button>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label class="rotulo-campo-formulario">Quantidade</label>
+                <div class="grade-opcoes-selecao">
+                    <button type="button" class="opcao-selecao-tag">1</button>
+                    <button type="button" class="opcao-selecao-tag">2</button>
+                    <button type="button" class="opcao-selecao-tag">3+</button>
+                    <button type="button" class="opcao-selecao-tag"><span>👶</span> Ninhada</button>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label class="rotulo-campo-formulario">Porte</label>
+                <div class="grade-opcoes-selecao">
+                    <button type="button" class="opcao-selecao-tag">Minúsculo</button>
+                    <button type="button" class="opcao-selecao-tag">Pequeno</button>
+                    <button type="button" class="opcao-selecao-tag">Médio</button>
+                    <button type="button" class="opcao-selecao-tag">Grande</button>
+                    <button type="button" class="opcao-selecao-tag">Gigante</button>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label class="rotulo-campo-formulario">Estado Aparente</label>
+                <div class="grade-opcoes-selecao">
+                    <button type="button" class="opcao-selecao-tag"><span>🦴</span> Muito magro</button>
+                    <button type="button" class="opcao-selecao-tag"><span>🩹</span> Mancando</button>
+                    <button type="button" class="opcao-selecao-tag"><span>🩸</span> Ferimento visível</button>
+                    <button type="button" class="opcao-selecao-tag"><span>🏠</span> Saudável / Abandonado</button>
+                    <button type="button" class="opcao-selecao-tag"><span>😔</span> Debilitado</button>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label class="rotulo-campo-formulario">Comportamento</label>
+                <div class="grade-opcoes-selecao">
+                    <button type="button" class="opcao-selecao-tag"><span>😊</span> Manso / Aproxima-se</button>
+                    <button type="button" class="opcao-selecao-tag"><span>😨</span> Assustado / Foge</button>
+                    <button type="button" class="opcao-selecao-tag"><span>😠</span> Agressivo</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <label class="rotulo-campo-formulario">Descrição detalhada</label>
+                <textarea class="campo-texto-estilizado" style="height: 120px; resize: none;" placeholder="Forneça detalhes adicionais que ajudem a equipe de resgate..."></textarea>
+            </div>
+
+            <!-- SEÇÃO 3: FOTOS -->
+            <div class="subtitulo-secao-numerada">
+                <span class="indicador-numero-secao">3</span> Evidências Visuais (Obrigatório)
+            </div>
+
+            <div class="area-upload-arquivos">
+                <div style="font-size: 2rem;">📸</div>
+                <div class="upload-titulo">Anexar Fotos do Animal e do Local</div>
+                <div class="upload-subtexto">JPG ou PNG — Até 10MB por arquivo</div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 40px;">
+                <button type="button" class="botao-acao-principal botao-estado-bloqueado" id="btn-finalizar-resgate" style="max-width: 350px;">
+                    Finalizar Solicitação de Resgate
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <script>
+        const gruposDeTags = document.querySelectorAll('.grade-opcoes-selecao');
+        const btnFinalizar = document.getElementById('btn-finalizar-resgate');
+
+        function validarForm() {
+            const temTagAtiva = document.querySelector('.opcao-selecao-tag.ativa');
+            if (temTagAtiva) btnFinalizar.classList.remove('botao-estado-bloqueado');
+            else btnFinalizar.classList.add('botao-estado-bloqueado');
+        }
+
+        gruposDeTags.forEach(grupo => {
+            const tagsDoGrupo = grupo.querySelectorAll('.opcao-selecao-tag');
+            tagsDoGrupo.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    // Remove a marcação 'ativa' apenas das outras tags do mesmo grupo
+                    tagsDoGrupo.forEach(t => t.classList.remove('ativa'));
+                    // Marca a tag clicada
+                    tag.classList.add('ativa');
+                    validarForm();
+                });
+            });
+        });
+
+        btnFinalizar.addEventListener('click', () => {
+            window.location.href = "resgate-finalizado.html";
+        });
+    </script>
+</body>
+</html>

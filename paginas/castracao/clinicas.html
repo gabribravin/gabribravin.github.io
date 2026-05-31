@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínicas Credenciadas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../style.css">
+    
+    <style>
+        /* Estilização Geral do Fundo e Container */
+        .conteudo-principal {
+            background-color: #ffffff; /* Fundo padrão branco conforme style.css */
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 80px 20px;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Título Principal fora da caixa branca */
+        .titulo-pagina {
+            color: #113f3c; /* Verde escuro institucional */
+            font-size: 2rem;
+            font-weight: 700; /* Apenas negrito conforme solicitado */
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        /* O grande painel branco do Figma */
+        .painel-branco-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            max-width: 1000px;
+            width: 100%;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Distribuição espaçada entre as caixas */
+        }
+
+        /* Estrutura de cada caixa de clínica */
+        .cartao-clinica {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            background-color: #ffffff;
+        }
+
+        /* Faixa superior azul/cinza clara com informações de contato */
+        .topo-clinica-info {
+            background-color: #e6f0f5; /* Tom azul claro sutil de fundo */
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .clinica-nome {
+            color: #113f3c; /* Verde escuro institucional */
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .clinica-email, .clinica-telefone {
+            color: #2d3748;
+            font-size: 0.9rem;
+            font-weight: 700; /* Negrito para e-mails e telefones */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .topo-clinica-info i {
+            color: #0d3c35; /* Ícones no tom verde escuro */
+        }
+
+        /* Bloco inferior com endereço e link do Maps */
+        .corpo-clinica-info {
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .endereco-bloco {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .endereco-label {
+            font-size: 0.85rem;
+            color: #718096;
+            font-weight: 600;
+        }
+
+        .endereco-texto {
+            font-size: 0.95rem;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        /* Link do Google Maps alinhado perfeitamente à direita */
+        .link-maps {
+            color: #2d3748;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .link-maps:hover {
+            color: #01a99c;
+        }
+
+        .link-maps i {
+            color: #000000; /* Ícone de localização preto como na imagem */
+        }
+
+        /* Ajustes para telas menores */
+        @media (max-width: 768px) {
+            .painel-branco-container {
+                padding: 20px 15px;
+            }
+            .topo-clinica-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .corpo-clinica-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .link-maps {
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle active">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="informacoes.html">Como funciona</a></li>
+                    <li><a href="agendar-cast.html">Agendar Castração</a></li>
+                    <li><a href="clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="../Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteudo-principal">
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <h1 class="titulo-pagina">Clínicas Credenciadas</h1>
+
+        <div class="painel-branco-container" id="container-clinicas">
+            
+            <div class="cartao-clinica">
+                <div class="topo-clinica-info">
+                    <div class="clinica-nome">Clínica Veterinária Patas & Pelos</div>
+                    <div class="clinica-email"><i class="fa-regular fa-envelope"></i> contato@patasepelosvet.com.br</div>
+                    <div class="clinica-telefone"><i class="fa-solid fa-phone"></i> (27) 3343-8811</div>
+                </div>
+                <div class="corpo-clinica-info">
+                    <div class="endereco-bloco">
+                        <div class="endereco-label">Endereço:</div>
+                        <div class="endereco-texto">Av. Central, 1420 - Laranjeiras, Serra - ES</div>
+                    </div>
+                    <a href="#" class="link-maps">Ver no Google Maps <i class="fa-solid fa-location-dot"></i></a>
+                </div>
+            </div>
+
+            <div class="cartao-clinica">
+                <div class="topo-clinica-info">
+                    <div class="clinica-nome">Hospital Veterinário Amigo Fiel</div>
+                    <div class="clinica-email"><i class="fa-regular fa-envelope"></i> atendimento@amigofielvet.com.br</div>
+                    <div class="clinica-telefone"><i class="fa-solid fa-phone"></i> (27) 3226-4599</div>
+                </div>
+                <div class="corpo-clinica-info">
+                    <div class="endereco-bloco">
+                        <div class="endereco-label">Endereço:</div>
+                        <div class="endereco-texto">Rua Euclides da Cunha, 85 - Parque Residencial Laranjeiras, Serra - ES</div>
+                    </div>
+                    <a href="#" class="link-maps">Ver no Google Maps <i class="fa-solid fa-location-dot"></i></a>
+                </div>
+            </div>
+
+            <div class="cartao-clinica">
+                <div class="topo-clinica-info">
+                    <div class="clinica-nome">Centro Cirúrgico VetSerra</div>
+                    <div class="clinica-email"><i class="fa-regular fa-envelope"></i> petuniverso@petuniverso.com.br</div>
+                    <div class="clinica-telefone"><i class="fa-solid fa-phone"></i> (27) 3386-1234</div>
+                </div>
+                <div class="corpo-clinica-info">
+                    <div class="endereco-bloco">
+                        <div class="endereco-label">Endereço:</div>
+                        <div class="endereco-texto">Rodovia BR-101, Km 264 - Carapina, Serra - ES</div>
+                    </div>
+                    <a href="#" class="link-maps">Ver no Google Maps <i class="fa-solid fa-location-dot"></i></a>
+                </div>
+            </div>
+
+            <div class="cartao-clinica">
+                <div class="topo-clinica-info">
+                    <div class="clinica-nome">Clínica Cuidado Animal</div>
+                    <div class="clinica-email"><i class="fa-regular fa-envelope"></i> clinica@cuidadoanimal.com.br</div>
+                    <div class="clinica-telefone"><i class="fa-solid fa-phone"></i> (27) 3244-7722</div>
+                </div>
+                <div class="corpo-clinica-info">
+                    <div class="endereco-bloco">
+                        <div class="endereco-label">Endereço:</div>
+                        <div class="endereco-texto">Av. Talma Rodrigues Ribeiro, 310 - Portal De Jacaraípe, Serra - ES</div>
+                    </div>
+                    <a href="#" class="link-maps">Ver no Google Maps <i class="fa-solid fa-location-dot"></i></a>
+                </div>
+            </div>
+
+            <div class="cartao-clinica">
+                <div class="topo-clinica-info">
+                    <div class="clinica-nome">Instituto Pet Saúde</div>
+                    <div class="clinica-email"><i class="fa-regular fa-envelope"></i> secretaria@petsaudeinstituto.org.br</div>
+                    <div class="clinica-telefone"><i class="fa-solid fa-phone"></i> (27) 3336-9055</div>
+                </div>
+                <div class="corpo-clinica-info">
+                    <div class="endereco-bloco">
+                        <div class="endereco-label">Endereço:</div>
+                        <div class="endereco-texto">Rua Todos Os Santos, 42 - Novo Horizonte, Serra - ES</div>
+                    </div>
+                    <a href="#" class="link-maps">Ver no Google Maps <i class="fa-solid fa-location-dot"></i></a>
+                </div>
+            </div>
+
+            <div class="cartao-clinica">
+                <div class="topo-clinica-info">
+                    <div class="clinica-nome">Diagnóstico e Clínica VetLitoral</div>
+                    <div class="clinica-email"><i class="fa-regular fa-envelope"></i> contato@vetlitoral.com.br</div>
+                    <div class="clinica-telefone"><i class="fa-solid fa-phone"></i> (27) 3252-1188</div>
+                </div>
+                <div class="corpo-clinica-info">
+                    <div class="endereco-bloco">
+                        <div class="endereco-label">Endereço:</div>
+                        <div class="endereco-texto">Av. Abido Saad, 850 - Jacaraípe, Serra - ES</div>
+                    </div>
+                    <a href="#" class="link-maps">Ver no Google Maps <i class="fa-solid fa-location-dot"></i></a>
+                </div>
+            </div>
+
+            <div class="cartao-clinica">
+                <div class="topo-clinica-info">
+                    <div class="clinica-nome">Centro Veterinário Metropolitano</div>
+                    <div class="clinica-email"><i class="fa-regular fa-envelope"></i> triagem@vetmetropolitano.com.br</div>
+                    <div class="clinica-telefone"><i class="fa-solid fa-phone"></i> (27) 3328-9900</div>
+                </div>
+                <div class="corpo-clinica-info">
+                    <div class="endereco-bloco">
+                        <div class="endereco-label">Endereço:</div>
+                        <div class="endereco-texto">Av. Lourival Nunes, 415 - Jardim Limoeiro, Serra - ES</div>
+                    </div>
+                    <a href="#" class="link-maps">Ver no Google Maps <i class="fa-solid fa-location-dot"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <script>
+        // Mantém a lógica aberta para interações futuras sem alterar a árvore do DOM
+        document.querySelectorAll('.link-maps').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Previne envio vazio padrão caso use apenas o esqueleto
+                if(link.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    console.log("Direcionando para localização da clínica...");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

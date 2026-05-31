@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento Confirmado - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    
+    <style>
+        /* Container Centralizado da Mensagem */
+        .sucesso-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%;
+            box-sizing: border-box;
+        }
+
+        /* Ícone Centralizado de Patinhas */
+        .icone-patinhas-sucesso {
+            font-size: 60px;
+            margin-bottom: 25px;
+        }
+
+        /* Texto Descritivo */
+        .texto-sucesso {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0 0 12px 0;
+            max-width: 600px;
+        }
+
+        /* Protocolo em Destaque Laranja */
+        .protocolo-destaque {
+            color: #e2871e;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        /* Grid dos Dois Primeiros Botões Lado a Lado */
+        .grid-botoes-superiores {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 680px;
+            margin-bottom: 16px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 680px) {
+            .grid-botoes-superiores {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle active">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="informacoes.html">Como funciona</a></li>
+                    <li><a href="selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="../Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="sucesso-container">
+        <div class="painel-conteudo-central" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <div class="icone-patinhas-sucesso">🏥</div>
+            <h1 class="titulo-pagina-principal">Agendamento Realizado!</h1>
+            <p class="texto-sucesso">Sua solicitação foi enviada para a clínica escolhida. Lembre-se que o animal deve estar em <strong>jejum total de 8 horas</strong> (água e comida) antes do procedimento.</p>
+            <div class="protocolo-destaque">Protocolo: #CAST-2026-00415</div>
+            <div class="grid-botoes-superiores">
+                <a href="selecionar-pet.html" class="botao-acao-secundaria" style="max-width: 100%;">Agendar outro animal</a>
+                <a href="../Perfil/solicitacoes.html" class="botao-acao-secundaria" style="max-width: 100%;">Ver no meu painel</a>
+            </div>
+            <a href="../../index.html" class="botao-acao-principal" style="max-width: 300px;">Voltar ao início</a>
+        </div>
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para quem é o agendamento de hoje?</title>
+    <link rel="stylesheet" href="../../style.css">
+
+    <style>
+        /* Container Principal do Conteúdo */
+        .selecionar-animal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%;
+            min-height: 60vh;
+            box-sizing: border-box;
+        }
+
+        /* Título Principal exatamente como na foto */
+        .titulo-selecao {
+            color: #0d3c35; /* Tom verde escuro institucional */
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: left;
+            letter-spacing: -0.5px;
+        }
+
+        /* Grid de Distribuição Lateral das 3 Caixas */
+        .animais-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* Estrutura Base Comum dos Cards dos Animais */
+        .card-animal {
+            background-color: #f0f7fd; /* Fundo azul claro suave idêntico */
+            border: 1px solid #d0e1fd; /* Borda sutil cinza-azulada */
+            border-radius: 12px;
+            padding: 30px;
+            min-height: 180px;
+            box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card-animal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Cabeçalho Interno do Card (Ícone + Nome) */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #0b515b; /* Verde/Azul do nome do animal */
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        /* Ícone de patinhas simulado em formato vetorial css */
+        .icone-patas {
+            display: inline-block;
+            position: relative;
+            width: 14px;
+            height: 12px;
+            background: currentColor;
+            border-radius: 50% 50% 50% 50%;
+        }
+        .icone-patas::before, .icone-patas::after {
+            content: '';
+            position: absolute;
+            background: currentColor;
+            border-radius: 50%;
+        }
+        .icone-patas::before { width: 6px; height: 6px; top: -6px; left: -2px; }
+        .icone-patas::after { width: 6px; height: 6px; top: -6px; right: -2px; }
+
+        /* Lista de Informações Internas */
+        .info-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .info-item {
+            color: #4a5568;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Card 3: Caixa de Inclusão com o Botão de Mais (+) */
+        .card-adicionar {
+            background-color: #f0f7fd;
+            border: 1px solid #d0e1fd;
+            border-radius: 12px;
+            box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            min-height: 180px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .card-adicionar:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Borda Tracejada Interna */
+        .borda-tracejada {
+            border: 2px dashed #4b8a81; /* Verde fosco do tracejado */
+            border-radius: 8px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Desenho exato do Sinal de Mais (+) */
+        .sinal-mais {
+            position: relative;
+            width: 32px;
+            height: 32px;
+        }
+
+        .sinal-mais::before, .sinal-mais::after {
+            content: '';
+            position: absolute;
+            background-color: #4b8a81; /* Cor do sinal de mais */
+            border-radius: 2px;
+        }
+
+        /* Linha horizontal do sinal */
+        .sinal-mais::before {
+            top: 14px;
+            left: 0;
+            width: 32px;
+            height: 4px;
+        }
+
+        /* Linha vertical do sinal */
+        .sinal-mais::after {
+            top: 0;
+            left: 14px;
+            width: 4px;
+            height: 32px;
+        }
+
+        /* Ajustes de Responsividade para Telas Menores */
+        @media (max-width: 850px) {
+            .animais-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .card-animal, .card-adicionar {
+                min-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle active">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="informacoes.html">Como funciona</a></li>
+                    <li><a href="agendar-cast.html">Agendar Castração</a></li>
+                    <li><a href="clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="selecionar-animal-container">
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <h1 class="titulo-selecao">Para quem é o agendamento de hoje?</h1>
+
+        <div class="animais-grid">
+            
+            <div class="card-animal" data-animal="Andre">
+                <div class="card-header">
+                    <span class="icone-patas"></span>
+                    André
+                </div>
+                <div class="info-lista">
+                    <div class="info-item">Gato ( 1 a 2 anos )</div>
+                    <div class="info-item">Macho</div>
+                    <div class="info-item">Porte Médio</div>
+                </div>
+            </div>
+
+            <div class="card-animal" data-animal="Mel">
+                <div class="card-header">
+                    <span class="icone-patas"></span>
+                    Mel
+                </div>
+                <div class="info-lista">
+                    <div class="info-item">Cachorro ( 1 a 2 anos )</div>
+                    <div class="info-item">Fêmea</div>
+                    <div class="info-item">Porte Grande</div>
+                </div>
+            </div>
+
+            <div class="card-adicionar" id="btn-adicionar-animal">
+                <div class="borda-tracejada">
+                    <div class="sinal-mais"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <script>
+        // Captura o clique nos cards dos animais cadastrados
+        document.querySelectorAll('.card-animal').forEach(card => {
+            card.addEventListener('click', () => {
+                const nomeAnimal = card.getAttribute('data-animal');
+                console.log(`Animal selecionado: ${nomeAnimal}`);
+                // Transiciona para a próxima etapa do formulário passando o animal escolhido
+                window.location.href = `agendar-cast.html?animal=${nomeAnimal}`;
+            });
+        });
+
+        // Captura o clique na caixa de adicionar novo animal
+        document.getElementById('btn-adicionar-animal').addEventListener('click', () => {
+            // Redireciona para o cadastro de perfil/animal
+            window.location.href = "../Perfil/cadastro.html";
+        });
+    </script>
+
+</body>
+</html>

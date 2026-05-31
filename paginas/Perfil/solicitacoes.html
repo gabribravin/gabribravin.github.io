@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Solicitações - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .container-solicitacoes {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%; /* Aumentado o padding inferior para afastar o footer */
+            min-height: 60vh; /* Garante que o footer fique na base mesmo com poucas solicitações */
+        }
+        .abas-modulos-navegacao {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .aba-item-btn {
+            background-color: var(--verde-institucional);
+            color: var(--branco);
+            padding: 10px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .aba-item-btn.active {
+            background-color: var(--amarelo-primario);
+            color: #000000;
+        }
+        .secao-aba-conteudo {
+            display: none; /* Escondido por padrão */
+        }
+        .secao-aba-conteudo.active {
+            display: block; /* Mostra apenas a aba ativa */
+        }
+        .card-solicitacao-item {
+            background-color: var(--fundo-card);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--borda-card);
+        }
+        .solicitacao-header-titulo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--verde-navbar);
+            margin-bottom: 6px;
+            text-decoration: none;
+            display: block;
+            transition: opacity 0.2s ease;
+        }
+        a.solicitacao-header-titulo:hover {
+            opacity: 0.7;
+        }
+        .solicitacao-data-envio {
+            font-size: 14px;
+            color: var(--texto-escuro);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .solicitacao-status-tag {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--texto-escuro);
+        }
+        .solicitacao-descricao-status {
+            font-size: 14px;
+            color: #444;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="../Denuncia/escolha-denuncia.html">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="solicitacoes.html" class="active">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-solicitacoes">
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <h1 class="titulo-pagina-principal">Minhas Solicitações</h1>
+
+        <div class="abas-modulos-navegacao">
+            <a href="#" class="aba-item-btn active" data-aba="adocoes">Adoções</a>
+            <a href="#" class="aba-item-btn" data-aba="castracoes">Castrações</a>
+            <a href="#" class="aba-item-btn" data-aba="denuncias">Denúncias</a>
+            <a href="#" class="aba-item-btn" data-aba="resgates">Resgates</a>
+        </div>
+
+        <!-- CONTEÚDO DE ADOÇÕES -->
+        <section id="aba-adocoes" class="secao-aba-conteudo active">
+            <article class="card-solicitacao-item">
+                <a href="../adotar/animal.html" class="solicitacao-header-titulo">🐾 Animal: André (Gato - Jovem)</a>
+                <div class="solicitacao-data-envio">📅 Enviado em: 20/05/2026</div>
+                <div class="solicitacao-status-tag">Status: [ ⏳ EM ANÁLISE ]</div>
+                <div class="solicitacao-descricao-status">Sua entrevista está sendo revisada pelos nossos veterinários.</div>
+            </article>
+            <article class="card-solicitacao-item">
+                <div class="solicitacao-header-titulo">🐾 Animal: Mel (Cachorra - Adulta)</div>
+                <div class="solicitacao-data-envio">📅 Finalizado em: 14/02/2026</div>
+                <div class="solicitacao-status-tag" style="color: var(--sucesso);">Status: [ ✅ APROVADO - ADOTADO! ]</div>
+                <div class="solicitacao-descricao-status">Adoção finalizada!</div>
+            </article>
+        </section>
+
+        <!-- CONTEÚDO DE CASTRAÇÕES -->
+        <section id="aba-castracoes" class="secao-aba-conteudo">
+            <article class="card-solicitacao-item">
+                <div class="solicitacao-header-titulo">🏥 Agendamento: Mel (Cachorra)</div>
+                <div class="solicitacao-data-envio">📅 Data: 15/06/2026 às 08:00</div>
+                <div class="solicitacao-status-tag">Status: [ 📅 AGENDADO ]</div>
+                <div class="solicitacao-descricao-status">Clínica Patas & Pelos - Laranjeiras. Lembre-se do jejum de 8h.</div>
+            </article>
+        </section>
+
+        <!-- CONTEÚDO DE DENÚNCIAS -->
+        <section id="aba-denuncias" class="secao-aba-conteudo">
+            <article class="card-solicitacao-item">
+                <div class="solicitacao-header-titulo">📢 Denúncia: #DEN-2026-00847</div>
+                <div class="solicitacao-data-envio">📅 Enviada em: Hoje</div>
+                <div class="solicitacao-status-tag">Status: [ 📝 RECEBIDA ]</div>
+                <div class="solicitacao-descricao-status">Sua denúncia foi recebida e aguarda triagem da equipe técnica.</div>
+            </article>
+        </section>
+
+        <!-- CONTEÚDO DE RESGATES -->
+        <section id="aba-resgates" class="secao-aba-conteudo">
+            <article class="card-solicitacao-item">
+                <div class="solicitacao-header-titulo">🆘 Resgate: #RES-2026-00912</div>
+                <div class="solicitacao-data-envio">📅 Enviado em: Hoje</div>
+                <div class="solicitacao-status-tag">Status: [ 📝 EM TRIAGEM ]</div>
+                <div class="solicitacao-descricao-status">Sua solicitação de resgate programado está sendo analisada pela equipe técnica para verificar a prioridade conforme a gravidade relatada e a disponibilidade de vagas no acolhimento.</div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <script>
+        // Lógica de troca de abas
+        const btnsAbas = document.querySelectorAll('.aba-item-btn');
+        const secoesConteudo = document.querySelectorAll('.secao-aba-conteudo');
+
+        btnsAbas.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove ativo de todos
+                btnsAbas.forEach(b => b.classList.remove('active'));
+                secoesConteudo.forEach(s => s.classList.remove('active'));
+
+                // Adiciona no clicado
+                btn.classList.add('active');
+                const idAba = btn.getAttribute('data-aba');
+                document.getElementById(`aba-${idAba}`).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

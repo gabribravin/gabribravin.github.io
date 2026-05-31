@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denúncia Enviada - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    
+    <style>
+        /* Container Centralizado da Mensagem */
+        .sucesso-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%;
+            box-sizing: border-box;
+        }
+
+        /* Ícone Centralizado de Patinhas (Simulado em SVG para ficar idêntico) */
+        .icone-patinhas-sucesso {
+            font-size: 60px;
+            margin-bottom: 25px;
+        }
+
+        /* Texto Descritivo */
+        .texto-sucesso {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0 0 12px 0;
+            max-width: 600px;
+        }
+
+        /* Protocolo em Destaque Laranja */
+        .protocolo-destaque {
+            color: #e2871e; /* Tom exato do laranja do protocolo */
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        /* Grid dos Dois Primeiros Botões Lado a Lado */
+        .grid-botoes-superiores {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 680px;
+            margin-bottom: 16px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 680px) {
+            .grid-botoes-superiores {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="../adotar/adocao.html">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="escolha-denuncia.html" class="active">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <main class="sucesso-container">
+
+        <!-- CARD RETANGULAR CENTRAL -->
+        <div class="painel-conteudo-central" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            
+            <!-- ÍCONE VETORIAL DAS PATINHAS -->
+            <div class="icone-patinhas-sucesso">🐾</div>
+
+            <!-- TEXTOS IDÊNTICOS -->
+            <h1 class="titulo-pagina-principal">Denúncia Enviada com Sucesso!</h1>
+            <p class="texto-sucesso">Sua denúncia foi registrada. Nossa equipe irá analisar e dar andamento o mais breve possível.</p>
+            <div class="protocolo-destaque">Protocolo: #DEN-2026-00847</div>
+
+            <!-- BOTÕES SUPERIORES LADO A LADO -->
+            <div class="grid-botoes-superiores">
+                <button type="button" class="botao-acao-secundaria" id="btn-outra-denuncia" style="max-width: 100%;">Fazer outra denúncia</button>
+                <button type="button" class="botao-acao-secundaria" id="btn-acompanhar-painel" style="max-width: 100%;">Acompanhar no meu painel</button>
+            </div>
+
+            <!-- BOTÃO INFERIOR CENTRALIZADO -->
+            <button type="button" class="botao-acao-principal" id="btn-voltar-inicio" style="max-width: 300px;">Voltar ao início</button>
+
+        </div>
+
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+    <!-- INTERAÇÕES DOS BOTÕES -->
+    <script>
+        // Lógica para esconder o botão de painel caso a denúncia seja anônima
+        const tipoDenuncia = sessionStorage.getItem('tipoDenuncia');
+        const btnAcompanhar = document.getElementById('btn-acompanhar-painel');
+        const gridBotoes = document.querySelector('.grid-botoes-superiores');
+
+        if (tipoDenuncia === 'anonima') {
+            btnAcompanhar.style.display = 'none';
+            gridBotoes.style.gridTemplateColumns = '1fr'; // Centraliza o botão de "Nova Denúncia"
+        }
+
+        document.getElementById('btn-outra-denuncia').addEventListener('click', () => {
+            window.location.href = 'escolha-denuncia.html';
+        });
+
+        document.getElementById('btn-acompanhar-painel').addEventListener('click', () => {
+            window.location.href = '../Perfil/solicitacoes.html';
+        });
+
+        document.getElementById('btn-voltar-inicio').addEventListener('click', () => {
+            window.location.href = '../../index.html';
+        });
+    </script>
+</body>
+</html>

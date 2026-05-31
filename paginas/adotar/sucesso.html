@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Enviado com Sucesso - Programa ARCA</title>
+    <!-- PUXA O SEU STYLE.CSS PRONTO SEM ALTERAR NADA DELE -->
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- CSS ESPECÍFICO APENAS DESTA PÁGINA DE SUCESSO -->
+    <style>
+        .sucesso-main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* Botão Voltar posicionado no topo direito */
+        .btn-voltar-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        /* Títulos e Mensagens */
+        .sucesso-titulo {
+            color: #0d3c35;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sucesso-subtitulo {
+            color: #3b7a6f;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        /* Container dos Passos (Box Azul Claro) */
+        .passos-container {
+            background-color: #f0f7fd; /* Fundo azul bem claro idêntico à imagem */
+            border: 1px solid #d0e4f7;
+            border-radius: 12px;
+            padding: 30px 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            margin-bottom: 40px;
+        }
+
+        .passo-item {
+            margin-bottom: 30px;
+        }
+
+        .passo-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .passo-titulo {
+            color: #317065;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .passo-descricao {
+            color: #4a5568;
+            font-size: 1rem;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+
+        /* Botão Central de Acompanhamento (Amarelo/Laranja) */
+        .painel-action-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .btn-painel {
+            background-color: #f7a823; /* Amarelo/Laranja idêntico ao da tela aaa_2.png */
+            color: #000000;
+            padding: 14px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 6px rgba(247, 168, 35, 0.2);
+            transition: background 0.2s;
+            text-align: center;
+        }
+
+        .btn-painel:hover {
+            background-color: #e09419;
+        }
+
+        /* Ajuste Mobile para sumir elementos ou reorganizar se virar celular */
+        @media (max-width: 768px) {
+            .sucesso-main {
+                margin: 20px auto;
+            }
+            .sucesso-titulo {
+                font-size: 1.3rem;
+                flex-direction: column;
+                text-align: center;
+            }
+            .sucesso-subtitulo {
+                font-size: 1rem;
+                text-align: center;
+            }
+            .passos-container {
+                padding: 20px;
+            }
+            .passo-descricao {
+                padding-left: 0;
+            }
+            .btn-voltar-container {
+                justify-content: center;
+            }
+            .btn-painel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topo-governo-institucional">
+        <div class="logotipo-prefeitura">
+            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+        </div>
+        <div class="nav-institucional-links">
+            <a href="#"><span>1</span> Conteúdo</a>
+            <a href="#"><span>2</span> Menu</a>
+            <a href="#"><span>3</span> Busca</a>
+            <a href="#"><span>4</span> Contraste</a>
+            <a href="#"><span>5</span> Acessibilidade</a>
+        </div>
+    </div>
+
+    <nav class="menu-navegacao-principal">
+        <a href="../../index.html" class="link-logotipo-projeto">
+            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
+            <div class="logo-texto">
+                <span>PROJETO</span>
+                <strong>ARCA</strong>
+            </div>
+        </a>
+        <button class="menu-hamburger" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="lista-links-menu">
+            <li><a href="adocao.html" class="active">Adoção</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Castração</a>
+                <ul class="sub-menu-suspenso">
+                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
+                    <li><a href="../castracao/agendar-cast.html">Agendar Castração</a></li>
+                    <li><a href="../castracao/clinicas.html">Clínicas credenciadas</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Denúncia</a></li>
+            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+            <li><a href="../Perfil/solicitacoes.html">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL DA TELA DE SUCESSO -->
+    <main class="sucesso-main">
+        
+        <!-- Botão Voltar -->
+        <div class="btn-voltar-container">
+            <a href="adocao.html" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <!-- Mensagem de Sucesso -->
+        <h1 class="sucesso-titulo">
+            🎉 Pedido enviado com sucesso! Obrigado por abrir seu coração.
+        </h1>
+        <p class="sucesso-subtitulo">Acompanhe as próximas etapas do processo do André:</p>
+
+        <!-- Caixa Azul de Etapas -->
+        <div class="passos-container">
+            
+            <!-- Passo 1 -->
+            <div class="passo-item">
+                <h3 class="passo-titulo">PASSO 1: Análise de Perfil</h3>
+                <p class="passo-descricao">Nossa equipe vai revisar suas respostas em até 48h úteis.</p>
+            </div>
+
+            <!-- Passo 2 -->
+            <div class="passo-item">
+                <h3 class="passo-titulo">PASSO 2: Entrevista no WhatsApp</h3>
+                <p class="passo-descricao">Um responsável do abrigo vai te chamar para um papo rápido.</p>
+            </div>
+
+            <!-- Passo 3 -->
+            <div class="passo-item">
+                <h3 class="passo-titulo">PASSO 3: Conhecer o Pet</h3>
+                <p class="passo-descricao">Se tudo der certo, você agenda a visita para buscar o André!</p>
+            </div>
+
+        </div>
+
+        <!-- Botão Amarelo de Acompanhamento -->
+        <div class="painel-action-container">
+            <a href="../Perfil/solicitacoes.html" class="btn-painel">Acompanhar no meu painel</a>
+        </div>
+
+    </main>
+
+    <footer class="rodape-institucional-site">
+        <div class="footer-container">
+            <div class="footer-coluna">
+                <h4>Desenvolvimento</h4>
+                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Gestão</h4>
+                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+            </div>
+            <div class="footer-coluna">
+                <h4>Área administrativa - Clínicas</h4>
+                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
