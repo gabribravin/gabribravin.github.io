@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administrativo - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .admin-dashboard {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 4%;
+        }
+        .cards-resumo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .card-estatistica {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--borda-card);
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .card-estatistica h3 {
+            font-size: 14px;
+            color: var(--texto-mutado);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .card-estatistica .numero {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--verde-navbar);
+        }
+        .card-estatistica.alerta .numero {
+            color: #c53030;
+        }
+        .secao-acoes-rapidas {
+            margin-top: 50px;
+        }
+        .lista-atividades {
+            background: var(--fundo-card);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        .atividade-item {
+            padding: 15px;
+            border-bottom: 1px solid var(--borda-card);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap; /* Permite que a data desça se não houver espaço */
+        }
+
+        /* Seção de Rankings Administrativos */
+        .secao-rankings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .card-ranking {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--borda-card);
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+        }
+        .card-ranking h3 {
+            font-size: 16px;
+            color: var(--verde-institucional);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ranking-lista {
+            list-style: none;
+            padding: 0;
+        }
+        .ranking-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+        .ranking-item:last-child { border-bottom: none; }
+        .ranking-posicao { font-weight: 800; color: var(--amarelo-primario); margin-right: 10px; }
+        .ranking-valor { font-weight: 700; color: var(--texto-mutado); }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="admin-dashboard">
+        <h1 class="titulo-pagina-principal">Painel de Controle Ambiental</h1>
+        <p>Bem-vindo ao sistema de gestão do Programa ARCA.</p>
+
+        <div class="cards-resumo">
+            <div class="card-estatistica">
+                <h3>Adoções Pendentes</h3>
+                <div class="numero">14</div>
+                <a href="adocoes.html" style="font-size: 12px; color: var(--verde-navbar);">Ver todas</a>
+            </div>
+            <div class="card-estatistica">
+                <h3>Castrações Hoje</h3>
+                <div class="numero">08</div>
+                <a href="castracoes.html" style="font-size: 12px; color: var(--verde-navbar);">Ver agenda</a>
+            </div>
+            <div class="card-estatistica alerta">
+                <h3>Denúncias Novas</h3>
+                <div class="numero">05</div>
+                <a href="denuncias.html" style="font-size: 12px; color: #c53030;">Atender agora</a>
+            </div>
+            <div class="card-estatistica">
+                <h3>Resgates em Triagem</h3>
+                <div class="numero">03</div>
+                <a href="resgates.html" style="font-size: 12px; color: var(--verde-navbar);">Ver pedidos</a>
+            </div>
+        </div>
+
+        <!-- SEÇÃO DE RANKINGS ADMINISTRATIVOS -->
+        <section class="secao-rankings">
+            <!-- Resgates por Bairro -->
+            <div class="card-ranking">
+                <h3>🆘 Top Bairros (Resgates)</h3>
+                <ul class="ranking-lista">
+                    <li class="ranking-item">
+                        <span><span class="ranking-posicao">1º</span> Laranjeiras</span>
+                        <span class="ranking-valor">45 chamados</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span><span class="ranking-posicao">2º</span> Jacaraípe</span>
+                        <span class="ranking-valor">38 chamados</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span><span class="ranking-posicao">3º</span> Carapina</span>
+                        <span class="ranking-valor">22 chamados</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Denúncias por Bairro -->
+            <div class="card-ranking">
+                <h3>📢 Top Bairros (Denúncias)</h3>
+                <ul class="ranking-lista">
+                    <li class="ranking-item">
+                        <span><span class="ranking-posicao">1º</span> Serra Sede</span>
+                        <span class="ranking-valor">12 relatos</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span><span class="ranking-posicao">2º</span> Barcelona</span>
+                        <span class="ranking-valor">10 relatos</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span><span class="ranking-posicao">3º</span> Feu Rosa</span>
+                        <span class="ranking-valor">08 relatos</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ONGs e Adoções -->
+            <div class="card-ranking">
+                <h3>🏠 ONGs com mais Adoções</h3>
+                <ul class="ranking-lista">
+                    <li class="ranking-item">
+                        <span><span class="ranking-posicao">1º</span> Amigos de Patas</span>
+                        <span class="ranking-valor">85 animais</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span><span class="ranking-posicao">2º</span> Abrigo Esperança</span>
+                        <span class="ranking-valor">64 animais</span>
+                    </li>
+                    <li class="ranking-item">
+                        <span><span class="ranking-posicao">3º</span> Patas & Pelos</span>
+                        <span class="ranking-valor">42 animais</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="secao-acoes-rapidas">
+            <h2 class="titulo-secao-padrao">Últimas Atividades</h2>
+            <div class="lista-atividades">
+                <div class="atividade-item">
+                    <span><strong>Adoção:</strong> Novo pedido para o gato André (Tutor: João Silva)</span>
+                    <span class="solicitacao-status-tag" style="margin-bottom: 0;">Há 10 min</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="../../script.js"></script>
+</body>
+</html>

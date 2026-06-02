@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .perfil-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%;
+            min-height: 60vh;
+        }
+        
+        .perfil-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            background: var(--fundo-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--borda-card);
+        }
+
+        .avatar-usuario {
+            width: 80px;
+            height: 80px;
+            background-color: #e6f3f2; /* Verde água clarinho */
+            color: var(--verde-navbar); /* Letra no tom principal */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .info-usuario h2 {
+            color: var(--verde-institucional);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .info-usuario p {
+            color: var(--texto-mutado);
+            margin: 5px 0 0 0;
+            font-size: 0.95rem;
+        }
+
+        .secao-pets-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn-adicionar-atras {
+            max-width: 200px;
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        /* Ajuste visual para os cards que agora não possuem foto */
+        .perfil-container .cartao-perfil-pet {
+            min-height: 220px; /* Aumentado para não parecer pequeno */
+            display: flex;
+            justify-content: center;
+        }
+
+        .perfil-container .card-info {
+            padding: 20px 35px;
+        }
+
+        .btn-config-perfil {
+            margin-left: auto;
+            font-size: 22px;
+            text-decoration: none;
+            color: var(--verde-institucional);
+            background-color: var(--branco);
+            border: 1px solid var(--borda-card);
+            border-radius: 8px;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .btn-config-perfil:hover {
+            background-color: #f8fafc;
+            border-color: var(--verde-navbar);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Injetado automaticamente pelo script.js -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="perfil-container">
+        <div class="btn-voltar-container">
+            <a href="../../index.html" class="botao-voltar-estilizado">Início</a>
+        </div>
+
+        <div class="perfil-header">
+            <div class="avatar-usuario">T</div>
+            <div class="info-usuario">
+                <h2>Tutor de Exemplo</h2>
+                <p>tutor@email.com • Serra, ES</p>
+            </div>
+            <a href="#" class="btn-config-perfil" title="Configurações do Perfil">⚙️</a>
+        </div>
+
+        <div class="secao-pets-topo">
+            <h3 class="titulo-secao-padrao" style="margin-bottom: 0;">Meus Animais Cadastrados</h3>
+            <a href="adicionar-pet.html" class="botao-acao-principal btn-adicionar-atras">+ Adicionar Pet</a>
+        </div>
+
+        <div class="grade-vitrine-animais">
+            <!-- Exemplo de Pet Cadastrado pelo Usuário -->
+            <article class="cartao-perfil-pet">
+                <div class="card-info">
+                    <h4 class="card-nome">Mel</h4>
+                    <div class="card-meta"><span>🐕</span> Cachorro • Fêmea</div>
+                    <div class="card-meta"><span>📍</span> Laranjeiras</div>
+                    <div class="card-acoes">
+                        <a href="#" class="botao-acao-secundaria">Editar Informações</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cartao-perfil-pet">
+                <div class="card-info">
+                    <h4 class="card-nome">André</h4>
+                    <div class="card-meta"><span>🐈</span> Gato • Macho</div>
+                    <div class="card-meta"><span>📍</span> Laranjeiras</div>
+                    <div class="card-acoes">
+                        <a href="#" class="botao-acao-secundaria">Editar Informações</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Injetado automaticamente pelo script.js -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

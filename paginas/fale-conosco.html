@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Conosco - Programa ARCA</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .fale-conosco-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .info-contato-box {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .item-contato {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .item-contato span {
+            font-size: 24px;
+            background: var(--verde-navbar); /* Verde Arca */
+            color: white;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .item-contato div h4 {
+            color: var(--verde-institucional);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .item-contato div p {
+            color: var(--texto-mutado);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Garante que campos marcados como full-width ocupem as duas colunas (largura total) */
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 850px) {
+            .fale-conosco-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-contato-box {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Injetado automaticamente pelo script.js -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="container-arca-padrao">
+        <div class="btn-voltar-container">
+            <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <h1 class="titulo-pagina-principal">Fale Conosco</h1>
+        <p style="color: var(--texto-mutado); margin-bottom: 40px;">Tem alguma dúvida, sugestão ou precisa de informações? Entre em contato com a equipe do Programa ARCA.</p>
+
+        <div class="fale-conosco-grid">
+            <!-- FORMULÁRIO -->
+            <div class="painel-informativo-padrao" style="margin-bottom: 0;">
+                <form action="#" method="POST">
+                    <div class="form-grid-padrao">
+                        <div class="full-width">
+                            <label class="rotulo-campo-formulario">Nome Completo</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="Seu nome" required>
+                        </div>
+                        <div>
+                            <label class="rotulo-campo-formulario">E-mail</label>
+                            <input type="email" class="campo-texto-estilizado" placeholder="seu@email.com" required>
+                        </div>
+                        <div>
+                            <label class="rotulo-campo-formulario">Telefone</label>
+                            <input type="tel" class="campo-texto-estilizado" placeholder="(27) 99999-9999">
+                        </div>
+                        <div class="full-width">
+                            <label class="rotulo-campo-formulario">Assunto</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="Ex: Dúvida sobre adoção" required>
+                        </div>
+                        <div class="full-width">
+                            <label class="rotulo-campo-formulario">Mensagem</label>
+                            <textarea class="campo-texto-estilizado" rows="6" placeholder="Escreva sua mensagem aqui..." style="resize: none;" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="botao-acao-principal" style="max-width: 100%;">Enviar Mensagem</button>
+                </form>
+            </div>
+
+            <!-- INFORMAÇÕES DE CONTATO -->
+            <div class="info-contato-box">
+                <div class="item-contato">
+                    <span>📞</span>
+                    <div>
+                        <h4>Telefones de Atendimento</h4>
+                        <p>(27) 3382-6578</p>
+                        <p>(27) 3382-6540</p>
+                    </div>
+                </div>
+                <div class="item-contato">
+                    <span>📍</span>
+                    <div>
+                        <h4>Endereço (GBEA)</h4>
+                        <p>Gerência do Bem-Estar Animal</p>
+                        <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                    </div>
+                </div>
+                <div class="item-contato">
+                    <span>⏰</span>
+                    <div>
+                        <h4>Horário de Funcionamento</h4>
+                        <p>Segunda a Sexta-feira</p>
+                        <p>Das 08:00 às 17:00</p>
+                    </div>
+                </div>
+                <div class="item-contato">
+                    <span>📧</span>
+                    <div>
+                        <h4>E-mail</h4>
+                        <p>arca@serra.es.gov.br</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Injetado automaticamente pelo script.js -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

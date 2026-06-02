@@ -4,6 +4,7 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
     // O "Cérebro" do site: espera o HTML carregar para ativar as funções
+    renderLayout(); // Injeta Navbar e Footer antes de tudo
     initMenuResponsivo();
     initFiltrosMobile();
     initFormularioAdocao();
@@ -14,7 +15,156 @@ document.addEventListener('DOMContentLoaded', () => {
     initCapturaRedirect();
     handleLogout();
     initLoginGlobal();
+    initGlobalModals(); // Gerencia o fechamento de qualquer modal/ficha
 });
+
+/**
+ * Injeta o cabeçalho e rodapé em todas as páginas
+ */
+function renderLayout() {
+    const navPlaceholder = document.getElementById('navbar-placeholder');
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+
+    // Nova lógica de detecção de profundidade de pastas
+    const path = window.location.pathname;
+    const inPaginas = path.includes('/paginas/');
+    // Verifica se estamos em uma subpasta dentro de paginas (ex: adotar/, castracao/, Perfil/)
+    const isDeepSubfolder = inPaginas && path.split('/paginas/')[1].includes('/');
+
+    let rootPath = './';
+    let paginasPath = './paginas/';
+
+    if (isDeepSubfolder) {
+        rootPath = '../../';
+        paginasPath = '../';
+    } else if (inPaginas) {
+        rootPath = '../';
+        paginasPath = './';
+    }
+
+    const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
+
+    if (navPlaceholder) {
+        if (isAdmin) {
+            // NAVBAR PARA PREFEITURA (ADMIN)
+            navPlaceholder.innerHTML = `
+                <div class="topo-governo-institucional">
+                    <div class="logotipo-prefeitura">
+                        <img src="${rootPath}imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+                    </div>
+                    <div class="nav-institucional-links">
+                        <a href="#"><span>1</span> Conteúdo</a>
+                        <a href="#"><span>2</span> Menu</a>
+                        <a href="#"><span>3</span> Busca</a>
+                        <a href="#"><span>4</span> Contraste</a>
+                        <a href="#"><span>5</span> Acessibilidade</a>
+                    </div>
+                </div>
+                <nav class="menu-navegacao-principal">
+                    <a href="${paginasPath}prefeitura/dashboard.html" class="link-logotipo-projeto">
+                        <img src="${rootPath}imagens/logo-arca.png" alt="Logo Programa ARCA">
+                        <div class="logo-texto">
+                            <span>GESTÃO</span>
+                            <strong>ARCA</strong>
+                        </div>
+                    </a>
+                    <button class="menu-hamburger" aria-label="Abrir Menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                    <ul class="lista-links-menu">
+                        <li><a href="${paginasPath}prefeitura/dashboard.html">Dashboard</a></li>
+                        <li><a href="${paginasPath}prefeitura/adocoes.html">Adoções</a></li>
+                        <li><a href="${paginasPath}prefeitura/castracoes.html">Castrações</a></li>
+                        <li><a href="${paginasPath}prefeitura/denuncias.html">Denúncias</a></li>
+                        <li><a href="${paginasPath}prefeitura/resgates.html">Resgates</a></li>
+                        <li><a href="#" id="btn-logout" class="logout-link">Sair</a></li>
+                    </ul>
+                </nav>
+            `;
+        } else {
+            // NAVBAR PARA CIDADÃO (PADRÃO)
+        navPlaceholder.innerHTML = `
+            <div class="topo-governo-institucional">
+                <div class="logotipo-prefeitura">
+                    <img src="${rootPath}imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
+                </div>
+                <div class="nav-institucional-links">
+                    <a href="#"><span>1</span> Conteúdo</a>
+                    <a href="#"><span>2</span> Menu</a>
+                    <a href="#"><span>3</span> Busca</a>
+                    <a href="#"><span>4</span> Contraste</a>
+                    <a href="#"><span>5</span> Acessibilidade</a>
+                </div>
+            </div>
+            <nav class="menu-navegacao-principal">
+                <a href="${rootPath}index.html" class="link-logotipo-projeto">
+                    <img src="${rootPath}imagens/logo-arca.png" alt="Logo Programa ARCA">
+                    <div class="logo-texto">
+                        <span>PROJETO</span>
+                        <strong>ARCA</strong>
+                    </div>
+                </a>
+                <button class="menu-hamburger" aria-label="Abrir Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="lista-links-menu">
+                    <li><a href="${paginasPath}adotar/adocao.html">Adoção</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Castração</a>
+                        <ul class="sub-menu-suspenso">
+                            <li><a href="${paginasPath}castracao/informacoes.html">Como funciona</a></li>
+                            <li><a href="${paginasPath}castracao/selecionar-pet.html">Agendar Castração</a></li>
+                            <li><a href="${paginasPath}castracao/clinicas.html">Clínicas credenciadas</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="${paginasPath}Denuncia/escolha-denuncia.html">Denúncia</a></li>
+                    <li><a href="${paginasPath}resgate/solicitação-resgate.html">Resgate</a></li>
+                    <li><a href="${paginasPath}fale-conosco.html">Fale Conosco</a></li>
+                    <li><a href="${paginasPath}Perfil/solicitacoes.html">Perfil</a></li>
+                </ul>
+            </nav>
+        `;
+        }
+    }
+
+    if (footerPlaceholder) {
+        footerPlaceholder.innerHTML = `
+            <footer class="rodape-institucional-site">
+                <div class="footer-container">
+                    <div class="footer-coluna">
+                        <h4>Desenvolvimento</h4>
+                        <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
+                        <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
+                        <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
+                    </div>
+                    <div class="footer-coluna">
+                        <h4>Gestão</h4>
+                        <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
+                        <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
+                        <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
+                    </div>
+                    <div class="footer-coluna">
+                        <h4>Área administrativa - Clínicas</h4>
+                        <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
+                    </div>
+                </div>
+            </footer>
+        `;
+    }
+}
+
+/**
+ * Centraliza o fechamento de modais ao clicar no X ou fora da caixa
+ */
+function initGlobalModals() {
+    document.addEventListener('click', (e) => {
+        // Fecha se clicar no botão 'X' ou na camada de fundo escura
+        if (e.target.classList.contains('modal-ficha') || e.target.classList.contains('btn-fechar-ficha')) {
+            const modal = e.target.closest('.modal-ficha') || document.querySelector('.modal-ficha[style*="display: flex"]');
+            if (modal) modal.style.display = 'none';
+        }
+    });
+}
 
 /**
  * Verifica se o usuário está logado e impede ações caso negativo
@@ -40,8 +190,14 @@ function showModalAcesso() {
     const existing = document.querySelector('.camada-fundo-modal');
     if (existing) existing.remove();
 
-    const isSubfolder = window.location.pathname.includes('/paginas/');
-    const rootPath = isSubfolder ? '../../' : './';
+    const path = window.location.pathname;
+    const inPaginas = path.includes('/paginas/');
+    const isDeepSubfolder = inPaginas && path.split('/paginas/')[1].includes('/');
+
+    let rootPath = './';
+    if (isDeepSubfolder) rootPath = '../../';
+    else if (inPaginas) rootPath = '../';
+
     const perfilPath = `${rootPath}paginas/Perfil/`;
 
     const modalHtml = `
@@ -86,13 +242,20 @@ function initNavbarLogin() {
         const li = perfilLink.parentElement;
         
         // Detecta o nível da pasta para ajustar os caminhos (se está em /paginas/xxx/)
-        const isSubfolder = window.location.pathname.includes('/paginas/');
-        const rootPath = isSubfolder ? '../../' : './';
+        const path = window.location.pathname;
+        const inPaginas = path.includes('/paginas/');
+        const isDeepSubfolder = inPaginas && path.split('/paginas/')[1].includes('/');
+
+        let rootPath = './';
+        if (isDeepSubfolder) rootPath = '../../';
+        else if (inPaginas) rootPath = '../';
+
         const perfilPath = `${rootPath}paginas/Perfil/`;
+        const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
 
         if (logado) {
             li.classList.add('dropdown');
-            perfilLink.innerHTML = 'Olá, Tutor! 🐾';
+            perfilLink.innerHTML = isAdmin ? 'Painel Gestor ⚙️' : 'Olá, Tutor! 🐾';
             perfilLink.href = '#';
             perfilLink.classList.remove('active'); // Remove se estiver vindo do login
             perfilLink.classList.add('dropdown-toggle');
@@ -102,8 +265,8 @@ function initNavbarLogin() {
                 const subMenu = document.createElement('ul');
                 subMenu.className = 'sub-menu-suspenso';
                 subMenu.innerHTML = `
-                    <li><a href="#">Meu Perfil</a></li>
-                    <li><a href="#">Meus Favoritos</a></li>
+                    <li><a href="${perfilPath}perfil.html">Meu Perfil</a></li>
+                    <li><a href="${perfilPath}favoritos.html">Meus Favoritos</a></li>
                     <li><a href="${perfilPath}solicitacoes.html">Minhas Solicitações</a></li>
                     <li><a href="#" id="btn-logout" class="logout-link">Sair da Conta</a></li>
                 `;
@@ -129,9 +292,14 @@ function handleLogout() {
         if (btnLogout) {
             e.preventDefault();
             sessionStorage.removeItem('usuarioLogado');
-            // Volta para a home baseado em onde o usuário está
-            const isSubfolder = window.location.pathname.includes('/paginas/');
-            window.location.href = isSubfolder ? '../../index.html' : 'index.html';
+            sessionStorage.removeItem('isAdmin');
+            
+            const path = window.location.pathname;
+            const inPaginas = path.includes('/paginas/');
+            const isDeepSubfolder = inPaginas && path.split('/paginas/')[1].includes('/');
+            let rootPath = isDeepSubfolder ? '../../' : (inPaginas ? '../' : './');
+
+            window.location.href = `${rootPath}index.html`;
         }
     });
 }
@@ -149,6 +317,23 @@ function initLoginGlobal() {
         const senha = document.getElementById('senha').value;
         const btn = loginForm.querySelector('button');
 
+        // Detecta a profundidade da pasta para redirecionamento correto
+        const path = window.location.pathname;
+        const inPaginas = path.includes('/paginas/');
+        const isDeepSubfolder = inPaginas && path.split('/paginas/')[1].includes('/');
+        let rootPath = isDeepSubfolder ? '../../' : (inPaginas ? '../' : './');
+
+        // LOGIN DA PREFEITURA
+        if (usuario === 'prefeitura' && senha === '123456') {
+            sessionStorage.setItem('usuarioLogado', 'true');
+            sessionStorage.setItem('isAdmin', 'true');
+            btn.innerText = 'Acesso Administrativo...';
+            setTimeout(() => {
+                window.location.href = `${rootPath}paginas/prefeitura/dashboard.html`;
+            }, 800);
+            return;
+        }
+
         if (usuario === 'tutor' && senha === '123456') {
             sessionStorage.setItem('usuarioLogado', 'true');
             btn.innerHTML = 'Acesso Permitido! 🐾';
@@ -161,7 +346,7 @@ function initLoginGlobal() {
                     sessionStorage.removeItem('returnUrl');
                     window.location.href = returnUrl;
                 } else {
-                    window.location.href = 'solicitacoes.html';
+                    window.location.href = `${rootPath}paginas/Perfil/solicitacoes.html`;
                 }
             }, 800);
         } else {

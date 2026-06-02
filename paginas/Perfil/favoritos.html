@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Favoritos - Programa ARCA</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .container-favoritos {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 4% 80px 4%;
+            min-height: 60vh;
+        }
+        .empty-favorites {
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--fundo-card);
+            border-radius: 12px;
+            border: 1px dashed var(--borda-card);
+            display: none; /* Escondido por padrão */
+        }
+        .empty-favorites span {
+            font-size: 50px;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .empty-favorites h3 {
+            color: var(--verde-institucional);
+            margin-bottom: 10px;
+        }
+        .empty-favorites p {
+            color: var(--texto-mutado);
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Injetado automaticamente pelo script.js -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="container-favoritos">
+        <div class="btn-voltar-container">
+            <a href="solicitacoes.html" class="botao-voltar-estilizado">Voltar</a>
+        </div>
+
+        <h1 class="titulo-pagina-principal">Meus Animais Favoritos</h1>
+        
+        <!-- Grid de Favoritos (Exemplos de animais salvos) -->
+        <div id="grid-favoritos" class="grade-vitrine-animais">
+            <article class="cartao-perfil-pet">
+                <div class="card-imagem-wrapper">
+                    <img src="../../imagens/gato.png" alt="Gato André para adoção">
+                </div>
+                <div class="card-info">
+                    <h4 class="card-nome">André</h4>
+                    <div class="card-meta"><span>🏠</span> ONG Amigos de Patas</div>
+                    <div class="card-meta"><span>📍</span> Laranjeiras, Serra</div>
+                    <div class="card-acoes">
+                        <div class="card-botoes-row">
+                            <a href="../adotar/formulario-adocao.html" class="botao-acao-principal">Adotar</a>
+                            <button class="btn-favorito favoritado" aria-label="Favoritar">❤️</button>
+                        </div>
+                        <a href="../adotar/animal.html" class="botao-acao-secundaria">Sobre o animal</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cartao-perfil-pet">
+                <div class="card-imagem-wrapper">
+                    <img src="../../imagens/gato.png" alt="Gato André para adoção">
+                </div>
+                <div class="card-info">
+                    <h4 class="card-nome">André</h4>
+                    <div class="card-meta"><span>🏠</span> Abrigo Esperança</div>
+                    <div class="card-meta"><span>📍</span> Jacaraípe, Serra</div>
+                    <div class="card-acoes">
+                        <div class="card-botoes-row">
+                            <a href="../adotar/formulario-adocao.html" class="botao-acao-principal">Adotar</a>
+                            <button class="btn-favorito favoritado" aria-label="Favoritar">❤️</button>
+                        </div>
+                        <a href="../adotar/animal.html" class="botao-acao-secundaria">Sobre o animal</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Estado vazio quando não houver favoritos -->
+        <div id="empty-state" class="empty-favorites">
+            <span>🤍</span>
+            <h3>Sua lista está vazia</h3>
+            <p>Você ainda não favoritou nenhum animal. Explore nossa vitrine e clique no coração!</p>
+            <a href="../adotar/adocao.html" class="botao-acao-principal" style="max-width: 280px; margin: 0 auto;">Ver animais para adoção</a>
+        </div>
+    </main>
+
+    <!-- Injetado automaticamente pelo script.js -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../../script.js"></script>
+    <script>
+        // Lógica específica para remover o card da tela ao desfavoritar nesta página
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.btn-favorito');
+            if (btn && !btn.classList.contains('favoritado')) {
+                const card = btn.closest('.cartao-perfil-pet');
+                card.style.transition = 'all 0.3s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                
+                setTimeout(() => {
+                    card.remove();
+                    const grid = document.getElementById('grid-favoritos');
+                    const emptyState = document.getElementById('empty-state');
+                    if (grid.querySelectorAll('.cartao-perfil-pet').length === 0) {
+                        grid.style.display = 'none';
+                        emptyState.style.display = 'block';
+                    }
+                }, 300);
+            }
+        });
+    </script>
+</body>
+</html>

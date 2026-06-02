@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Resgates - Prefeitura</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* Estilos específicos que não se repetem em outras páginas */
+        .area-evidencias-simulada {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
+        }
+        .midia-box {
+            background: #f1f5f9; height: 100px; border-radius: 8px; 
+            display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.8rem;
+            border: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <main class="container-arca-padrao">
+        <div class="btn-voltar-container">
+            <a href="dashboard.html" class="botao-voltar-estilizado">Dashboard</a>
+        </div>
+
+        <h1 class="titulo-pagina-principal">Monitoramento de Resgates</h1>
+
+        <!-- FILTRO DE BUSCA -->
+        <section class="painel-filtros-admin">
+            <div class="grade-filtros">
+                <div class="campo-ficha" style="flex: 1; min-width: 200px;">
+                    <label>Status do Resgate</label>
+                    <select class="campo-texto-estilizado" style="padding: 8px;">
+                        <option value="">Todos os Status</option>
+                        <option>Em Triagem</option>
+                        <option>Vaga Autorizada</option>
+                        <option>Resgatado</option>
+                        <option>Arquivado</option>
+                    </select>
+                </div>
+                <div class="campo-ficha">
+                    <label>Data Inicial</label>
+                    <input type="date" class="campo-texto-estilizado" style="padding: 8px;">
+                </div>
+                <div class="campo-ficha">
+                    <label>Data Final</label>
+                    <input type="date" class="campo-texto-estilizado" style="padding: 8px;">
+                </div>
+                <button class="botao-acao-principal" id="btn-filtrar-simulado" style="max-width: 120px; padding: 10px;">Filtrar</button>
+            </div>
+        </section>
+        
+        <div class="tabela-responsiva-container">
+        <table class="tabela-gestao">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Espécie</th>
+                    <th>Bairro</th>
+                    <th>Estado Aparente</th>
+                    <th>Status</th>
+                    <th style="text-align: right;">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela">
+                <!-- RESGATES JÁ PROCESSADOS -->
+                <tr>
+                    <td data-label="Data">10/05/2024</td>
+                    <td data-label="Espécie">Cachorro</td>
+                    <td data-label="Bairro">Jacaraípe</td>
+                    <td data-label="Estado">Ferido / Sangrando</td>
+                    <td data-label="Status"><strong style="color: var(--sucesso);">RESGATADO</strong></td>
+                    <td style="text-align: right;"><button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button></td>
+                </tr>
+                <tr>
+                    <td data-label="Data">12/05/2024</td>
+                    <td data-label="Espécie">Gato</td>
+                    <td data-label="Bairro">Laranjeiras</td>
+                    <td data-label="Estado">Muito Debilitado</td>
+                    <td data-label="Status"><strong style="color: var(--verde-navbar);">VAGA AUTORIZADA</strong></td>
+                    <td style="text-align: right;"><button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button></td>
+                </tr>
+                <tr>
+                    <td data-label="Data">15/05/2024</td>
+                    <td data-label="Espécie">Cachorro</td>
+                    <td data-label="Bairro">Serra Sede</td>
+                    <td data-label="Estado">Saudável / Abandonado</td>
+                    <td data-label="Status"><strong style="color: #e53e3e;">ARQUIVADA</strong></td>
+                    <td style="text-align: right;"><button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button></td>
+                </tr>
+                <!-- RESGATE EM ANÁLISE (EXEMPLO) -->
+                <tr>
+                    <td data-label="Data">Data Exemplo</td>
+                    <td data-label="Espécie">Ninhada (Gatos)</td>
+                    <td data-label="Bairro">Carapina</td>
+                    <td data-label="Estado">Risco de Atropelamento</td>
+                    <td data-label="Status"><strong style="color: var(--texto-mutado);">EM TRIAGEM</strong></td>
+                    <td style="text-align: right; display: flex; gap: 5px; justify-content: flex-end;">
+                        <button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>
+                        <button class="btn-mini btn-autorizar" style="background: var(--amarelo-primario);">Autorizar Vaga</button>
+                        <button class="btn-mini btn-arquivar" style="background: #e53e3e; color: white;">Arquivar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </main>
+
+    <!-- MODAL DE DETALHES DO RESGATE -->
+    <div class="modal-ficha" id="modalFicha">
+        <div class="conteudo-modal-ficha">
+            <button class="btn-fechar-ficha" id="fecharFicha">&times;</button>
+            <h2 class="titulo-pagina-principal" style="margin-bottom: 10px;">Ficha de Solicitação de Resgate</h2>
+
+            <section class="secao-ficha">
+                <h3>Localização do Animal</h3>
+                <div class="grid-ficha">
+                    <div class="campo-ficha"><label>Bairro</label><p id="ficha-bairro">---</p></div>
+                    <div class="campo-ficha"><label>Ponto de Referência</label><p>Perto da Unidade de Saúde</p></div>
+                    <div class="campo-ficha" style="grid-column: span 2;"><label>Endereço Relatado</label><p>Av. Principal, s/n - Área Verde</p></div>
+                </div>
+            </section>
+
+            <section class="secao-ficha">
+                <h3>Detalhes do Animal</h3>
+                <div class="grid-ficha">
+                    <div class="campo-ficha"><label>Espécie / Quantidade</label><p id="ficha-especie">---</p></div>
+                    <div class="campo-ficha"><label>Estado de Saúde</label><p id="ficha-estado">---</p></div>
+                    <div class="campo-ficha" style="grid-column: span 2;">
+                        <label>Descrição do Solicitante</label>
+                        <p>O animal foi deixado em uma caixa nesta manhã. Parece não estar conseguindo andar e chora bastante.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="secao-ficha">
+                <h3>Fotos do Local/Animal</h3>
+                <div class="area-evidencias-simulada">
+                    <div class="midia-box">📸 Foto_Animal_1.jpg</div>
+                    <div class="midia-box">📸 Foto_Local_Contexto.png</div>
+                </div>
+            </section>
+
+            <div style="margin-top: 40px; display: flex; justify-content: flex-end;">
+                <button class="botao-voltar-estilizado" onclick="document.getElementById('modalFicha').style.display='none'">Fechar Detalhes</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="../../script.js"></script>
+    <script>
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+            const row = target.closest('tr');
+            if (!row) return;
+
+            if (target.classList.contains('btn-ver-ficha')) {
+                document.getElementById('ficha-especie').innerText = row.cells[1].innerText;
+                document.getElementById('ficha-bairro').innerText = row.cells[2].innerText;
+                document.getElementById('ficha-estado').innerText = row.cells[3].innerText;
+                document.getElementById('modalFicha').style.display = 'flex';
+            }
+
+            if (target.classList.contains('btn-autorizar')) {
+                row.cells[4].innerHTML = '<strong style="color: var(--verde-navbar);">VAGA AUTORIZADA</strong>';
+                row.cells[5].innerHTML = '<button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>';
+            }
+            
+            if (target.classList.contains('btn-arquivar')) {
+                row.cells[4].innerHTML = '<strong style="color: #e53e3e;">ARQUIVADA</strong>';
+                row.cells[5].innerHTML = '<button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>';
+            }
+        });
+
+        document.getElementById('btn-filtrar-simulado').addEventListener('click', () => {
+            const btn = document.getElementById('btn-filtrar-simulado');
+            btn.innerText = "Buscando...";
+            setTimeout(() => {
+                btn.innerText = "Filtrar";
+            }, 500);
+        });
+    </script>
+</body>
+</html>

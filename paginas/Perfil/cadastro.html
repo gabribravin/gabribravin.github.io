@@ -107,48 +107,8 @@
 </head>
 <body>
 
-    <div class="topo-governo-institucional">
-        <div class="logotipo-prefeitura">
-            <img src="../../imagens/prefeitura-arca-serra.png" alt="Logo Prefeitura da Serra">
-        </div>
-        <div class="nav-institucional-links">
-            <a href="#"><span>1</span> Conteúdo</a>
-            <a href="#"><span>2</span> Menu</a>
-            <a href="#"><span>3</span> Busca</a>
-            <a href="#"><span>4</span> Contraste</a>
-            <a href="#"><span>5</span> Acessibilidade</a>
-        </div>
-    </div>
-
-    <nav class="menu-navegacao-principal">
-        <a href="../../index.html" class="link-logotipo-projeto">
-            <img src="../../imagens/logo-arca.png" alt="Logo Programa ARCA">
-            <div class="logo-texto">
-                <span>PROJETO</span>
-                <strong>ARCA</strong>
-            </div>
-        </a>
-        <button class="menu-hamburger" aria-label="Abrir Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul class="lista-links-menu">
-            <li><a href="adocao.html">Adoção</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Castração</a>
-                <ul class="sub-menu-suspenso">
-                    <li><a href="../castracao/informacoes.html">Como funciona</a></li>
-                    <li><a href="../castracao/selecionar-pet.html">Agendar Castração</a></li>
-                    <li><a href="clinicas.html">Clínicas credenciadas</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Denúncia</a></li>
-            <li><a href="../resgate/solicitação-resgate.html">Resgate</a></li>
-            <li><a href="#">Fale Conosco</a></li>
-            <li><a href="solicitacoes.html">Perfil</a></li>
-        </ul>
-    </nav>
+    <!-- Injetado automaticamente pelo script.js -->
+    <div id="navbar-placeholder"></div>
 
     <!-- CONTEÚDO DE CADASTRO -->
     <main class="container-arca-padrao">
@@ -314,7 +274,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" onclick="adicionarNovoPet()" class="btn-escuro" style="max-width: 250px; font-size: 14px; padding: 10px;">+ Adicionar Outro Animal</button>
+                    <button type="button" onclick="adicionarNovoPet()" class="botao-acao-secundaria" style="max-width: 280px; font-size: 14px; padding: 10px;">+ Adicionar Outro Animal</button>
                 </div>
 
                 <!-- Caixa de confirmação de residência na Serra -->
@@ -327,7 +287,9 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn-cadastrar btn-desativado" id="btn-concluir-cadastro">Concluir Cadastro</button>
+                <div style="display: flex; justify-content: center; margin-top: 30px;">
+                    <button type="submit" class="botao-acao-principal botao-estado-bloqueado" id="btn-concluir-cadastro" style="max-width: 100%; width: 400px;">Concluir Cadastro</button>
+                </div>
             </form>
         </div>
         </div>
@@ -341,8 +303,8 @@
             const chkSerra = document.getElementById('chk-serra');
             
             chkSerra.addEventListener('change', function() {
-                if (this.checked) btnCadastrar.classList.remove('btn-desativado');
-                else btnCadastrar.classList.add('btn-desativado');
+                if (this.checked) btnCadastrar.classList.remove('botao-estado-bloqueado');
+                else btnCadastrar.classList.add('botao-estado-bloqueado');
             });
         });
 
@@ -399,26 +361,8 @@
         }
     </script>
 
-    <footer class="rodape-institucional-site">
-        <div class="footer-container">
-            <div class="footer-coluna">
-                <h4>Desenvolvimento</h4>
-                <p>© SEICIT/SUBTI - Subsecretaria de Tecnologia da Informação</p>
-                <p>Rua Maestro Antônio Cícero, 111, Caçaroca, Prefeitura, Serra/ES, CEP 29176-110</p>
-                <p>Abertura de chamados: <a href="#">centraldeajuda.serra.es.gov.br</a></p>
-            </div>
-            <div class="footer-coluna">
-                <h4>Gestão</h4>
-                <p>GBEA - Gerência do Bem-Estar Animal - Secretaria Municipal de Meio Ambiente (SEMMAM)</p>
-                <p>Av. Talma Rodrigues Ribeiro, 5416, Portal de Jacaraípe, Serra/ES</p>
-                <p>Telefones: (27) 3382-6578 / (27) 3382-6540</p>
-            </div>
-            <div class="footer-coluna">
-                <h4>Área administrativa - Clínicas</h4>
-                <p>Se você é uma das clínicas credenciadas, <a href="#">clique aqui</a> para acessar.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Injetado automaticamente pelo script.js -->
+    <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
 </body>

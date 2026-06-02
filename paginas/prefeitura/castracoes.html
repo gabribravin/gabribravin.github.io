@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Castrações - Prefeitura</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .tabela-gestao {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .tabela-gestao th {
+            background: var(--verde-institucional);
+            color: white;
+            text-align: left;
+            padding: 15px;
+            font-size: 14px;
+        }
+        .tabela-gestao td {
+            padding: 15px;
+            border-bottom: 1px solid var(--borda-card);
+            font-size: 14px;
+        }
+        .btn-mini {
+            padding: 6px 12px;
+            font-size: 11px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="container-arca-padrao">
+        <div class="btn-voltar-container">
+            <a href="dashboard.html" class="botao-voltar-estilizado">Dashboard</a>
+        </div>
+
+        <h1 class="titulo-pagina-principal">Monitoramento de Castrações</h1>
+
+        <!-- FILTRO DE BUSCA (READICIONADO) -->
+        <section class="painel-filtros-admin">
+            <div class="grade-filtros">
+                <div class="campo-ficha" style="flex: 1; min-width: 200px;">
+                    <label>Clínica Credenciada</label>
+                    <select class="campo-texto-estilizado" style="padding: 8px;">
+                        <option value="">Todas as Clínicas</option>
+                        <option>Clínica Veterinária Patas & Pelos</option>
+                        <option>Hospital Veterinário Amigo Fiel</option>
+                        <option>Centro Cirúrgico VetSerra</option>
+                    </select>
+                </div>
+                <div class="campo-ficha">
+                    <label>Data Inicial</label>
+                    <input type="date" class="campo-texto-estilizado" style="padding: 8px;">
+                </div>
+                <div class="campo-ficha">
+                    <label>Data Final</label>
+                    <input type="date" class="campo-texto-estilizado" style="padding: 8px;">
+                </div>
+                <button class="botao-acao-principal" id="btn-filtrar-simulado" style="max-width: 120px; padding: 10px;">Filtrar</button>
+            </div>
+        </section>
+
+        <!-- TABELA DE GESTÃO -->
+        <div class="tabela-responsiva-container">
+        <table class="tabela-gestao">
+            <thead>
+                <tr>
+                    <th>Data/Hora</th>
+                    <th>Clínica</th>
+                    <th>Tutor</th>
+                    <th>Animal</th>
+                    <th>Status</th>
+                    <th style="text-align: right;">Ações de Controle</th>
+                </tr>
+            </thead>
+            <tbody id="corpo-tabela">
+                <!-- PERSONA 1: CONCLUÍDO -->
+                <tr>
+                    <td data-label="Data/Hora">Data Exemplo</td>
+                    <td data-label="Clínica">Clínica Exemplo</td>
+                    <td data-label="Tutor">Roberto Silva</td>
+                    <td data-label="Animal">Totó (Cachorro)</td>
+                    <td data-label="Status"><strong style="color: var(--sucesso);">CONCLUÍDO</strong></td>
+                    <td style="text-align: right;"><button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button></td>
+                </tr>
+                <!-- PERSONA 2: CONCLUÍDO -->
+                <tr>
+                    <td data-label="Data/Hora">Data Exemplo</td>
+                    <td data-label="Clínica">Clínica Exemplo</td>
+                    <td data-label="Tutor">Fernanda Gomes</td>
+                    <td data-label="Animal">Belinha (Gato)</td>
+                    <td data-label="Status"><strong style="color: var(--sucesso);">CONCLUÍDO</strong></td>
+                    <td style="text-align: right;"><button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button></td>
+                </tr>
+                <!-- PERSONA 3: FALTOU -->
+                <tr>
+                    <td data-label="Data/Hora">Data Exemplo</td>
+                    <td data-label="Clínica">Clínica Exemplo</td>
+                    <td data-label="Tutor">Marcio Santos</td>
+                    <td data-label="Animal">Pipoca (Cachorro)</td>
+                    <td data-label="Status"><strong style="color: #e53e3e;">FALTOU</strong></td>
+                    <td style="text-align: right;"><button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button></td>
+                </tr>
+                <!-- PERSONA 4: AGENDADO (TESTE) -->
+                <tr>
+                    <td data-label="Data/Hora">Data Exemplo</td>
+                    <td data-label="Clínica">Clínica Exemplo</td>
+                    <td data-label="Tutor">Amanda Costa</td>
+                    <td data-label="Animal">Mike (Gato)</td>
+                    <td data-label="Status"><strong style="color: var(--texto-mutado);">AGENDADO</strong></td>
+                    <td style="text-align: right; display: flex; gap: 5px; justify-content: flex-end;">
+                        <button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>
+                        <button class="btn-mini btn-concluir" style="background: var(--amarelo-primario);">Concluir</button>
+                        <button class="btn-mini btn-faltou" style="background: #e53e3e; color: white;">Faltou</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </main>
+
+    <!-- Modal de Ficha Detalhada (Injetado via JS ou fixo) -->
+    <div class="modal-ficha" id="modalFicha">
+        <div class="conteudo-modal-ficha">
+            <button class="btn-fechar-ficha" id="fecharFicha">&times;</button>
+            <h2 class="titulo-pagina-principal" style="margin-bottom: 10px;">Ficha de Castração #47731</h2>
+            <span class="badge-prioridade" style="background: #e2e8f0; color: #2d3748;">Protocolo em análise</span>
+
+            <section class="secao-ficha">
+                <h3>Dados do Tutor</h3>
+                <div class="grid-ficha">
+                    <div class="campo-ficha"><label>Nome</label><p id="ficha-tutor">Tutor de Exemplo</p></div>
+                    <div class="campo-ficha"><label>Documento</label><p>123.456.789-00</p></div>
+                    <div class="campo-ficha"><label>Telefone</label><p>(27) 99888-7766</p></div>
+                    <div class="campo-ficha"><label>Perfil</label><p>Protetor Independente</p></div>
+                    <div class="campo-ficha" style="grid-column: span 2;"><label>Endereço</label><p>Rua das Flores, 123 - Laranjeiras, Serra/ES</p></div>
+                </div>
+            </section>
+
+            <section class="secao-ficha">
+                <h3>Dados do Animal</h3>
+                <div class="grid-ficha">
+                    <div class="campo-ficha"><label>Nome</label><p id="ficha-pet">Mel</p></div>
+                    <div class="campo-ficha"><label>Espécie</label><p>Canina (Cachorro)</p></div>
+                    <div class="campo-ficha"><label>Sexo</label><p>Fêmea</p></div>
+                    <div class="campo-ficha"><label>Idade Estimada</label><p>06 meses a 07 anos</p></div>
+                    <div class="campo-ficha"><label>Porte</label><p>Médio</p></div>
+                    <div class="campo-ficha"><label>Peso</label><p>De 06 a 15kg</p></div>
+                    <div class="campo-ficha"><label>Comportamento</label><p>Dócil e sociável</p></div>
+                    <div class="campo-ficha"><label>Cirurgias Prévias</label><p>Não</p></div>
+                    <div class="campo-ficha" style="grid-column: span 2;"><label>Informações Adicionais</label><p>Nenhuma observação extra relatada pelo tutor.</p></div>
+                </div>
+            </section>
+
+            <div style="margin-top: 40px; display: flex; justify-content: flex-end;">
+                <button class="botao-voltar-estilizado" onclick="document.getElementById('modalFicha').style.display='none'">Fechar Detalhes</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="../../script.js"></script>
+    <script>
+        let linhaSelecionada = null;
+
+        // Gerenciador Global de Cliques na Tabela
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+            const row = target.closest('tr');
+            if (!row) return;
+
+            // AÇÃO: FICHA
+            if (target.classList.contains('btn-ver-ficha')) {
+                document.getElementById('ficha-tutor').innerText = row.cells[2].innerText;
+                document.getElementById('ficha-pet').innerText = row.cells[3].innerText;
+                modal.style.display = 'flex';
+            }
+
+            // AÇÃO: CONCLUIR
+            if (target.classList.contains('btn-concluir')) {
+                row.cells[4].innerHTML = '<strong style="color: var(--sucesso);">CONCLUÍDO</strong>';
+                row.cells[5].innerHTML = '<button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>';
+            }
+            
+            // AÇÃO: FALTOU
+            if (target.classList.contains('btn-faltou')) {
+                row.cells[4].innerHTML = '<strong style="color: #e53e3e;">FALTOU</strong>';
+                row.cells[5].innerHTML = '<button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>';
+            }
+        });
+
+        // FILTRO SIMULADO (Limpa tudo e traz apenas a Amanda Costa)
+        document.getElementById('btn-filtrar-simulado').addEventListener('click', () => {
+            const btn = document.getElementById('btn-filtrar-simulado');
+            const corpo = document.getElementById('corpo-tabela');
+            
+            btn.innerText = "Buscando...";
+            corpo.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 60px; font-weight: 600; color: var(--texto-mutado);">Buscando agendamentos...</td></tr>';
+
+            setTimeout(() => {
+                btn.innerText = "Filtrar";
+                corpo.innerHTML = `
+                    <!-- REGISTRO 1: JÁ CONCLUÍDO -->
+                    <tr>
+                        <td data-label="Data/Hora">Data Exemplo</td>
+                        <td data-label="Clínica">Clínica Exemplo</td>
+                        <td data-label="Tutor">Roberto Silva</td>
+                        <td data-label="Animal">Totó (Cachorro)</td>
+                        <td data-label="Status"><strong style="color: var(--sucesso);">CONCLUÍDO</strong></td>
+                        <td style="text-align: right;"><button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button></td>
+                    </tr>
+                    <!-- REGISTRO 2: PARA IR (AGENDADO) -->
+                    <tr>
+                        <td data-label="Data/Hora">Data Exemplo</td>
+                        <td data-label="Clínica">Clínica Exemplo</td>
+                        <td data-label="Tutor">Amanda Costa</td>
+                        <td data-label="Animal">Mike (Gato)</td>
+                        <td data-label="Status"><strong style="color: var(--texto-mutado);">AGENDADO</strong></td>
+                        <td style="text-align: right; display: flex; gap: 5px; justify-content: flex-end;">
+                            <button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>
+                            <button class="btn-mini btn-concluir" style="background: var(--amarelo-primario);">Concluir</button>
+                            <button class="btn-mini btn-faltou" style="background: #e53e3e; color: white;">Faltou</button>
+                        </td>
+                    </tr>
+                `;
+            }, 800);
+        });
+    </script>
+</body>
+</html>
