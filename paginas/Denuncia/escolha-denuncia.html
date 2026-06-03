@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../../style.css">
     
     <style>
-        /* Container de Alinhamento do Painel */
         .container-escolha-tipo-denuncia {
             max-width: 1200px;
             margin: 0 auto;
@@ -16,7 +15,6 @@
             box-sizing: border-box;
         }
 
-        /* Card Grande com Fundo Azul Claro Sutil */
         .painel-escolha-denuncia {
             background-color: var(--fundo-card);
             border: 1px solid var(--borda-card);
@@ -26,7 +24,6 @@
             box-sizing: border-box;
         }
 
-        /* Título do Canal de Denúncias */
         .titulo-canal {
             color: var(--verde-institucional);
             font-size: 1.8rem;
@@ -35,7 +32,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* Tag de Proteção de Dados (Fundo Verde Claro, Texto Verde Escuro) */
         .selo-seguranca-dados {
             opacity: 0.7;
             display: inline-flex;
@@ -55,7 +51,6 @@
             font-size: 0.85rem;
         }
 
-        /* Pergunta de Direcionamento */
         .pergunta-diretriz {
             color: var(--verde-institucional);
             opacity: 1;
@@ -64,7 +59,6 @@
             margin: 0 0 25px 0;
         }
 
-        /* Grid de Distribuição das Duas Opções Lado a Lado */
         .grade-cartoes-escolha {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -72,7 +66,6 @@
             margin-bottom: 35px;
         }
 
-        /* Estrutura das Caixas de Opção (Brancas com Borda Fina) */
         .cartao-opcao-denuncia {
             background-color: var(--branco);
             border: 1px solid var(--borda-card);
@@ -88,13 +81,11 @@
             align-items: center;
         }
 
-        /* Estado Selecionado Ativo da Caixa */
         .cartao-opcao-denuncia.selecionado {
             border-color: var(--amarelo-primario);
             box-shadow: 0 4px 15px rgba(245, 166, 35, 0.15);
         }
 
-        /* Ícones Customizados Vetoriais no Centro Superior */
         .icone-wrapper {
             margin-bottom: 20px;
             height: 50px;
@@ -103,7 +94,6 @@
             justify-content: center;
         }
 
-        /* Escudo da Denúncia Anônima */
         .icone-escudo {
             width: 30px;
             height: 38px;
@@ -119,14 +109,13 @@
             border-radius: 0 0 0 15px;
         }
 
-        /* Silhueta de Usuário da Denúncia Identificada */
         .icone-usuario {
             width: 24px;
             height: 24px;
             background-color: #475569;
             border-radius: 50%;
             position: relative;
-            margin-top: -12px; /* Nudge para cima para compensar os ombros e alinhar visualmente com o escudo */
+            margin-top: -12px;
         }
         .icone-usuario::after {
             content: '';
@@ -137,7 +126,6 @@
             border-radius: 24px 24px 0 0;
         }
 
-        /* Títulos Internos das Caixas */
         .titulo-opcao {
             color: #1a202c;
             font-size: 1.1rem;
@@ -145,7 +133,6 @@
             margin-bottom: 12px;
         }
 
-        /* Descrições das Caixas */
         .descricao-opcao {
             color: #4a5568;
             font-size: 0.92rem;
@@ -155,7 +142,6 @@
             opacity: 0.7;
         }
 
-        /* Texto de Rodapé Informativo */
         .texto-rodape-info {
             color: #4a5568;
             font-size: 0.92rem;
@@ -165,7 +151,6 @@
             align-self: center;
         }
 
-        /* Bloco Inferior de Alinhamento de Ações */
         .area-botoes-rodape {
             display: flex;
             justify-content: space-between;
@@ -174,7 +159,6 @@
             gap: 20px;
         }
 
-        /* Botão Continuar em Formato de Pílula Amarela/Laranja */
         .botao-prosseguir-fluxo {
             background-color: var(--amarelo-primario);
             color: #000000;
@@ -195,13 +179,11 @@
             background-color: var(--amarelo-hover);
         }
 
-        /* Seta para a direita do botão (->) */
         .seta-botao {
             font-weight: 800;
             font-size: 1rem;
         }
 
-        /* Responsividade para Manter a Proporção */
         @media (max-width: 768px) {
             .painel-escolha-denuncia {
                 padding: 25px 20px;
@@ -223,7 +205,6 @@
 </head>
 <body>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
     <main class="container-escolha-tipo-denuncia">
@@ -275,7 +256,6 @@
 
     </main>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
@@ -285,7 +265,6 @@
         const btnProsseguir = document.getElementById('btn-prosseguir');
         let opcaoSelecionada = null;
 
-        // Gerencia a marcação visual ativa ao clicar em uma das duas caixas
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 const opcao = card.getAttribute('data-opcao');
@@ -296,18 +275,15 @@
                 opcaoSelecionada = opcao;
                 sessionStorage.setItem('tipoDenuncia', opcaoSelecionada);
                 
-                // Habilita o botão e oculta a mensagem de status
                 statusTexto.style.visibility = 'hidden';
                 btnProsseguir.classList.remove('botao-estado-bloqueado');
             });
         });
 
-        // Ação de clique do botão Continuar
         btnProsseguir.addEventListener('click', (e) => {
             if (opcaoSelecionada === 'identificada') {
-                // Se o usuário escolheu 'identificada', verificamos o login antes de avançar
                 if (typeof checkAccess === 'function' && !checkAccess(e)) {
-                    return; // Interrompe o fluxo se o modal de acesso for exibido
+                    return; 
                 }
             }
 
