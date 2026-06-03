@@ -37,7 +37,6 @@
 </head>
 <body>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
     <main class="container-favoritos">
@@ -86,7 +85,6 @@
             </article>
         </div>
 
-        <!-- Estado vazio quando não houver favoritos -->
         <div id="empty-state" class="empty-favorites">
             <span>🤍</span>
             <h3>Sua lista está vazia</h3>
@@ -95,12 +93,10 @@
         </div>
     </main>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
     <script>
-        // Lógica específica para remover o card da tela ao desfavoritar nesta página
         document.addEventListener('click', (e) => {
             const btn = e.target.closest('.btn-favorito');
             if (btn && !btn.classList.contains('favoritado')) {
