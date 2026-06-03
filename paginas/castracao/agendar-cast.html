@@ -174,18 +174,24 @@
             text-align: center;
         }
         .cal-dia {
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
             padding: 8px;
             font-size: 13px;
             border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
+            transition: all 0.2s ease;
         }
         .cal-dia.inativo {
             color: #ccc;
             cursor: not-allowed;
+            background: #f9f9f9;
         }
-        .cal-dia.disponivel { background: #e6f4ea; color: #1e7e34; }
-        .cal-dia.cheio { background: #fce8e6; color: #d93025; cursor: not-allowed; }
+        .cal-dia:not(.inativo):hover {
+            background-color: var(--verde-navbar);
+            color: white;
+        }
         .cal-dia.selecionado { outline: 2px solid var(--amarelo-primario); }
         
         .dia-semana { font-size: 11px; color: var(--texto-mutado); font-weight: 700; }
@@ -306,7 +312,7 @@
         <section class="cartao-etapa secao-oculta" id="secao-data">
             <h2 class="titulo-etapa">2.Escolha a Data</h2>
             <div class="calendario-wrapper" id="calendario-trigger">
-                <i class="fa-regular fa-calendar-days icone-calendario"></i>
+                <span class="icone-calendario">📅</span>
             </div>
             <div id="calendar-popover" class="calendario-popover">
                 <div class="cal-header">
@@ -422,16 +428,11 @@
                 if(dateInGrid < todayDate) {
                     diaEl.classList.add('inativo');
                 } else {
-                    const isAvailable = Math.random() > 0.3;
-                    diaEl.classList.add(isAvailable ? 'disponivel' : 'cheio');
-                    
-                    if(isAvailable) {
-                        diaEl.addEventListener('click', () => {
-                            document.querySelectorAll('.cal-dia').forEach(d => d.classList.remove('selecionado'));
-                            diaEl.classList.add('selecionado');
-                            selecionarDia(i, viewMonth, viewYear);
-                        });
-                    }
+                    diaEl.addEventListener('click', () => {
+                        document.querySelectorAll('.cal-dia').forEach(d => d.classList.remove('selecionado'));
+                        diaEl.classList.add('selecionado');
+                        selecionarDia(i, viewMonth, viewYear);
+                    });
                 }
                 daysGrid.appendChild(diaEl);
             }

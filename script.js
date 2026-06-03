@@ -19,12 +19,6 @@ function getPaths() {
     };
 }
 
-function initNoValidate() {
-    document.querySelectorAll('form').forEach(f => {
-        f.setAttribute('novalidate', 'true');
-    });
-}
-
 function renderLayout(paths) {
     const nav = document.getElementById('navbar-placeholder');
     const footer = document.getElementById('footer-placeholder');
@@ -218,66 +212,18 @@ function showModalAcesso() {
 function initLoginLogic(paths) {
     const loginForm = document.getElementById('loginForm');
     if (!loginForm) return;
-
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const user = document.getElementById('usuario').value;
         const pass = document.getElementById('senha').value;
-        const btn = loginForm.querySelector('button');
-
         if (user === 'prefeitura' && pass === 'pref@456') {
             sessionStorage.setItem('usuarioLogado', 'true');
             sessionStorage.setItem('isAdmin', 'true');
-            btn.innerText = 'Acessando Painel...';
-            setTimeout(() => window.location.href = `${paths.pag}prefeitura/dashboard.html`, 800);
+            window.location.href = `${paths.pag}prefeitura/dashboard.html`;
         } else if (user === 'tutor' && pass === '123456') {
             sessionStorage.setItem('usuarioLogado', 'true');
-            btn.innerHTML = 'Acesso Permitido! 🐾';
-            btn.style.backgroundColor = 'var(--sucesso)';
-            btn.style.color = 'white';
-            
-            setTimeout(() => {
-                const back = sessionStorage.getItem('returnUrl');
-                window.location.href = (back && !back.includes('login.html')) ? back : `${paths.pag}Perfil/solicitacoes.html`;
-            }, 800);
-        } else {
-            const textoOriginal = btn.innerText;
-            btn.innerText = 'Dados Incorretos ❌';
-            btn.style.backgroundColor = '#e53e3e';
-            btn.style.color = 'white';
-            setTimeout(() => {
-                btn.innerText = textoOriginal;
-                btn.style.backgroundColor = '';
-                btn.style.color = '';
-            }, 2000);
+            const back = sessionStorage.getItem('returnUrl');
+            window.location.href = (back && !back.includes('login.html')) ? back : `${paths.pag}Perfil/solicitacoes.html`;
         }
     });
-}
-
-function initMenuResponsivo() {
-    const btn = document.querySelector('.menu-hamburger');
-    const menu = document.querySelector('.lista-links-menu');
-    if (!btn || !menu) return;
-
-    btn.addEventListener('click', () => {
-        menu.classList.toggle('active');
-        const spans = btn.querySelectorAll('span');
-        const active = menu.classList.contains('active');
-        spans[0].style.transform = active ? 'rotate(45deg) translate(6px, 6px)' : 'none';
-        spans[1].style.opacity = active ? '0' : '1';
-        spans[2].style.transform = active ? 'rotate(-45deg) translate(6px, -6px)' : 'none';
-    });
-}
-
-function initFormularioAdocao() {
-    const form = document.querySelector('form[action="solicitacoes.html"]');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('.btn-enviar-solicitacao') || form.querySelector('button[type="submit"]');
-            btn.innerText = 'Enviando...';
-            btn.style.opacity = '0.7';
-            setTimeout(() => window.location.href = 'sucesso.html', 1500);
-        });
-    }
 }

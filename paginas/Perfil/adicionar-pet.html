@@ -127,14 +127,7 @@
 
         document.getElementById('form-adicionar-pet').addEventListener('submit', (e) => {
             e.preventDefault();
-            const btn = document.getElementById('btn-cadastrar-pet');
-            btn.innerText = "Animal Salvo! 🐾";
-            btn.style.backgroundColor = "var(--sucesso)";
-            btn.style.color = "white";
-            
-            setTimeout(() => {
-                window.location.href = "solicitacoes.html";
-            }, 1000);
+            window.location.href = "solicitacoes.html";
         });
     </script>
 </body>

@@ -231,11 +231,7 @@
         });
 
         document.getElementById('btn-filtrar-simulado').addEventListener('click', () => {
-            const btn = document.getElementById('btn-filtrar-simulado');
-            btn.innerText = "Buscando...";
-            setTimeout(() => {
-                btn.innerText = "Filtrar";
-            }, 500);
+            console.log("Filtro aplicado");
         });
 
         btnFechar.onclick = () => modal.style.display = 'none';

@@ -330,6 +330,21 @@ form:invalid .btn-confirmar-agendamento {
     cursor: not-allowed;
 }
 
+/* Botão de Agendamento (Centralizado) */
+.btn-confirmar-agendamento {
+    background-color: var(--amarelo-primario);
+    color: #000000;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 40px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    max-width: 360px;
+    transition: background-color 0.2s;
+}
+
 /* Container para alinhar o botão voltar à direita */
 .btn-voltar-container {
     display: flex;
@@ -771,12 +786,12 @@ textarea.campo-texto-estilizado {
     to { transform: scale(1); opacity: 1; }
 }
 
-.modal-arca-card h2 {
+.caixa-card-modal h2 {
     color: var(--verde-institucional);
     margin-bottom: 15px;
 }
 
-.modal-arca-card p {
+.caixa-card-modal p {
     margin-bottom: 30px;
     color: var(--texto-mutado);
 }
