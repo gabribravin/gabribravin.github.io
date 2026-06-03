@@ -1,4 +1,6 @@
-
+/**
+ * Lógica de Interface do Usuário - Programa ARCA
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const paths = getPaths();
     renderLayout(paths); 
@@ -133,11 +135,13 @@ function initGlobalEvents(paths) {
     document.addEventListener('click', (e) => {
         const target = e.target;
 
+        // 1. Fechar Modais
         if (target.classList.contains('modal-ficha') || target.classList.contains('btn-fechar-ficha')) {
             const modal = e.target.closest('.modal-ficha') || document.querySelector('.modal-ficha[style*="display: flex"]');
             if (modal) modal.style.display = 'none';
         }
 
+        // 2. Logout
         if (target.closest('#btn-logout')) {
             e.preventDefault();
             sessionStorage.removeItem('usuarioLogado');
@@ -145,6 +149,7 @@ function initGlobalEvents(paths) {
             window.location.href = `${paths.root}index.html`;
         }
 
+        // 3. Proteção de Rotas e Captura de Redirect
         const linkProtegido = target.closest('a[href*="formulario-adocao.html"], a[href*="solicitacoes.html"], a[href*="agendar-cast.html"], a[href*="selecionar-pet.html"], a[href*="formulario-resgate.html"]');
         if (linkProtegido) {
             if (!checkAccess(e)) return;
@@ -153,6 +158,7 @@ function initGlobalEvents(paths) {
         const linkLogin = target.closest('a[href*="login.html"], a[href*="cadastro.html"]');
         if (linkLogin) sessionStorage.setItem('returnUrl', window.location.href);
 
+        // 4. Favoritos
         const btnFav = target.closest('.btn-favorito');
         if (btnFav) {
             if (!checkAccess(e)) return;
@@ -160,14 +166,24 @@ function initGlobalEvents(paths) {
             btnFav.innerText = btnFav.classList.contains('favoritado') ? '❤️' : '🤍';
         }
 
+        // 5. Dropdowns Mobile
         const toggle = target.closest('.dropdown-toggle');
         if (toggle && window.innerWidth <= 768) {
             e.preventDefault();
             toggle.parentElement.classList.toggle('active');
         }
 
+        // 6. Toggle Filtros
         if (target.classList.contains('btn-toggle-filtros')) {
             document.querySelector('.barra-filtros-container')?.classList.toggle('active');
+        }
+
+        // 7. Menu Hamburger
+        const btnHamburger = target.closest('.menu-hamburger');
+        if (btnHamburger) {
+            const navPrincipal = btnHamburger.closest('.menu-navegacao-principal');
+            navPrincipal?.querySelector('.lista-links-menu')?.classList.toggle('active');
+            btnHamburger.classList.toggle('active');
         }
     });
 }
