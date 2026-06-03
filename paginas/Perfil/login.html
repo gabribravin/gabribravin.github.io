@@ -32,68 +32,6 @@
             font-weight: 700;
         }
 
-        .form-group {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #4a5568;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color 0.2s;
-            opacity: 0.7;
-        }
-
-        .form-group input:focus {
-            border-color: #3b7a6f;
-        }
-
-        .login-links {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            margin-bottom: 30px;
-        }
-
-        .login-links a {
-            color: #3b7a6f;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .login-links a:hover {
-            text-decoration: underline;
-        }
-
-        .btn-entrar {
-            width: 100%;
-            background-color: var(--amarelo-primario);
-            color: #000000;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-entrar:hover {
-            background-color: var(--amarelo-hover);
-        }
-
         .cadastro-alternativo {
             margin-top: 25px;
             font-size: 0.9rem;
@@ -104,6 +42,21 @@
             color: #0d3c35;
             font-weight: 700;
             text-decoration: none;
+        }
+
+        /* Ajustes específicos para links de login */
+        .login-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .login-links a {
+            color: var(--verde-navbar);
+            text-decoration: none;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -119,20 +72,20 @@
 
         <div class="login-card">
             <h2>Entrar no Programa ARCA</h2>
-            <form id="loginForm">
+            <form id="loginForm" novalidate>
                 <div class="form-group">
-                    <label for="email">E-mail ou CNPJ/CPF</label>
-                    <input type="text" id="usuario" placeholder="Digite seus dados de acesso" required>
+                    <label for="usuario" class="rotulo-campo-formulario">Nome de usuário</label>
+                    <input type="text" id="usuario" class="campo-texto-estilizado" placeholder="Digite seu nome de usuário" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" placeholder="Digite sua senha" required>
+                    <label for="senha" class="rotulo-campo-formulario">Senha</label>
+                    <input type="password" id="senha" class="campo-texto-estilizado" placeholder="Digite sua senha" required>
                 </div>
 
                 <div class="login-links">
-                    <label style="color: #718096;"><input type="checkbox"> Lembrar-me</label>
                     <a href="#">Esqueceu a senha?</a>
+                    <label style="color: #718096; cursor: pointer;"><input type="checkbox"> Lembrar-me</label>
                 </div>
 
                 <button type="submit" class="botao-acao-principal">Entrar</button>

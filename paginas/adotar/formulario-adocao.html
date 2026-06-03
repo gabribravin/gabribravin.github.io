@@ -7,23 +7,28 @@
     <link rel="stylesheet" href="../../style.css">
     <style>
         .header-formulario-titulo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--texto-escuro);
             margin-bottom: 10px;
         }
         .subtitulo-formulario {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--verde-navbar);
             font-weight: 600;
             margin-bottom: 35px;
             opacity: 0.7;
         }
         .pergunta-enunciado {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--verde-navbar);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+        }
+        .bloco-pergunta-card {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         .opcao-checkbox-label {
             display: flex;
@@ -64,10 +69,11 @@
             margin: 0 auto;
             display: flex;
         }
-        /* Se algum campo 'required' estiver vazio, o botão fica transparente e bloqueado */
+        /* Sobrescreve regra local para garantir o bloqueio total do clique */
         form:invalid .btn-enviar-solicitacao {
             opacity: 0.5;
             cursor: not-allowed;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -76,52 +82,57 @@
     <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
-    <main class="container-formulario">
-        <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
-        <div style="clear: both;"></div>
-
-        <h2 class="header-formulario-titulo">Falta pouco para o início de uma grande amizade! 🐾</h2>
-        <p class="subtitulo-formulario">Responda essas perguntinhas rápidas para sabermos se você e o André combinam.</p>
-
-        <form action="solicitacoes.html" method="GET">
-            
-            <div class="bloco-pergunta-card">
-                <h3 class="pergunta-enunciado">1. Como é a sua residência?</h3>
-                <label class="opcao-checkbox-label"><input type="radio" name="residencia" required> Casa com Quintal</label>
-                <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Casa sem Quintal</label>
-                <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Apartamento</label>
-                <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Sítio / Chácara</label>
+    <main class="container-arca-padrao">
+        <div class="wrapper-conteudo-central">
+            <div class="btn-voltar-container">
+                <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
             </div>
 
-            <div class="bloco-pergunta-card">
-                <h3 class="pergunta-enunciado">2. A casa possui telas de proteção ou muros altos?</h3>
-                <label class="opcao-checkbox-label"><input type="radio" name="telas" required> Sim</label>
-                <label class="opcao-checkbox-label"><input type="radio" name="telas"> Não</label>
-            </div>
+            <div class="painel-conteudo-central">
+                <h2 class="header-formulario-titulo">Falta pouco para o início de uma grande amizade! 🐾</h2>
+                <p class="subtitulo-formulario">Responda essas perguntinhas rápidas para sabermos se você e o André combinam.</p>
 
-            <div class="bloco-pergunta-card">
-                <h3 class="pergunta-enunciado">3. Você já possui outros animais em casa?</h3>
-                <label class="opcao-checkbox-label"><input type="radio" name="outros_pets" required> Sim, cães/gatos</label>
-                <label class="opcao-checkbox-label"><input type="radio" name="outros_pets"> Não possuo</label>
-            </div>
+                <form action="solicitacoes.html" method="GET" novalidate>
+                    
+                    <div class="bloco-pergunta-card">
+                        <h3 class="pergunta-enunciado">1. Como é a sua residência?</h3>
+                        <label class="opcao-checkbox-label"><input type="radio" name="residencia" required> Casa com Quintal</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Casa sem Quintal</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Apartamento</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Sítio / Chácara</label>
+                    </div>
 
-            <div class="bloco-pergunta-card">
-                <h3 class="pergunta-enunciado">4. O animal passará muito tempo sozinho?</h3>
-                <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho" required> Não, sempre tem alguém</label>
-                <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho"> Período Curto</label>
-                <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho"> O dia todo</label>
-            </div>
+                    <div class="bloco-pergunta-card">
+                        <h3 class="pergunta-enunciado">2. A casa possui telas de proteção ou muros altos?</h3>
+                        <label class="opcao-checkbox-label"><input type="radio" name="telas" required> Sim</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="telas"> Não</label>
+                    </div>
 
-            <div class="termo-guarda-box">
-                <div class="termo-titulo">Termo de Guarda Responsável</div>
-                <p style="margin-bottom: 15px; color: #333;">Adotar é um ato de amor, mas também de responsabilidade. Você se compromete a oferecer alimentação, vacinas e espaço seguro?</p>
-                <label class="opcao-checkbox-label">
-                    <input type="checkbox" required> Li e concordo com o Termo de Guarda Responsável
-                </label>
-            </div>
+                    <div class="bloco-pergunta-card">
+                        <h3 class="pergunta-enunciado">3. Você já possui outros animais em casa?</h3>
+                        <label class="opcao-checkbox-label"><input type="radio" name="outros_pets" required> Sim, cães/gatos</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="outros_pets"> Não possuo</label>
+                    </div>
 
-            <button type="submit" class="botao-acao-principal btn-enviar-solicitacao">Enviar Solicitação de Adoção</button>
-        </form>
+                    <div class="bloco-pergunta-card">
+                        <h3 class="pergunta-enunciado">4. O animal passará muito tempo sozinho?</h3>
+                        <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho" required> Não, sempre tem alguém</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho"> Período Curto</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho"> O dia todo</label>
+                    </div>
+
+                    <div class="termo-guarda-box">
+                        <div class="termo-titulo">Termo de Guarda Responsável</div>
+                        <p style="margin-bottom: 15px; color: #333;">Adotar é um ato de amor, mas também de responsabilidade. Você se compromete a oferecer alimentação, vacinas e espaço seguro?</p>
+                        <label class="opcao-checkbox-label">
+                            <input type="checkbox" required> Li e concordo com o Termo de Guarda Responsável
+                        </label>
+                    </div>
+
+                    <button type="submit" class="botao-acao-principal btn-enviar-solicitacao">Enviar Solicitação de Adoção</button>
+                </form>
+            </div>
+        </div>
     </main>
 
     <!-- Injetado automaticamente pelo script.js -->

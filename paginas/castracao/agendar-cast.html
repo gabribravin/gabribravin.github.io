@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento de Castração</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../style.css">
     
     <style>
@@ -282,10 +281,15 @@
 
         <h1 class="titulo-agendamento">Agendamento para: <span>André</span></h1>
 
+        <form id="form-castracao" novalidate>
+            <!-- Campos escondidos para validar a seleção do calendário e horário -->
+            <input type="hidden" id="input-data-selecionada" required>
+            <input type="hidden" id="input-horario-selecionado" required>
+
         <section class="cartao-etapa">
             <h2 class="titulo-etapa">1.Escolha o Local</h2>
             <div class="select-container">
-                <select class="select-clinica" id="clinica-select">
+                <select class="select-clinica" id="clinica-select" required>
                     <option value="">Selecione uma Clínica</option>
                     <option value="1">Clínica Veterinária Patas & Pelos</option>
                     <option value="2">Hospital Veterinário Amigo Fiel</option>
@@ -328,17 +332,18 @@
         </section>
 
         <label class="container-declaracao">
-            <input type="checkbox" id="check-jejum">
+            <input type="checkbox" id="check-jejum" required>
             <span class="texto-declaracao">
                 Declaro estar ciente de que o animal deve cumprir o jejum obrigatório de água e comida antes da cirurgia.
             </span>
         </label>
 
         <div class="bloco-acao-final">
-            <button type="button" class="btn-confirmar-agendamento" id="btn-enviar">
+            <button type="submit" class="btn-confirmar-agendamento" id="btn-enviar">
                 Confirmar agendamento da castração
             </button>
         </div>
+        </form>
 
     </main>
 
@@ -441,6 +446,9 @@
                 b.classList.remove('horario-selecionado');
                 b.classList.add('horario-disponivel');
             });
+            
+            // Marca a data como selecionada para o formulário
+            document.getElementById('input-data-selecionada').value = `${dia}/${mes+1}/${ano}`;
             calendarPopover.style.display = 'none';
         }
 
@@ -453,23 +461,15 @@
                 });
                 botao.classList.remove('horario-disponivel');
                 botao.classList.add('horario-selecionado');
+                
+                // Marca o horário como selecionado para o formulário
+                document.getElementById('input-horario-selecionado').value = botao.innerText;
             });
         });
 
-        // Evento de envio simulado seguindo as validações nativas do formulário
-        document.getElementById('btn-enviar').addEventListener('click', () => {
-            const clinica = document.getElementById('clinica-select').value;
-            const jejum = document.getElementById('check-jejum').checked;
-
-            if(!clinica) {
-                alert("Por favor, selecione uma clínica no Passo 1.");
-                return;
-            }
-            if(!jejum) {
-                alert("Você precisa declarar estar ciente sobre o jejum obrigatório do animal.");
-                return;
-            }
-            
+        // Evento de envio do formulário
+        document.getElementById('form-castracao').addEventListener('submit', (e) => {
+            e.preventDefault();
             window.location.href = "castracao-sucesso.html";
         });
     </script>

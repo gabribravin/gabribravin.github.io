@@ -1,104 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Programa ARCA</title>
+    <title>Cadastro ONG - Programa ARCA</title>
     <link rel="stylesheet" href="../../style.css">
-
     <style>
-        .cadastro-wrapper {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        /* Seletor de Tipo de Perfil (Ong ou Cidadão) */
-        .tipo-usuario-selector {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-
-        .radio-box {
-            border: 2px solid #cbd5e1;
-            padding: 15px 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            color: #4a5568;
-            transition: all 0.2s;
-        }
-
+        .cadastro-wrapper { max-width: 750px; margin: 0 auto; }
+        .tipo-usuario-selector { display: flex; gap: 20px; margin-bottom: 30px; justify-content: center; }
+        .radio-box { border: 2px solid #cbd5e1; padding: 15px 30px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-weight: 600; color: #4a5568; transition: all 0.2s; }
         .radio-box input { cursor: pointer; }
-
-        .radio-box.active {
-            border-color: var(--verde-institucional);
-            background-color: #f0f7fd;
-            color: var(--verde-institucional);
-        }
-
-        /* Seção do Pet */
-        .pet-section-box {
-            background-color: #f8fafc;
-            border: 1px dashed #cbd5e1;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 25px 0;
-        }
-
-        @media (max-width: 600px) {
-            .tipo-usuario-selector {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
+        .radio-box.active { border-color: var(--verde-institucional); background-color: #f0f7fd; color: var(--verde-institucional); }
+        .pet-section-box { background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 25px; margin: 25px 0; }
+        @media (max-width: 600px) { .tipo-usuario-selector { flex-direction: column; align-items: stretch; } }
     </style>
 </head>
-
 <body>
-
     <div id="navbar-placeholder"></div>
-
     <main class="container-arca-padrao">
         <div class="cadastro-wrapper">
             <div class="btn-voltar-container">
                 <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
             </div>
-
             <div class="painel-conteudo-central">
                 <h2 class="titulo-pagina-principal" style="text-align: center;">Criar Conta no Programa ARCA</h2>
-
-                <!-- Seletor Lado a Lado -->
                 <div class="tipo-usuario-selector">
-                    <label class="radio-box active" id="label-cidadao">
-                        <input type="radio" name="tipo_perfil" value="cidadao" checked onchange="mudarPerfil('cidadao')">
+                    <label class="radio-box" id="label-cidadao">
+                        <input type="radio" name="tipo_perfil" value="cidadao" onchange="window.location.href='cadastro.html'">
                         Sou Cidadão
                     </label>
-                    <label class="radio-box" id="label-ong">
-                        <input type="radio" name="tipo_perfil" value="ong" onchange="mudarPerfil('ong')">
+                    <label class="radio-box active" id="label-ong">
+                        <input type="radio" name="tipo_perfil" value="ong" checked>
                         Sou uma ONG
                     </label>
                 </div>
-
                 <form novalidate>
-                    <!-- DADOS DO USUÁRIO -->
                     <div class="form-grid-padrao">
                         <div class="campo-largura-cheia">
-                            <label class="rotulo-campo-formulario">Nome Completo</label>
-                            <input type="text" class="campo-texto-estilizado" placeholder="Digite seu nome" required>
+                            <label class="rotulo-campo-formulario">Nome da ONG / Instituição</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="Razão Social ou Nome Fantasia" required>
                         </div>
                         <div>
-                            <label class="rotulo-campo-formulario">CPF</label>
-                            <input type="text" class="campo-texto-estilizado" placeholder="000.000.000-00" required>
+                            <label class="rotulo-campo-formulario">CNPJ</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="00.000.000/0001-00" required>
                         </div>
                         <div>
                             <label class="rotulo-campo-formulario">Telefone</label>
-                            <input type="tel" class="campo-texto-estilizado" placeholder="(27) 99999-9999" required>
+                            <input type="tel" class="campo-texto-estilizado" placeholder="(27) 3333-3333" required>
                         </div>
                         <div>
                             <label class="rotulo-campo-formulario">CEP</label>
@@ -109,12 +57,12 @@
                             <input type="text" class="campo-texto-estilizado" placeholder="Ex: Laranjeiras" required>
                         </div>
                         <div class="campo-largura-cheia">
-                            <label class="rotulo-campo-formulario">Rua e Número</label>
-                            <input type="text" class="campo-texto-estilizado" placeholder="Av. Principal, nº 123" required>
+                            <label class="rotulo-campo-formulario">Endereço da Sede</label>
+                            <input type="text" class="campo-texto-estilizado" placeholder="Rua e Número" required>
                         </div>
                         <div>
                             <label class="rotulo-campo-formulario">E-mail</label>
-                            <input type="email" class="campo-texto-estilizado" placeholder="seu@email.com" required>
+                            <input type="email" class="campo-texto-estilizado" placeholder="ong@email.com" required>
                         </div>
                         <div>
                             <label class="rotulo-campo-formulario">Confirme seu E-mail</label>
@@ -132,14 +80,13 @@
 
                     <div class="form-group" style="margin-top: 20px;">
                         <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600;">
-                            <input type="checkbox" id="possui-animais" onchange="togglePetSection(this.checked)" style="width: 18px; height: 18px;">
+                            <input type="checkbox" id="possui-animais" onchange="document.getElementById('pet-section-box').style.display = this.checked ? 'block' : 'none'" style="width: 18px; height: 18px;">
                             Possuo animais e desejo cadastrá-los agora
                         </label>
                     </div>
 
-                    <!-- SEÇÃO DE ANIMAIS (IDÊNTICA A ANTES) -->
                     <div class="pet-section-box" id="pet-section-box" style="display: none;">
-                        <h3 style="margin-bottom: 20px; color: var(--verde-navbar);">Meus Animais</h3>
+                        <h3 style="margin-bottom: 20px; color: var(--verde-navbar);">Animais para Adoção</h3>
                         <div id="lista-animais-container">
                             <div class="pet-item" style="border-bottom: 2px solid #e2e8f0; margin-bottom: 25px; padding-bottom: 20px;">
                                 <div class="form-grid-padrao">
@@ -209,13 +156,13 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" onclick="adicionarNovoPet()" class="botao-acao-secundaria" style="max-width: 250px; font-size: 13px;">+ Adicionar Outro Animal</button>
+                        <button type="button" onclick="adicionarNovoPet()" class="botao-acao-secundaria" style="max-width: 250px; font-size: 13px;">+ Outro Animal</button>
                     </div>
 
                     <div class="termo-guarda-box" style="margin-top: 30px;">
                         <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
                             <input type="checkbox" id="chk-serra" required style="width: 18px; height: 18px;">
-                            Confirmo que resido ou atuo na Serra - ES.
+                            Confirmo que a ONG atua na Serra - ES.
                         </label>
                     </div>
 
@@ -229,12 +176,6 @@
     <div id="footer-placeholder"></div>
     <script src="../../script.js"></script>
     <script>
-        function mudarPerfil(tipo) {
-            if (tipo === 'ong') window.location.href = 'cadastro-ong.html';
-        }
-        function togglePetSection(checked) {
-            document.getElementById('pet-section-box').style.display = checked ? 'block' : 'none';
-        }
         function adicionarNovoPet() {
             const container = document.getElementById('lista-animais-container');
             const novo = container.querySelector('.pet-item').cloneNode(true);
