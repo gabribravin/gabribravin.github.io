@@ -9,8 +9,8 @@
         .container-solicitacoes {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 4% 80px 4%; /* Aumentado o padding inferior para afastar o footer */
-            min-height: 60vh; /* Garante que o footer fique na base mesmo com poucas solicitações */
+            padding: 40px 4% 80px 4%;
+            min-height: 60vh;
         }
         .abas-modulos-navegacao {
             display: flex;
@@ -33,10 +33,10 @@
             color: #000000;
         }
         .secao-aba-conteudo {
-            display: none; /* Escondido por padrão */
+            display: none;
         }
         .secao-aba-conteudo.active {
-            display: block; /* Mostra apenas a aba ativa */
+            display: block;
         }
         .card-solicitacao-item {
             background-color: var(--fundo-card);
@@ -78,7 +78,6 @@
 </head>
 <body>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
     <main class="container-solicitacoes">
@@ -95,7 +94,6 @@
             <a href="#" class="aba-item-btn" data-aba="resgates">Resgates</a>
         </div>
 
-        <!-- CONTEÚDO DE ADOÇÕES -->
         <section id="aba-adocoes" class="secao-aba-conteudo active">
             <article class="card-solicitacao-item">
                 <a href="../adotar/animal.html" class="solicitacao-header-titulo">🐾 Animal: André (Gato - Jovem)</a>
@@ -111,7 +109,6 @@
             </article>
         </section>
 
-        <!-- CONTEÚDO DE CASTRAÇÕES -->
         <section id="aba-castracoes" class="secao-aba-conteudo">
             <article class="card-solicitacao-item">
                 <div class="solicitacao-header-titulo">🏥 Agendamento: Mel (Cachorra)</div>
@@ -121,7 +118,6 @@
             </article>
         </section>
 
-        <!-- CONTEÚDO DE DENÚNCIAS -->
         <section id="aba-denuncias" class="secao-aba-conteudo">
             <article class="card-solicitacao-item">
                 <div class="solicitacao-header-titulo">📢 Denúncia: #DEN-2026-00847</div>
@@ -131,7 +127,6 @@
             </article>
         </section>
 
-        <!-- CONTEÚDO DE RESGATES -->
         <section id="aba-resgates" class="secao-aba-conteudo">
             <article class="card-solicitacao-item">
                 <div class="solicitacao-header-titulo">🆘 Resgate: #RES-2026-00912</div>
@@ -142,12 +137,10 @@
         </section>
     </main>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
     <script>
-        // Lógica de troca de abas
         const btnsAbas = document.querySelectorAll('.aba-item-btn');
         const secoesConteudo = document.querySelectorAll('.secao-aba-conteudo');
 
@@ -155,11 +148,9 @@
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 
-                // Remove ativo de todos
                 btnsAbas.forEach(b => b.classList.remove('active'));
                 secoesConteudo.forEach(s => s.classList.remove('active'));
 
-                // Adiciona no clicado
                 btn.classList.add('active');
                 const idAba = btn.getAttribute('data-aba');
                 document.getElementById(`aba-${idAba}`).classList.add('active');
