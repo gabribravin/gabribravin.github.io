@@ -1,59 +1,48 @@
-/* ==========================================================================
-   RESET CSS UNIVERSAL
-   ========================================================================== */
-* {
-    margin: 0; /* Remove margens padrões de todos os elementos */
-    padding: 0; /* Remove paddings padrões de todos os elementos */
-    box-sizing: border-box; /* Garante que padding e border estejam inclusos no cálculo da largura/altura */
-    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Define família tipográfica sans-serif limpa e próxima ao Figma */
-}
+ {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
 
-/* ==========================================================================
-   VARIÁVEIS DE AMBIENTE (DESIGN SYSTEM)
-   ========================================================================== */
 :root {
-    --verde-institucional: #113f3c; /* "Apelido" para o verde oficial da prefeitura */
-    --verde-navbar: #3a817a; /* Verde água intermediário da barra de navegação do Programa Arca */
-    --amarelo-primario: #f2a922; /* Amarelo ouro dos botões de ação principal */
-    --amarelo-hover: #d99316; /* Tom levemente mais escuro para efeito hover no botão principal */
-    --fundo-card: #f0f6fa; /* Cor de fundo suave para os cards de animais */
-    --borda-card: #d3e2ee; /* Cor das bordas suaves dos inputs e contornos */
-    --texto-escuro: #0d2c29; /* Cor predominante dos textos e títulos principais */
-    --texto-mutado: #5a6e72; /* Cor cinza para textos menos importantes */
-    --branco: #ffffff; /* Branco puro para contrastes e fundos limpos */
-    --sucesso: #28a745; /* Verde padrão para status de aprovação/sucesso */
+    --verde-institucional: #113f3c;
+    --verde-navbar: #3a817a;
+    --amarelo-primario: #f2a922;
+    --amarelo-hover: #d99316;
+    --fundo-card: #f0f6fa;
+    --borda-card: #d3e2ee;
+    --texto-escuro: #0d2c29;
+    --texto-mutado: #5a6e72; 
+    --branco: #ffffff; 
+    --sucesso: #28a745;
 }
 
-/* Configuração base da página para evitar quebras de scroll lateral */
 body {
     background-color: var(--branco);
     color: var(--texto-escuro);
-    overflow-x: hidden; /* Garante que a página não "balance" para os lados no celular */
-    line-height: 1.5; /* Altura de linha ergonômica para leitura */
+    overflow-x: hidden;
+    line-height: 1.5;
 }
 
-/* ==========================================================================
-   BARRA INSTITUCIONAL SUPERIOR (PREFEITURA DA SERRA)
-   ========================================================================== */
 .topo-governo-institucional {
-    background-color: var(--verde-institucional); /* Fundo verde escuro oficial */
+    background-color: var(--verde-institucional);
     color: var(--branco);
-    padding: 10px 4%; /* Margem interna proporcional */
+    padding: 10px 4%;
     display: flex;
-    justify-content: space-between; /* Separa o logo à esquerda dos links à direita */
+    justify-content: space-between;
     align-items: center;
-    font-size: 13px; /* Texto pequeno institucional */
+    font-size: 13px;
     font-weight: 500;
 }
 
 .logotipo-prefeitura {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre o brasão e o texto */
+    gap: 10px; 
 }
 
 .logotipo-prefeitura img {
-    height: 32px; /* Altura exata calibrada para o brasão institucional */
+    height: 32px;
 }
 
 .logotipo-prefeitura div {
@@ -65,36 +54,33 @@ body {
 
 .nav-institucional-links {
     display: flex;
-    gap: 15px; /* Espaçamento simétrico entre os itens numéricos */
+    gap: 15px;
 }
 
 .nav-institucional-links a {
     color: var(--branco);
-    text-decoration: none; /* Remove sublinhado padrão */
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
 .nav-institucional-links span {
-    background: rgba(255, 255, 255, 0.2); /* Fundo sutil para destacar o número do atalho */
+    background: rgba(255, 255, 255, 0.2);
     padding: 1px 5px;
     border-radius: 3px;
     font-size: 11px;
 }
 
-/* ==========================================================================
-   NAVBAR PRINCIPAL (PROGRAMA ARCA)
-   ========================================================================== */
 .menu-navegacao-principal {
-    background-color: var(--verde-navbar); /* Tom verde água característico do programa */
+    background-color: var(--verde-navbar);
     padding: 15px 4%;
     display: flex;
-    justify-content: space-between; /* Logo à esquerda e links à direita */
+    justify-content: space-between;
     align-items: center;
-    position: sticky; /* Diz para o menu seguir o usuário e travar no topo (0) */
-    top: 0; /* Ponto onde o menu "cola" na tela */
-    z-index: 1000; /* Mantém o menu sempre na camada acima de tudo */
+    position: sticky; 
+    top: 0; 
+    z-index: 1000;
 }
 
 .link-logotipo-projeto {
@@ -106,7 +92,7 @@ body {
 }
 
 .link-logotipo-projeto img {
-    height: 52px; /* Aumentado para dar mais destaque */
+    height: 52px;
 }
 
 .logo-texto {
@@ -129,7 +115,7 @@ body {
 
 .lista-links-menu {
     display: flex;
-    gap: 25px; /* Gaps horizontais idênticos aos espaçamentos do Figma */
+    gap: 25px;
     align-items: center;
     list-style: none;
 }
@@ -139,21 +125,18 @@ body {
     text-decoration: none;
     font-size: 15px;
     font-weight: 600;
-    transition: opacity 0.2s ease; /* Transição leve para interações */
-    border-bottom: 2px solid transparent; /* Evita que o texto se mova ao passar o mouse */
+    transition: opacity 0.2s ease;
+    border-bottom: 2px solid transparent;
     padding-bottom: 4px;
 }
 
 .lista-links-menu a:hover, .lista-links-menu a.active {
     opacity: 0.85;
-    border-bottom: 2px solid var(--branco); /* Linha de indicação ativa */
+    border-bottom: 2px solid var(--branco);
     padding-bottom: 4px;
-    border-bottom-color: var(--branco); /* Apenas altera a cor da borda existente */
+    border-bottom-color: var(--branco);
 }
 
-/* ==========================================================================
-   DROPDOWN MENU (CASTRAÇÃO)
-   ========================================================================== */
 .dropdown {
     position: relative;
 }
@@ -163,21 +146,20 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--fundo-card); /* Azul clarinho */
+    background-color: var(--fundo-card);
     list-style: none;
     padding: 0;
     min-width: 180px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     border-radius: 8px;
     z-index: 1001;
-    overflow: hidden; /* Garante que o fundo não ultrapasse os cantos arredondados */
+    overflow: hidden;
 }
 
 .dropdown:hover .sub-menu-suspenso {
     display: block;
 }
 
-/* Alinha o último dropdown à direita no desktop para evitar que o menu saia da tela */
 @media (min-width: 769px) {
     .lista-links-menu li:last-child.dropdown .sub-menu-suspenso {
         left: auto;
@@ -189,13 +171,13 @@ body {
 }
 
 .sub-menu-suspenso li a.logout-link {
-    color: #ff4b4b !important; /* Cor vermelha para indicar saída/ação crítica */
+    color: #ff4b4b !important;
     font-weight: 700;
 }
 
 .sub-menu-suspenso li {
     width: 100%;
-    border-bottom: 1px solid var(--borda-card); /* Linha separando cada opção */
+    border-bottom: 1px solid var(--borda-card); 
 }
 
 .sub-menu-suspenso li:last-child {
@@ -206,9 +188,9 @@ body {
     padding: 8px 15px !important;
     display: block;
     font-size: 13px;
-    color: var(--texto-escuro) !important; /* Texto escuro para fundo claro */
+    color: var(--texto-escuro) !important;
     font-weight: 500;
-    border-bottom: none !important; /* Garante que não herde a borda do menu principal */
+    border-bottom: none !important; 
 }
 
 .sub-menu-suspenso li a:hover {
@@ -216,7 +198,6 @@ body {
     opacity: 1;
 }
 
-/* Menu Hambúrguer Oculto por padrão no Desktop */
 .menu-hamburger {
     display: none;
     background: none;
@@ -237,16 +218,13 @@ body {
 
 .hero-logo-destaque {
     width: 100%;
-    max-width: 900px; /* Reduzido levemente para um visual mais equilibrado */
+    max-width: 900px; 
     height: auto;
     display: block;
-    border-radius: 15px; /* Bordas arredondadas para um visual mais limpo */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra suave para dar profundidade */
+    border-radius: 15px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
 }
 
-/* ==========================================================================
-   ELEMENTOS DE BOTÕES E UI GLOBAL
-   ========================================================================== */
 .botao-acao-principal {
     background-color: var(--amarelo-primario);
     color: var(--texto-escuro);
@@ -254,15 +232,15 @@ body {
     padding: 12px 28px;
     font-weight: 700;
     font-size: 15px;
-    border-radius: 6px; /* Cantos levemente arredondados fiéis à imagem */
+    border-radius: 6px;
     cursor: pointer;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    width: 100%; /* Ocupa totalidade do container por padrão, responsivo */
-    max-width: 240px; /* Limite padrão para botões soltos */
+    width: 100%; 
+    max-width: 240px; 
 }
 
 .botao-acao-principal:hover {
@@ -309,14 +287,12 @@ body {
     opacity: 0.9;
 }
 
-/* Botão Desativado (Padronização para Fluxos de Seleção) */
 .botao-estado-bloqueado {
     opacity: 0.4 !important;
     pointer-events: none !important;
     cursor: not-allowed !important;
 }
 
-/* Bloqueio visual e funcional de botões em formulários incompletos */
 form:invalid button[type="submit"],
 form:invalid input[type="submit"],
 form:invalid .botao-acao-principal,
@@ -330,7 +306,6 @@ form:invalid .btn-confirmar-agendamento {
     cursor: not-allowed;
 }
 
-/* Botão de Agendamento (Centralizado) */
 .btn-confirmar-agendamento {
     background-color: var(--amarelo-primario);
     color: #000000;
@@ -345,18 +320,12 @@ form:invalid .btn-confirmar-agendamento {
     transition: background-color 0.2s;
 }
 
-/* Container para alinhar o botão voltar à direita */
 .btn-voltar-container {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 20px;
 }
 
-/* ==========================================================================
-   COMPONENTES DE UI TIPO "PAINEL" E FORMULÁRIOS (PADRONIZAÇÃO GLOBAL)
-   ========================================================================== */
-
-/* Título Principal de Páginas Internas */
 .titulo-pagina-principal {
     color: var(--verde-institucional);
     font-size: 1.8rem;
@@ -365,7 +334,6 @@ form:invalid .btn-confirmar-agendamento {
     letter-spacing: -0.5px;
 }
 
-/* Card de Fundo Padrão (Usado em Denúncias, Cadastros e Info) */
 .painel-conteudo-central {
     background-color: var(--fundo-card);
     border: 1px solid var(--borda-card);
@@ -375,7 +343,6 @@ form:invalid .btn-confirmar-agendamento {
     box-sizing: border-box;
 }
 
-/* Blocos de Informação e Avisos de Orientação */
 .caixa-aviso-importante {
     background-color: #fffaf0;
     border: 1px solid #feebc8;
@@ -391,7 +358,6 @@ form:invalid .btn-confirmar-agendamento {
 }
 .caixa-aviso-importante span { color: #dd6b20; font-weight: 700; }
 
-/* Títulos de Seção com Número (Ex: 1 Onde está acontecendo?) */
 .subtitulo-secao-numerada {
     display: flex;
     align-items: center;
@@ -415,7 +381,6 @@ form:invalid .btn-confirmar-agendamento {
     font-weight: 700;
 }
 
-/* Labels e Inputs Padronizados */
 .rotulo-campo-formulario {
     display: block;
     color: #1a202c;
@@ -462,7 +427,6 @@ textarea.campo-texto-estilizado {
     resize: vertical;
 }
 
-/* Utilitários de Grid para Formulários */
 .form-group {
     margin-bottom: 22px;
     text-align: left;
@@ -479,9 +443,6 @@ textarea.campo-texto-estilizado {
     grid-column: 1 / -1;
 }
 
-/* ==========================================================================
-   CLASSES DE ESTRUTURA REUTILIZÁVEIS (PADRONIZAÇÃO)
-   ========================================================================== */
 .container-arca-padrao {
     max-width: 1200px;
     margin: 40px auto 80px auto;
@@ -490,25 +451,22 @@ textarea.campo-texto-estilizado {
     width: 100%;
 }
 
-/* Wrapper para formulários e conteúdos que não devem ser muito largos */
 .wrapper-conteudo-central {
     max-width: 800px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* Container para tabelas não quebrarem layout em telas pequenas */
 .tabela-responsiva-container {
     width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Melhora o scroll no iOS */
+    -webkit-overflow-scrolling: touch;
     margin-top: 20px;
     border-radius: 8px;
     border: 1px solid var(--borda-card);
     background-color: var(--branco);
 }
 
-/* Configuração para tabelas de dados não esmagarem as informações */
 .tabela-gestao {
     width: 100%;
     border-collapse: collapse;
@@ -519,7 +477,6 @@ textarea.campo-texto-estilizado {
     padding: 15px;
 }
 
-/* Computador: Mantém a tabela larga com scroll se necessário */
 @media (min-width: 769px) {
     .tabela-gestao {
         min-width: 950px;
@@ -529,13 +486,12 @@ textarea.campo-texto-estilizado {
     }
 }
 
-/* Celular: Transforma a tabela em CARDS (Empilhamento vertical) */
 @media (max-width: 768px) {
     .tabela-gestao, .tabela-gestao thead, .tabela-gestao tbody, .tabela-gestao th, .tabela-gestao td, .tabela-gestao tr {
-        display: block; /* Desmonta a estrutura de tabela */
+        display: block; 
     }
     .tabela-gestao thead {
-        display: none; /* Esconde o cabeçalho original */
+        display: none;
     }
     .tabela-gestao tr {
         margin-bottom: 15px;
@@ -556,7 +512,6 @@ textarea.campo-texto-estilizado {
         justify-content: flex-end;
     }
 
-    /* Injeta o nome da coluna (data-label) à esquerda */
     .tabela-gestao td::before {
         content: attr(data-label);
         position: absolute;
@@ -571,7 +526,6 @@ textarea.campo-texto-estilizado {
 
     .tabela-gestao td:last-child { border-bottom: none; }
     
-    /* Ajuste para botões de ação no mobile */
     .tabela-gestao td[style*="text-align: right"] {
         justify-content: center;
         padding-left: 15px;
@@ -579,7 +533,7 @@ textarea.campo-texto-estilizado {
         background-color: #f8fafc;
     }
     .tabela-gestao td[style*="text-align: right"]::before {
-        display: none; /* Esconde o label 'Ações' para centralizar os botões */
+        display: none; 
     }
 }
 
@@ -590,9 +544,6 @@ textarea.campo-texto-estilizado {
     margin-bottom: 30px;
 }
 
-/* ==========================================================================
-   COMPONENTES ADMINISTRATIVOS (PREFEITURA)
-   ========================================================================== */
 .painel-filtros-admin {
     background: var(--branco) !important;
     padding: 25px;
@@ -601,7 +552,6 @@ textarea.campo-texto-estilizado {
     margin: 30px 0;
 }
 
-/* Dashboard Stats Cards */
 .cards-resumo {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -626,7 +576,6 @@ textarea.campo-texto-estilizado {
 
 .card-estatistica.alerta .numero { color: #c53030; }
 
-/* Rankings e Listas Administrativas */
 .card-ranking {
     background: var(--branco);
     padding: 25px;
@@ -646,7 +595,6 @@ textarea.campo-texto-estilizado {
 .ranking-posicao { font-weight: 800; color: var(--amarelo-primario); margin-right: 10px; }
 .ranking-valor { font-weight: 700; color: var(--texto-mutado); }
 
-/* Estilos de Sucesso Unificados */
 .passos-container {
     background-color: #f0f7fd;
     border: 1px solid #d0e4f7;
@@ -676,7 +624,6 @@ textarea.campo-texto-estilizado {
     display: flex; gap: 15px; flex-wrap: wrap; align-items: flex-end;
 }
 
-/* Botões de Ação na Tabela */
 .btn-mini {
     padding: 6px 12px;
     font-size: 11px;
@@ -689,7 +636,6 @@ textarea.campo-texto-estilizado {
 }
 .btn-mini:hover { opacity: 0.8; }
 
-/* Modal de Ficha Detalhada (Adoção, Castração, Denúncia, Resgate) */
 .modal-ficha {
     position: fixed;
     top: 0; left: 0;
@@ -732,9 +678,6 @@ textarea.campo-texto-estilizado {
 .campo-ficha p { font-size: 0.95rem; color: var(--texto-escuro); font-weight: 500; margin-top: 2px; }
 .btn-fechar-ficha { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--texto-mutado); }
 
-/* ==========================================================================
-   LAYOUT DE PÁGINAS DE SUCESSO / FINALIZAÇÃO
-   ========================================================================== */
 .sucesso-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -747,15 +690,12 @@ textarea.campo-texto-estilizado {
 .protocolo-destaque { color: #e2871e; font-size: 1rem; font-weight: 700; margin-bottom: 40px; }
 .grid-botoes-superiores { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%; max-width: 680px; margin-bottom: 16px; }
 
-/* Garante que os placeholders injetados via JS não quebrem o position: sticky do menu */
 #navbar-placeholder, 
 #footer-placeholder {
     display: contents;
 }
 
-/* ==========================================================================
-   MODAL DE ACESSO OBRIGATÓRIO (LOGIN/CADASTRO)
-   ========================================================================== */
+
 .camada-fundo-modal {
     position: fixed;
     top: 0;
@@ -763,7 +703,7 @@ textarea.campo-texto-estilizado {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    display: none; /* Escondido por padrão */
+    display: none; 
     align-items: center;
     justify-content: center;
     z-index: 3000;
@@ -804,19 +744,17 @@ textarea.campo-texto-estilizado {
     text-align: center;
 }
 
-/* ==========================================================================
-   VITRINE DE CARDS DE ANIMAIS (REUTILIZÁVEL)
-   ========================================================================== */
+
 .grade-vitrine-animais {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Divide o espaço em 3 colunas iguais no desktop */
-    gap: 30px; /* Distanciamento idêntico observado nas telas completas */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
     margin-top: 25px;
 }
 
 .cartao-perfil-pet {
     background-color: var(--fundo-card);
-    border-radius: 20px; /* Bordas arredondadas pronunciadas conforme o mockup */
+    border-radius: 20px; 
     display: flex;
     flex-direction: column;
     box-shadow: 1px 1px 5px rgba(17, 63, 60, 0.15);
@@ -825,19 +763,19 @@ textarea.campo-texto-estilizado {
 .card-imagem-wrapper {
     width: 100%;
     position: relative;
-    border-radius: 20px 20px 0 0; /* Acompanha perfeitamente o topo do card */
-    overflow: hidden; /* Trunca cantos da imagem interna */
-    aspect-ratio: 3 / 4; /* Garante que a foto do animal seja sempre um retângulo vertical */
+    border-radius: 20px 20px 0 0; 
+    overflow: hidden; 
+    aspect-ratio: 3 / 4;
 }
 
 .card-imagem-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Adapta a imagem sem distorcer as proporções do animal */
+    object-fit: cover;
 }
 
 .card-info {
-    padding: 20px; /* Espaçamento interno apenas para os textos e botões */
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -876,7 +814,7 @@ textarea.campo-texto-estilizado {
 }
 
 .card-botoes-row .botao-acao-principal {
-    flex: 1; /* Faz o botão de adotar ocupar o espaço restante */
+    flex: 1;
 }
 
 .btn-favorito {
@@ -899,39 +837,37 @@ textarea.campo-texto-estilizado {
 }
 
 .btn-favorito.favoritado {
-    color: #ff4b4b; /* Cor vermelha para o coração */
+    color: #ff4b4b;
 }
 
 .btn-favorito-grande {
-    width: 54px; /* Altura calculada para alinhar com o btn-central-adocao */
+    width: 54px;
     height: 54px;
     font-size: 22px;
 }
 
 .card-acoes .botao-acao-principal, .card-acoes .botao-acao-secundaria {
-    max-width: 100%; /* Botões preenchem a largura total interna do card */
+    max-width: 100%;
     padding: 8px 15px;
     font-size: 13px;
     border-radius: 6px;
 }
 
-/* ==========================================================================
-   RODAPÉ INSTITUCIONAL PARCEIRO E GOVERNAMENTAL
-   ========================================================================== */
+
 .rodape-institucional-site {
-    background-color: var(--verde-institucional); /* Cor escura corporativa */
+    background-color: var(--verde-institucional);
     color: var(--branco);
     padding: 40px 4% 30px 4%;
     font-size: 12px;
     line-height: 1.6;
-    margin-top: 60px; /* Garante separação saudável do término do fluxo de dados */
+    margin-top: 60px;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Divisão exata em 3 blocos de informação */
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 25px;
@@ -954,14 +890,10 @@ textarea.campo-texto-estilizado {
     text-decoration: underline;
 }
 
-/* ==========================================================================
-   SISTEMA DE MEDIA QUERIES (RESPONSIVIDADE COMPLETA)
-   ========================================================================== */
 
-/* Notebooks e Desktops menores (Abaixo de 1024px) */
 @media (max-width: 1024px) {
     .grade-vitrine-animais {
-        grid-template-columns: repeat(2, 1fr); /* Transiciona para duas colunas para preservar legibilidade */
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
     .footer-container {
@@ -969,21 +901,20 @@ textarea.campo-texto-estilizado {
     }
 }
 
-/* Tablets (Abaixo de 768px) */
 @media (max-width: 768px) {
     .topo-governo-institucional {
-        flex-direction: column; /* Alinha marcas verticalmente no ambiente mobile */
+        flex-direction: column;
         gap: 10px;
         text-align: center;
     }
     .nav-institucional-links {
-        display: none; /* Oculta atalhos avançados para limpar visual mobile */
+        display: none;
     }
     .menu-hamburger {
-        display: flex; /* Exibe gatilho do menu colapsável */
+        display: flex;
     }
     .lista-links-menu {
-        display: none; /* Esconde lista padrão horizontal */
+        display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
@@ -995,7 +926,7 @@ textarea.campo-texto-estilizado {
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     .lista-links-menu.active {
-        display: flex; /* Acionado dinamicamente via JS */
+        display: flex; 
     }
     .lista-links-menu li {
         width: 100%;
@@ -1004,33 +935,33 @@ textarea.campo-texto-estilizado {
     .sub-menu-suspenso {
         position: static;
         display: none;
-        background-color: rgba(0, 0, 0, 0.2); /* Fundo um pouco mais profundo */
+        background-color: rgba(0, 0, 0, 0.2);
         box-shadow: none;
         padding: 2px 0;
-        width: 60%; /* Ainda mais estreito para um visual minimalista */
-        margin: 2px auto 8px auto; /* Aproxima do item pai e afasta do item de baixo */
+        width: 60%;
+        margin: 2px auto 8px auto;
         text-align: center;
         border-radius: 8px;
     }
     .sub-menu-suspenso li a {
         color: var(--branco) !important;
-        font-size: 14px; /* Diminui levemente para criar hierarquia */
-        padding: 4px 10px !important; /* Diminui a altura de cada link interno */
+        font-size: 14px;
+        padding: 4px 10px !important;
     }
     .dropdown.active .sub-menu-suspenso {
         display: block;
     }
     .grade-vitrine-animais {
-        grid-template-columns: 1fr; /* Coluna única centralizada */
-        max-width: 300px; /* Card e imagem do gato menores */
+        grid-template-columns: 1fr;
+        max-width: 300px;
         margin-left: auto;
         margin-right: auto;
     }
     .card-imagem-wrapper {
-        aspect-ratio: 1 / 1; /* Torna a imagem quadrada no mobile, reduzindo a altura */
+        aspect-ratio: 1 / 1;
     }
     .card-imagem-wrapper img {
-        object-position: center top; /* Prioriza a parte superior da foto (onde fica o rosto) */
+        object-position: center top;
     }
     .card-nome {
         font-size: 15px;
@@ -1043,7 +974,7 @@ textarea.campo-texto-estilizado {
         padding: 10px;
     }
     .rodape-institucional-site {
-        font-size: 11px; /* Texto do rodapé reduzido */
+        font-size: 11px; 
     }
     .footer-container {
         grid-template-columns: 1fr;
@@ -1051,9 +982,8 @@ textarea.campo-texto-estilizado {
     }
 }
 
-/* Mobile Dispositivos Pequenos (Abaixo de 480px) */
 @media (max-width: 480px) {
     .botao-acao-principal, .botao-acao-secundaria {
-        max-width: 100%; /* Força botões a ocuparem largura inteira para clique facilitado via touch */
+        max-width: 100%;
     }
 }
