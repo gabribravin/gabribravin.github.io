@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../../style.css">
 
     <style>
-        /* Container Principal do Conteúdo */
         .selecionar-animal-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -16,9 +15,8 @@
             box-sizing: border-box;
         }
 
-        /* Título Principal exatamente como na foto */
         .titulo-selecao {
-            color: #0d3c35; /* Tom verde escuro institucional */
+            color: #0d3c35;
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 40px;
@@ -26,17 +24,15 @@
             letter-spacing: -0.5px;
         }
 
-        /* Grid de Distribuição Lateral das 3 Caixas */
         .animais-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
-        /* Estrutura Base Comum dos Cards dos Animais */
         .card-animal {
-            background-color: #f0f7fd; /* Fundo azul claro suave idêntico */
-            border: 1px solid #d0e1fd; /* Borda sutil cinza-azulada */
+            background-color: #f0f7fd;
+            border: 1px solid #d0e1fd;
             border-radius: 12px;
             padding: 30px;
             min-height: 180px;
@@ -54,18 +50,16 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
         }
 
-        /* Cabeçalho Interno do Card (Ícone + Nome) */
         .card-header {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #0b515b; /* Verde/Azul do nome do animal */
+            color: #0b515b;
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 18px;
         }
 
-        /* Ícone de patinhas simulado em formato vetorial css */
         .icone-patas {
             display: inline-block;
             position: relative;
@@ -83,7 +77,6 @@
         .icone-patas::before { width: 6px; height: 6px; top: -6px; left: -2px; }
         .icone-patas::after { width: 6px; height: 6px; top: -6px; right: -2px; }
 
-        /* Lista de Informações Internas */
         .info-lista {
             display: flex;
             flex-direction: column;
@@ -96,7 +89,6 @@
             font-weight: 500;
         }
 
-        /* Card 3: Caixa de Inclusão com o Botão de Mais (+) */
         .card-adicionar {
             background-color: #f0f7fd;
             border: 1px solid #d0e1fd;
@@ -116,9 +108,8 @@
             transform: translateY(-2px);
         }
 
-        /* Borda Tracejada Interna */
         .borda-tracejada {
-            border: 2px dashed #4b8a81; /* Verde fosco do tracejado */
+            border: 2px dashed #4b8a81; 
             border-radius: 8px;
             width: 100%;
             height: 100%;
@@ -127,7 +118,6 @@
             justify-content: center;
         }
 
-        /* Desenho exato do Sinal de Mais (+) */
         .sinal-mais {
             position: relative;
             width: 32px;
@@ -137,11 +127,10 @@
         .sinal-mais::before, .sinal-mais::after {
             content: '';
             position: absolute;
-            background-color: #4b8a81; /* Cor do sinal de mais */
+            background-color: #4b8a81; 
             border-radius: 2px;
         }
 
-        /* Linha horizontal do sinal */
         .sinal-mais::before {
             top: 14px;
             left: 0;
@@ -149,7 +138,6 @@
             height: 4px;
         }
 
-        /* Linha vertical do sinal */
         .sinal-mais::after {
             top: 0;
             left: 14px;
@@ -157,7 +145,6 @@
             height: 32px;
         }
 
-        /* Ajustes de Responsividade para Telas Menores */
         @media (max-width: 850px) {
             .animais-grid {
                 grid-template-columns: 1fr;
@@ -171,7 +158,6 @@
 </head>
 <body>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
     <main class="selecionar-animal-container">
@@ -217,24 +203,19 @@
 
     </main>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
     <script>
-        // Captura o clique nos cards dos animais cadastrados
         document.querySelectorAll('.card-animal').forEach(card => {
             card.addEventListener('click', () => {
                 const nomeAnimal = card.getAttribute('data-animal');
                 console.log(`Animal selecionado: ${nomeAnimal}`);
-                // Transiciona para a próxima etapa do formulário passando o animal escolhido
                 window.location.href = `agendar-cast.html?animal=${nomeAnimal}`;
             });
         });
 
-        // Captura o clique na caixa de adicionar novo animal
         document.getElementById('btn-adicionar-animal').addEventListener('click', () => {
-            // Redireciona para o cadastro de perfil/animal
             window.location.href = "../Perfil/cadastro.html";
         });
     </script>
