@@ -34,7 +34,7 @@
             font-weight: 700;
             margin-bottom: 5px;
             text-transform: uppercase;
-            opacity: 0.7; /* Mantendo a transparência solicitada */
+            opacity: 0.7;
         }
         .grid-filtros-selects {
             display: grid;
@@ -63,10 +63,10 @@
             border-radius: 4px;
             border: none;
             font-size: 12px;
-            color: rgba(0, 0, 0, 0.5); /* Texto meio transparente */
+            color: rgba(0, 0, 0, 0.5);
         }
         .btn-toggle-filtros {
-            display: none; /* Escondido no desktop */
+            display: none;
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: var(--branco);
@@ -110,7 +110,7 @@
         }
         @media (max-width: 768px) {
             .btn-toggle-filtros {
-                display: flex; /* Mostra o botão no mobile */
+                display: flex;
             }
             .filtros-expansivel {
                 max-height: 0;
@@ -118,7 +118,7 @@
                 pointer-events: none;
             }
             .barra-filtros-container.active .filtros-expansivel {
-                max-height: 1000px; /* Expande ao clicar */
+                max-height: 1000px;
                 opacity: 1;
                 pointer-events: auto;
                 padding-top: 20px;
@@ -145,7 +145,6 @@
 </head>
 <body>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
     <main class="container-arca-padrao">
@@ -224,7 +223,6 @@
 
         <div class="grade-vitrine-animais">
             <script>
-                // Loop Inteligente: carimba o código do card 9 vezes para não escrever na mão
                 for (let i = 0; i < 9; i++) {
                     document.write(`
                     <article class="cartao-perfil-pet">
@@ -264,7 +262,6 @@
         </div>
     </main>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
