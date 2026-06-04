@@ -255,7 +255,6 @@
         </div>
     </main>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
@@ -273,9 +272,7 @@
             const tagsDoGrupo = grupo.querySelectorAll('.opcao-selecao-tag');
             tagsDoGrupo.forEach(tag => {
                 tag.addEventListener('click', () => {
-                    // Remove a marcação 'ativa' apenas das outras tags do mesmo grupo
                     tagsDoGrupo.forEach(t => t.classList.remove('ativa'));
-                    // Marca a tag clicada
                     tag.classList.add('ativa');
                     validarForm();
                 });
