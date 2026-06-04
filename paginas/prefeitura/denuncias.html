@@ -36,7 +36,6 @@
             text-transform: uppercase;
         }
 
-        /* Estilos de Filtro e Modal (Sincronizados com Adoções/Castrações) */
         .painel-filtros-admin {
             background: white;
             padding: 25px;
@@ -84,7 +83,6 @@
 
         <h1 class="titulo-pagina-principal">Monitoramento de Denúncias</h1>
 
-        <!-- FILTRO DE BUSCA -->
         <section class="painel-filtros-admin">
             <div class="grade-filtros">
                 <div class="campo-ficha" style="flex: 1; min-width: 200px;">
@@ -121,7 +119,6 @@
                 </tr>
             </thead>
             <tbody id="corpo-tabela">
-                <!-- DENÚNCIAS JÁ PROCESSADAS -->
                 <tr>
                     <td data-label="Data">10/05/2024</td>
                     <td data-label="Tipo">Abandono / Ferimento</td>
@@ -143,7 +140,6 @@
                     <td data-label="Status"><strong style="color: #e53e3e;">ARQUIVADA</strong></td>
                     <td style="text-align: right;"><button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button></td>
                 </tr>
-                <!-- DENÚNCIA EM ANÁLISE (EXEMPLO) -->
                 <tr>
                     <td data-label="Data">Data Exemplo</td>
                     <td data-label="Tipo">Ferimento Visível</td>
@@ -160,7 +156,6 @@
         </div>
     </main>
 
-    <!-- MODAL DE DETALHES DA DENÚNCIA -->
     <div class="modal-ficha" id="modalFicha">
         <div class="conteudo-modal-ficha">
             <button class="btn-fechar-ficha" id="fecharFicha">&times;</button>
