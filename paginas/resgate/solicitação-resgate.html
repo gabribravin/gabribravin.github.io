@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../../style.css">
     
     <style>
-        /* Container de Alinhamento do Painel */
         .painel-resgate-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -17,7 +16,7 @@
         }
 
         .titulo-pagina-principal {
-            margin-bottom: 8px; /* Reduz o espaço para aproximar do subtítulo */
+            margin-bottom: 8px; 
         }
 
         .subtitulo-resgate {
@@ -27,7 +26,6 @@
             margin: 0 0 35px 0;
         }
 
-        /* Pergunta Diretriz */
         .pergunta-diretriz {
             color: var(--verde-navbar);
             font-size: 1.05rem;
@@ -35,10 +33,9 @@
             margin: 0 0 25px 0;
         }
 
-        /* Bloco de Opção 1: Urgência Médica (Borda Vermelha) */
         .box-opcao-urgencia {
             background-color: #ffffff;
-            border: 1.5px solid #c53030; /* Borda vermelha marcante */
+            border: 1.5px solid #c53030; 
             border-radius: 10px;
             padding: 24px;
             margin-bottom: 20px;
@@ -48,7 +45,6 @@
             box-sizing: border-box;
         }
 
-        /* Bloco de Opção 2: Resgate Programado (Borda Azul Esverdeado) */
         .box-opcao-programado {
             background-color: #ffffff;
             border: 1.5px solid var(--verde-navbar);
@@ -60,7 +56,6 @@
             box-sizing: border-box;
         }
 
-        /* Círculos Indicadores Coloridos */
         .circulo-status {
             width: 32px;
             height: 32px;
@@ -77,7 +72,6 @@
             background-color: var(--verde-institucional);
         }
 
-        /* Conteúdo Interno dos Blocos */
         .conteudo-bloco {
             display: flex;
             flex-direction: column;
@@ -106,7 +100,6 @@
             font-weight: 500;
         }
 
-        /* Botão Vermelho de Plantão */
         .btn-plantao-urgencia {
             background-color: #c53030;
             color: #ffffff;
@@ -124,7 +117,6 @@
             background-color: #9b1c1c;
         }
 
-        /* Botão Verde Escuro de Formulário */
         .btn-formulario-programado {
             background-color: var(--verde-institucional);
             color: var(--branco);
@@ -142,7 +134,7 @@
             background-color: #12332e;
         }
 
-        /* Responsividade */
+        
         @media (max-width: 650px) {
             .box-opcao-urgencia, .box-opcao-programado {
                 flex-direction: column;
@@ -165,7 +157,6 @@
 </head>
 <body>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
     <main class="painel-resgate-container">
@@ -174,11 +165,9 @@
             <a href="../../index.html" class="botao-voltar-estilizado">Voltar</a>
         </div>
 
-        <!-- CABEÇALHO DA PÁGINA -->
         <h1 class="titulo-pagina-principal">Solicitação de Resgate Animal</h1>
         <p class="subtitulo-resgate">Se o animal corre risco de vida imediato, use o canal de emergência.</p>
 
-        <!-- CARD PRINCIPAL INTEGRADO -->
         <div class="painel-conteudo-central">
             
             <h2 class="pergunta-diretriz">Qual é a situação atual do animal?</h2>
@@ -195,7 +184,6 @@
                 </div>
             </div>
 
-            <!-- OPÇÃO 2: RESGATE PROGRAMADO -->
             <div class="box-opcao-programado">
                 <div class="circulo-status circulo-verde-escuro"></div>
                 <div class="conteudo-bloco">
@@ -211,12 +199,10 @@
 
     </main>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
 
-    <!-- INTERAÇÕES JAVASCRIPT -->
     <script>
         document.getElementById('btn-ligar-plantao').addEventListener('click', () => {
             window.location.href = "tel:27992001122";
