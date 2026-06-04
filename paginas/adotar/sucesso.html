@@ -6,7 +6,6 @@
     <title>Pedido Enviado com Sucesso - Programa ARCA</title>
     <link rel="stylesheet" href="../../style.css">
 
-    <!-- CSS ESPECÍFICO APENAS DESTA PÁGINA DE SUCESSO -->
     <style>
         .sucesso-main {
             max-width: 1200px;
@@ -15,14 +14,12 @@
             position: relative;
         }
 
-        /* Botão Voltar posicionado no topo direito */
         .btn-voltar-container {
             display: flex;
             justify-content: flex-end;
             margin-bottom: 20px;
         }
 
-        /* Títulos e Mensagens */
         .sucesso-titulo {
             color: #0d3c35;
             font-size: 1.6rem;
@@ -41,7 +38,7 @@
         }
 
         .btn-painel {
-            background-color: #f7a823; /* Amarelo/Laranja idêntico ao da tela aaa_2.png */
+            background-color: #f7a823;
             color: #000000;
             padding: 14px 50px;
             border-radius: 8px;
@@ -57,7 +54,6 @@
             background-color: #e09419;
         }
 
-        /* Ajuste Mobile para sumir elementos ou reorganizar se virar celular */
         @media (max-width: 768px) {
             .sucesso-main {
                 margin: 20px auto;
@@ -88,39 +84,31 @@
 </head>
 <body>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
-    <!-- CONTEÚDO PRINCIPAL DA TELA DE SUCESSO -->
     <main class="container-arca-padrao">
         
-        <!-- Botão Voltar -->
         <div class="btn-voltar-container">
             <a href="adocao.html" class="botao-voltar-estilizado">Voltar</a>
         </div>
 
-        <!-- Mensagem de Sucesso -->
         <h1 class="sucesso-titulo">
             🎉 Pedido enviado com sucesso! Obrigado por abrir seu coração.
         </h1>
         <p class="sucesso-subtitulo">Acompanhe as próximas etapas do processo do André:</p>
 
-        <!-- Caixa Azul de Etapas -->
         <div class="passos-container">
             
-            <!-- Passo 1 -->
             <div class="passo-item">
                 <h3 class="passo-titulo">PASSO 1: Análise de Perfil</h3>
                 <p class="passo-descricao">Nossa equipe vai revisar suas respostas em até 48h úteis.</p>
             </div>
 
-            <!-- Passo 2 -->
             <div class="passo-item">
                 <h3 class="passo-titulo">PASSO 2: Entrevista no WhatsApp</h3>
                 <p class="passo-descricao">Um responsável do abrigo vai te chamar para um papo rápido.</p>
             </div>
 
-            <!-- Passo 3 -->
             <div class="passo-item">
                 <h3 class="passo-titulo">PASSO 3: Conhecer o Pet</h3>
                 <p class="passo-descricao">Se tudo der certo, você agenda a visita para buscar o André!</p>
@@ -128,14 +116,12 @@
 
         </div>
 
-        <!-- Botão Amarelo de Acompanhamento -->
         <div class="painel-action-container">
             <a href="../Perfil/solicitacoes.html" class="btn-painel">Acompanhar no meu painel</a>
         </div>
 
     </main>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
