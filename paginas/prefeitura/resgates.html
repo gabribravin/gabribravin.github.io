@@ -6,7 +6,6 @@
     <title>Gestão de Resgates - Prefeitura</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
-        /* Estilos específicos que não se repetem em outras páginas */
         .area-evidencias-simulada {
             display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
         }
@@ -26,7 +25,6 @@
 
         <h1 class="titulo-pagina-principal">Monitoramento de Resgates</h1>
 
-        <!-- FILTRO DE BUSCA -->
         <section class="painel-filtros-admin">
             <div class="grade-filtros">
                 <div class="campo-ficha" style="flex: 1; min-width: 200px;">
@@ -64,7 +62,6 @@
                 </tr>
             </thead>
             <tbody id="corpo-tabela">
-                <!-- RESGATES JÁ PROCESSADOS -->
                 <tr>
                     <td data-label="Data">10/05/2024</td>
                     <td data-label="Espécie">Cachorro</td>
@@ -89,7 +86,6 @@
                     <td data-label="Status"><strong style="color: #e53e3e;">ARQUIVADA</strong></td>
                     <td style="text-align: right;"><button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button></td>
                 </tr>
-                <!-- RESGATE EM ANÁLISE (EXEMPLO) -->
                 <tr>
                     <td data-label="Data">Data Exemplo</td>
                     <td data-label="Espécie">Ninhada (Gatos)</td>
@@ -107,7 +103,6 @@
         </div>
     </main>
 
-    <!-- MODAL DE DETALHES DO RESGATE -->
     <div class="modal-ficha" id="modalFicha">
         <div class="conteudo-modal-ficha">
             <button class="btn-fechar-ficha" id="fecharFicha">&times;</button>
