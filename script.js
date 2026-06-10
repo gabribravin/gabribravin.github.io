@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function getPaths() {
-    const p = window.location.pathname;
+    const p = window.location.pathname.toLowerCase();
     const inPag = p.includes('/paginas/');
-    const deep = inPag && p.split('/paginas/')[1].includes('/');
+    const deep = inPag && p.split('/paginas/')[1].split('.html')[0].includes('/');
     return {
         root: deep ? '../../' : (inPag ? '../' : './'),
         pag: deep ? '../' : (inPag ? './' : './paginas/')

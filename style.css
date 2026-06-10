@@ -686,7 +686,7 @@ textarea.campo-texto-estilizado {
     display: contents;
 }
 
- .camada-fundo-modal {
+.camada-fundo-modal {
      position: fixed;
      top: 0;
     left: 0;
@@ -732,6 +732,15 @@ textarea.campo-texto-estilizado {
     color: #000000;
     margin-bottom: 30px;
     text-align: center;
+}
+
+.ver-mais-container {
+    margin-top: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .grade-vitrine-animais {
