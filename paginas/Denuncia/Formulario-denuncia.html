@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../style.css">
     
     <style>
+        /* Container do Painel Centralizado */
         .container-pagina-denuncia {
             max-width: 1100px;
             margin: 0 auto;
@@ -15,6 +16,7 @@
             box-sizing: border-box;
         }
 
+        /* Indicador de Etapas Superior (Steppers) */
         .indicador-fluxo-progresso {
             display: flex;
             justify-content: center;
@@ -68,6 +70,7 @@
             margin-top: 13px;
         }
 
+        /* Botão Secundário Branco com Borda Verde (Estilo botão GPS) */
         .botao-atalho-localizacao {
             background-color: var(--branco);
             border: 1px solid var(--borda-card);
@@ -87,6 +90,7 @@
             color: #e53e3e;
         }
 
+        /* Subtítulos de Inputs */
         .label-input {
             display: block;
             color: #1a202c;
@@ -97,6 +101,7 @@
             letter-spacing: 0.3px;
         }
 
+        /* Container de Seleção Dropdown Customizado */
         .container-selecao-customizada {
             position: relative;
             max-width: 280px;
@@ -130,6 +135,7 @@
             pointer-events: none;
         }
 
+        /* Grid de Seleção por Tags Arredondadas (Idêntico ao Tipo de Ocorrência) */
         .grade-opcoes-selecao {
             display: flex;
             gap: 12px;
@@ -152,6 +158,7 @@
             transition: background-color 0.15s, border-color 0.15s;
         }
 
+        /* Estado ativo selecionado das tags */
         .opcao-selecao-tag.ativa {
             background-color: #fff9eb;
             border-color: var(--amarelo-primario);
@@ -159,6 +166,7 @@
             font-weight: 600;
         }
 
+        /* Área do upload de mídia tracejado (Idêntico ao Evidências Visuais) */
         .area-upload-arquivos {
             border: 2px dashed #cbd5e1;
             border-radius: 8px;
@@ -183,6 +191,7 @@
             margin: 0;
         }
 
+        /* Rodapé de Ações Inferiores (Voltar e Enviar) */
         .rodape-botoes-arca {
             display: flex;
             justify-content: flex-end;
@@ -208,6 +217,7 @@
             background-color: var(--amarelo-hover);
         }
 
+        /* Ajustes de Responsividade */
         @media (max-width: 700px) {
             .painel-conteudo-central { padding: 25px 20px; }
             .campo-texto-estilizado, .container-selecao-customizada, .botao-finalizar-denuncia { max-width: 100%; width: 100%; }
@@ -219,6 +229,7 @@
 </head>
 <body>
 
+    <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
     <main class="container-pagina-denuncia">
@@ -323,14 +334,17 @@
 
     </main>
 
+    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
 
     <script>
+        // Permite marcar e desmarcar múltiplas tags simulando o comportamento original
         const tags = document.querySelectorAll('.opcao-selecao-tag');
         const btnEnviar = document.getElementById('btn-enviar-denuncia');
 
+        // Função para validar se pelo menos uma tag foi selecionada
         function validarSelecao() {
             const temTagAtiva = document.querySelector('.opcao-selecao-tag.ativa');
             if (temTagAtiva) {

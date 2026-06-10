@@ -28,7 +28,7 @@
         }
 
         .protocolo-destaque {
-            color: #e2871e; 
+            color: #e2871e; /* Tom exato do laranja do protocolo */
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 40px;
@@ -43,6 +43,7 @@
             margin-bottom: 16px;
         }
 
+        /* Responsividade */
         @media (max-width: 680px) {
             .grid-botoes-superiores {
                 grid-template-columns: 1fr;
@@ -57,36 +58,43 @@
 
     <main class="sucesso-container">
 
+        <!-- CARD RETANGULAR CENTRAL -->
         <div class="painel-conteudo-central" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
             
+            <!-- ÍCONE VETORIAL DAS PATINHAS -->
             <div class="icone-patinhas-sucesso">🐾</div>
 
+            <!-- TEXTOS IDÊNTICOS -->
             <h1 class="titulo-pagina-principal">Denúncia Enviada com Sucesso!</h1>
             <p class="texto-sucesso">Sua denúncia foi registrada. Nossa equipe irá analisar e dar andamento o mais breve possível.</p>
             <div class="protocolo-destaque">Protocolo: #DEN-2026-00847</div>
 
+            <!-- BOTÕES SUPERIORES LADO A LADO -->
             <div class="grid-botoes-superiores">
                 <button type="button" class="botao-acao-secundaria" id="btn-outra-denuncia" style="max-width: 100%;">Fazer outra denúncia</button>
                 <button type="button" class="botao-acao-secundaria" id="btn-acompanhar-painel" style="max-width: 100%;">Acompanhar no meu painel</button>
             </div>
 
+            <!-- BOTÃO INFERIOR CENTRALIZADO -->
             <button type="button" class="botao-acao-principal" id="btn-voltar-inicio" style="max-width: 300px;">Voltar ao início</button>
 
         </div>
 
     </main>
 
+    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
     <script>
+        // Lógica para esconder o botão de painel caso a denúncia seja anônima
         const tipoDenuncia = sessionStorage.getItem('tipoDenuncia');
         const btnAcompanhar = document.getElementById('btn-acompanhar-painel');
         const gridBotoes = document.querySelector('.grid-botoes-superiores');
 
         if (tipoDenuncia === 'anonima') {
             btnAcompanhar.style.display = 'none';
-            gridBotoes.style.gridTemplateColumns = '1fr'; 
+            gridBotoes.style.gridTemplateColumns = '1fr';
         }
 
         document.getElementById('btn-outra-denuncia').addEventListener('click', () => {

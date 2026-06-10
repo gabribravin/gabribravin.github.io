@@ -166,6 +166,7 @@
     <script src="../../script.js"></script>
     <script>
         let linhaSelecionada = null;
+        const modal = document.getElementById('modalFicha');
 
         document.addEventListener('click', (e) => {
             const target = e.target;
@@ -181,7 +182,7 @@
             if (target.classList.contains('btn-concluir')) {
                 row.cells[4].innerHTML = '<strong style="color: var(--sucesso);">CONCLUÍDO</strong>';
                 row.cells[5].innerHTML = '<button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>';
-            }
+            }            
             
             if (target.classList.contains('btn-faltou')) {
                 row.cells[4].innerHTML = '<strong style="color: #e53e3e;">FALTOU</strong>';

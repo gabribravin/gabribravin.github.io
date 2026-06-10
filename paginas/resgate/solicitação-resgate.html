@@ -16,7 +16,7 @@
         }
 
         .titulo-pagina-principal {
-            margin-bottom: 8px; 
+            margin-bottom: 8px; /* Reduz o espaço para aproximar do subtítulo */
         }
 
         .subtitulo-resgate {
@@ -35,7 +35,7 @@
 
         .box-opcao-urgencia {
             background-color: #ffffff;
-            border: 1.5px solid #c53030; 
+            border: 1.5px solid #c53030; /* Borda vermelha marcante */
             border-radius: 10px;
             padding: 24px;
             margin-bottom: 20px;
@@ -56,6 +56,7 @@
             box-sizing: border-box;
         }
 
+        /* Círculos Indicadores Coloridos */
         .circulo-status {
             width: 32px;
             height: 32px;
@@ -72,6 +73,7 @@
             background-color: var(--verde-institucional);
         }
 
+        /* Conteúdo Interno dos Blocos */
         .conteudo-bloco {
             display: flex;
             flex-direction: column;
@@ -100,6 +102,7 @@
             font-weight: 500;
         }
 
+        /* Botão Vermelho de Plantão */
         .btn-plantao-urgencia {
             background-color: #c53030;
             color: #ffffff;
@@ -117,6 +120,7 @@
             background-color: #9b1c1c;
         }
 
+        /* Botão Verde Escuro de Formulário */
         .btn-formulario-programado {
             background-color: var(--verde-institucional);
             color: var(--branco);
@@ -134,7 +138,7 @@
             background-color: #12332e;
         }
 
-        
+        /* Responsividade */
         @media (max-width: 650px) {
             .box-opcao-urgencia, .box-opcao-programado {
                 flex-direction: column;
@@ -172,7 +176,6 @@
             
             <h2 class="pergunta-diretriz">Qual é a situação atual do animal?</h2>
 
-            <!-- OPÇÃO 1: URGÊNCIA MÉDICA -->
             <div class="box-opcao-urgencia">
                 <div class="circulo-status circulo-vermelho"></div>
                 <div class="conteudo-bloco">

@@ -1,20 +1,20 @@
- {
-    margin: 0; 
+* {
+    margin: 0;
     padding: 0;
-    box-sizing: border-box; 
-    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
 :root {
     --verde-institucional: #113f3c;
-    --verde-navbar: #3a817a;
-    --amarelo-primario: #f2a922;
-    --amarelo-hover: #d99316;
+    --verde-navbar: #3a817a; 
+    --amarelo-primario: #f2a922; 
+    --amarelo-hover: #d99316; 
     --fundo-card: #f0f6fa;
     --borda-card: #d3e2ee;
     --texto-escuro: #0d2c29;
-    --texto-mutado: #5a6e72; 
-    --branco: #ffffff; 
-    --sucesso: #28a745;
+    --texto-mutado: #5a6e72;
+    --branco: #ffffff;
+    --sucesso: #28a745; 
 }
 
 body {
@@ -29,9 +29,9 @@ body {
     color: var(--branco);
     padding: 10px 4%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
-    font-size: 13px;
+    font-size: 13px; 
     font-weight: 500;
 }
 
@@ -42,7 +42,7 @@ body {
 }
 
 .logotipo-prefeitura img {
-    height: 32px;
+    height: 32px; 
 }
 
 .logotipo-prefeitura div {
@@ -59,7 +59,7 @@ body {
 
 .nav-institucional-links a {
     color: var(--branco);
-    text-decoration: none;
+    text-decoration: none; 
     display: flex;
     align-items: center;
     gap: 4px;
@@ -71,16 +71,15 @@ body {
     border-radius: 3px;
     font-size: 11px;
 }
-
 .menu-navegacao-principal {
-    background-color: var(--verde-navbar);
+    background-color: var(--verde-navbar); 
     padding: 15px 4%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     position: sticky; 
-    top: 0; 
-    z-index: 1000;
+    top: 0;
+    z-index: 1000; 
 }
 
 .link-logotipo-projeto {
@@ -92,7 +91,7 @@ body {
 }
 
 .link-logotipo-projeto img {
-    height: 52px;
+    height: 52px; 
 }
 
 .logo-texto {
@@ -115,7 +114,7 @@ body {
 
 .lista-links-menu {
     display: flex;
-    gap: 25px;
+    gap: 25px; 
     align-items: center;
     list-style: none;
 }
@@ -132,9 +131,6 @@ body {
 
 .lista-links-menu a:hover, .lista-links-menu a.active {
     opacity: 0.85;
-    border-bottom: 2px solid var(--branco);
-    padding-bottom: 4px;
-    border-bottom-color: var(--branco);
 }
 
 .dropdown {
@@ -146,14 +142,14 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--fundo-card);
+    background-color: var(--fundo-card); 
     list-style: none;
     padding: 0;
     min-width: 180px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     border-radius: 8px;
     z-index: 1001;
-    overflow: hidden;
+    overflow: hidden; 
 }
 
 .dropdown:hover .sub-menu-suspenso {
@@ -171,7 +167,7 @@ body {
 }
 
 .sub-menu-suspenso li a.logout-link {
-    color: #ff4b4b !important;
+    color: #ff4b4b !important; 
     font-weight: 700;
 }
 
@@ -188,7 +184,7 @@ body {
     padding: 8px 15px !important;
     display: block;
     font-size: 13px;
-    color: var(--texto-escuro) !important;
+    color: var(--texto-escuro) !important; 
     font-weight: 500;
     border-bottom: none !important; 
 }
@@ -218,13 +214,12 @@ body {
 
 .hero-logo-destaque {
     width: 100%;
-    max-width: 900px; 
+    max-width: 900px;
     height: auto;
     display: block;
-    border-radius: 15px; 
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
-
 .botao-acao-principal {
     background-color: var(--amarelo-primario);
     color: var(--texto-escuro);
@@ -232,14 +227,14 @@ body {
     padding: 12px 28px;
     font-weight: 700;
     font-size: 15px;
-    border-radius: 6px;
+    border-radius: 6px; 
     cursor: pointer;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    width: 100%; 
+    width: 100%;
     max-width: 240px; 
 }
 
@@ -292,7 +287,6 @@ body {
     pointer-events: none !important;
     cursor: not-allowed !important;
 }
-
 form:invalid button[type="submit"],
 form:invalid input[type="submit"],
 form:invalid .botao-acao-principal,
@@ -333,6 +327,7 @@ form:invalid .btn-confirmar-agendamento {
     margin: 0 0 30px 0;
     letter-spacing: -0.5px;
 }
+
 
 .painel-conteudo-central {
     background-color: var(--fundo-card);
@@ -415,7 +410,6 @@ textarea.campo-texto-estilizado {
 select.campo-texto-estilizado {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a817a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 14px center;
     background-size: 16px;
@@ -460,7 +454,7 @@ textarea.campo-texto-estilizado {
 .tabela-responsiva-container {
     width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch; 
     margin-top: 20px;
     border-radius: 8px;
     border: 1px solid var(--borda-card);
@@ -472,8 +466,7 @@ textarea.campo-texto-estilizado {
     border-collapse: collapse;
 }
 
-.tabela-gestao th, 
-.tabela-gestao td {
+.tabela-gestao th, .tabela-gestao td {
     padding: 15px;
 }
 
@@ -491,7 +484,7 @@ textarea.campo-texto-estilizado {
         display: block; 
     }
     .tabela-gestao thead {
-        display: none;
+        display: none; 
     }
     .tabela-gestao tr {
         margin-bottom: 15px;
@@ -525,7 +518,6 @@ textarea.campo-texto-estilizado {
     }
 
     .tabela-gestao td:last-child { border-bottom: none; }
-    
     .tabela-gestao td[style*="text-align: right"] {
         justify-content: center;
         padding-left: 15px;
@@ -635,7 +627,6 @@ textarea.campo-texto-estilizado {
     transition: opacity 0.2s;
 }
 .btn-mini:hover { opacity: 0.8; }
-
 .modal-ficha {
     position: fixed;
     top: 0; left: 0;
@@ -695,15 +686,14 @@ textarea.campo-texto-estilizado {
     display: contents;
 }
 
-
-.camada-fundo-modal {
-    position: fixed;
-    top: 0;
+ .camada-fundo-modal {
+     position: fixed;
+     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    display: none; 
+    display: none;
     align-items: center;
     justify-content: center;
     z-index: 3000;
@@ -744,11 +734,10 @@ textarea.campo-texto-estilizado {
     text-align: center;
 }
 
-
 .grade-vitrine-animais {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px; 
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
     margin-top: 25px;
 }
 
@@ -763,8 +752,8 @@ textarea.campo-texto-estilizado {
 .card-imagem-wrapper {
     width: 100%;
     position: relative;
-    border-radius: 20px 20px 0 0; 
-    overflow: hidden; 
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
     aspect-ratio: 3 / 4;
 }
 
@@ -845,22 +834,22 @@ textarea.campo-texto-estilizado {
     height: 54px;
     font-size: 22px;
 }
-
 .card-acoes .botao-acao-principal, .card-acoes .botao-acao-secundaria {
-    max-width: 100%;
+    max-width: 100%; 
     padding: 8px 15px;
     font-size: 13px;
     border-radius: 6px;
 }
 
 
+
 .rodape-institucional-site {
-    background-color: var(--verde-institucional);
+    background-color: var(--verde-institucional); 
     color: var(--branco);
     padding: 40px 4% 30px 4%;
     font-size: 12px;
     line-height: 1.6;
-    margin-top: 60px;
+    margin-top: 60px; 
 }
 
 .footer-container {
@@ -914,7 +903,7 @@ textarea.campo-texto-estilizado {
         display: flex;
     }
     .lista-links-menu {
-        display: none;
+        display: none; 
         flex-direction: column;
         width: 100%;
         position: absolute;
@@ -926,7 +915,7 @@ textarea.campo-texto-estilizado {
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     .lista-links-menu.active {
-        display: flex; 
+        display: flex;
     }
     .lista-links-menu li {
         width: 100%;
@@ -938,7 +927,7 @@ textarea.campo-texto-estilizado {
         background-color: rgba(0, 0, 0, 0.2);
         box-shadow: none;
         padding: 2px 0;
-        width: 60%;
+        width: 60%; 
         margin: 2px auto 8px auto;
         text-align: center;
         border-radius: 8px;
@@ -961,7 +950,7 @@ textarea.campo-texto-estilizado {
         aspect-ratio: 1 / 1;
     }
     .card-imagem-wrapper img {
-        object-position: center top;
+        object-position: center top; 
     }
     .card-nome {
         font-size: 15px;

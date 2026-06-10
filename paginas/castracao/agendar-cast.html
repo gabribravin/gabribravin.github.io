@@ -49,7 +49,6 @@
         }
 
         .titulo-etapa {
-            color: var(--verde-navbar);
             font-size: 1.15rem;
             font-weight: 700;
             margin-top: 0;
@@ -186,8 +185,7 @@
         }
         .cal-dia.selecionado { outline: 2px solid var(--amarelo-primario); }
         
-        .dia-semana { font-size: 11px; color: var(--texto-mutado); font-weight: 700; }
-
+        .dia-semana { font-size: 11px; color: var(--texto-mutado); font-weight: 700; }        
         .horario-disponivel {
             background-color: #4b8a81;
             color: #ffffff;
@@ -270,14 +268,14 @@
         <div class="btn-voltar-container">
             <a href="javascript:history.back()" class="botao-voltar-estilizado">Voltar</a>
         </div>
-
         <h1 class="titulo-agendamento">Agendamento para: <span>André</span></h1>
 
         <form id="form-castracao" novalidate>
+            <!-- Campos escondidos para validar a seleção do calendário e horário -->
             <input type="hidden" id="input-data-selecionada" required>
             <input type="hidden" id="input-horario-selecionado" required>
 
-        <section class="cartao-etapa">
+        <section class="cartao-etapa">            
             <h2 class="titulo-etapa">1.Escolha o Local</h2>
             <div class="select-container">
                 <select class="select-clinica" id="clinica-select" required>
@@ -289,10 +287,10 @@
                     <option value="5">Instituto Pet Saúde</option>
                     <option value="6">Diagnóstico e Clínica VetLitoral</option>
                     <option value="7">Centro Veterinário Metropolitano</option>
-                </select>
+                </select>                
             </div>
             <p class="texto-ajuda">Não sabe qual escolher? <a href="clinicas.html">Clique aqui</a> para mais sobre as Clínicas</p>
-        </section>
+        </section>        
 
         <section class="cartao-etapa secao-oculta" id="secao-data">
             <h2 class="titulo-etapa">2.Escolha a Data</h2>
@@ -305,7 +303,8 @@
                     <div id="cal-month-year">Junho 2026</div>
                     <button type="button" id="next-month" class="cal-btn"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
-                <div class="cal-grid" id="cal-days-grid">
+                <div class="cal-grid" id="cal-days-grid">                    
+                    <!-- Preenchido via JS -->
                 </div>
             </div>
         </section>
@@ -334,7 +333,6 @@
             </button>
         </div>
         </form>
-
     </main>
 
     <div id="footer-placeholder"></div>
@@ -354,7 +352,7 @@
         const calendarPopover = document.getElementById('calendar-popover');
         const daysGrid = document.getElementById('cal-days-grid');
         let currentViewDate = new Date();
-
+        
         clinicaSelect.addEventListener('change', () => {
             if(clinicaSelect.value) secaoData.style.display = 'block';
         });

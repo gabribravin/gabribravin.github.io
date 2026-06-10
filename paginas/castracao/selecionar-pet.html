@@ -16,7 +16,7 @@
         }
 
         .titulo-selecao {
-            color: #0d3c35;
+            color: #0d3c35; /* Tom verde escuro institucional */
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 40px;
@@ -31,8 +31,8 @@
         }
 
         .card-animal {
-            background-color: #f0f7fd;
-            border: 1px solid #d0e1fd;
+            background-color: #f0f7fd; /* Fundo azul claro suave idêntico */
+            border: 1px solid #d0e1fd; /* Borda sutil cinza-azulada */
             border-radius: 12px;
             padding: 30px;
             min-height: 180px;
@@ -50,16 +50,18 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
         }
 
+        /* Cabeçalho Interno do Card (Ícone + Nome) */
         .card-header {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #0b515b;
+            color: #0b515b; /* Verde/Azul do nome do animal */
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 18px;
         }
 
+        /* Ícone de patinhas simulado em formato vetorial css */
         .icone-patas {
             display: inline-block;
             position: relative;
@@ -77,6 +79,7 @@
         .icone-patas::before { width: 6px; height: 6px; top: -6px; left: -2px; }
         .icone-patas::after { width: 6px; height: 6px; top: -6px; right: -2px; }
 
+        /* Lista de Informações Internas */
         .info-lista {
             display: flex;
             flex-direction: column;
@@ -108,8 +111,9 @@
             transform: translateY(-2px);
         }
 
+        /* Borda Tracejada Interna */
         .borda-tracejada {
-            border: 2px dashed #4b8a81; 
+            border: 2px dashed #4b8a81; /* Verde fosco do tracejado */
             border-radius: 8px;
             width: 100%;
             height: 100%;
@@ -118,6 +122,7 @@
             justify-content: center;
         }
 
+        /* Desenho exato do Sinal de Mais (+) */
         .sinal-mais {
             position: relative;
             width: 32px;
@@ -127,10 +132,11 @@
         .sinal-mais::before, .sinal-mais::after {
             content: '';
             position: absolute;
-            background-color: #4b8a81; 
+            background-color: #4b8a81; /* Cor do sinal de mais */
             border-radius: 2px;
         }
 
+        /* Linha horizontal do sinal */
         .sinal-mais::before {
             top: 14px;
             left: 0;
@@ -138,6 +144,7 @@
             height: 4px;
         }
 
+        /* Linha vertical do sinal */
         .sinal-mais::after {
             top: 0;
             left: 14px;
@@ -145,6 +152,7 @@
             height: 32px;
         }
 
+        /* Ajustes de Responsividade para Telas Menores */
         @media (max-width: 850px) {
             .animais-grid {
                 grid-template-columns: 1fr;
@@ -158,6 +166,7 @@
 </head>
 <body>
 
+    <!-- Injetado automaticamente pelo script.js -->
     <div id="navbar-placeholder"></div>
 
     <main class="selecionar-animal-container">
@@ -203,6 +212,7 @@
 
     </main>
 
+    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
