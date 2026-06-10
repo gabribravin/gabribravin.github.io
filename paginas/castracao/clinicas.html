@@ -8,7 +8,7 @@
     
     <style>
         .conteudo-principal {
-            background-color: #ffffff; /* Fundo padrão branco conforme style.css */
+            background-color: var(--branco);
             max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px 80px 20px;
@@ -18,15 +18,15 @@
         }
 
         .titulo-pagina {
-            color: #113f3c; /* Verde escuro institucional */
+            color: var(--verde-institucional);
             font-size: 2rem;
-            font-weight: 700; /* Apenas negrito conforme solicitado */
+            font-weight: 700; 
             margin-bottom: 30px;
             width: 100%;
         }
 
         .painel-branco-container {
-            background-color: #ffffff;
+            background-color: var(--branco);
             border-radius: 12px;
             max-width: 1000px;
             width: 100%;
@@ -35,20 +35,19 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 25px; /* Distribuição espaçada entre as caixas */
+            gap: 25px;
         }
 
         .cartao-clinica {
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--borda-card);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            background-color: #ffffff;
+            background-color: var(--branco);
         }
 
-        /* Faixa superior azul/cinza clara com informações de contato */
         .topo-clinica-info {
-            background-color: #e6f0f5; /* Tom azul claro sutil de fundo */
+            background-color: #e6f0f5;
             padding: 14px 20px;
             display: flex;
             justify-content: space-between;
@@ -59,22 +58,22 @@
         }
 
         .clinica-nome {
-            color: #113f3c; /* Verde escuro institucional */
+            color: var(--verde-institucional);
             font-size: 1.05rem;
             font-weight: 700;
         }
 
         .clinica-email, .clinica-telefone {
-            color: #2d3748;
+            color: var(--texto-escuro);
             font-size: 0.9rem;
-            font-weight: 700; /* Negrito para e-mails e telefones */
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
         .topo-clinica-info i {
-            color: #0d3c35; /* Ícones no tom verde escuro */
+            color: var(--verde-institucional);
         }
 
         .corpo-clinica-info {
@@ -94,18 +93,18 @@
 
         .endereco-label {
             font-size: 0.85rem;
-            color: #718096;
+            color: var(--texto-mutado);
             font-weight: 600;
         }
 
         .endereco-texto {
             font-size: 0.95rem;
-            color: #2d3748;
+            color: var(--texto-escuro);
             font-weight: 500;
         }
 
         .link-maps {
-            color: #2d3748;
+            color: var(--texto-escuro);
             font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
@@ -120,10 +119,9 @@
         }
 
         .link-maps i {
-            color: #000000; /* Ícone de localização preto como na imagem */
+            color: var(--texto-escuro);
         }
 
-        /* Ajustes para telas menores */
         @media (max-width: 768px) {
             .painel-branco-container {
                 padding: 20px 15px;
@@ -263,17 +261,14 @@
         </div>
     </main>
 
-    <!-- Injetado automaticamente pelo script.js -->
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
     <script>
         document.querySelectorAll('.link-maps').forEach(link => {
             link.addEventListener('click', (e) => {
-                // Previne envio vazio padrão caso use apenas o esqueleto
                 if(link.getAttribute('href') === '#') {
                     e.preventDefault();
-                    console.log("Direcionando para localização da clínica...");
                 }
             });
         });

@@ -98,7 +98,8 @@
     <script>
         document.addEventListener('click', (e) => {
             const btn = e.target.closest('.btn-favorito');
-            if (btn && !btn.classList.contains('favoritado')) {
+            // Se o botão tem a classe 'favoritado', o clique atual vai desfavoritá-lo
+            if (btn && btn.classList.contains('favoritado')) {
                 const card = btn.closest('.cartao-perfil-pet');
                 card.style.transition = 'all 0.3s ease';
                 card.style.opacity = '0';

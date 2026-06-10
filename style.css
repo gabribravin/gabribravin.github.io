@@ -15,6 +15,7 @@
     --texto-mutado: #5a6e72;
     --branco: #ffffff;
     --sucesso: #28a745; 
+    --perigo: #c53030;
 }
 
 body {
@@ -717,7 +718,7 @@ textarea.campo-texto-estilizado {
 }
 
 .caixa-card-modal h2 {
-    color: var(--verde-institucional);
+    color: var(--texto-escuro);
     margin-bottom: 15px;
 }
 

@@ -116,7 +116,7 @@
                     <td style="text-align: right; display: flex; gap: 5px; justify-content: flex-end;">
                         <button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>
                         <button class="btn-mini btn-concluir" style="background: var(--amarelo-primario);">Concluir</button>
-                        <button class="btn-mini btn-faltou" style="background: #e53e3e; color: white;">Faltou</button>
+                        <button class="btn-mini btn-faltou" style="background: var(--perigo); color: white;">Faltou</button>
                     </td>
                 </tr>
             </tbody>
@@ -128,7 +128,7 @@
         <div class="conteudo-modal-ficha">
             <button class="btn-fechar-ficha" id="fecharFicha">&times;</button>
             <h2 class="titulo-pagina-principal" style="margin-bottom: 10px;">Ficha de Castração #47731</h2>
-            <span class="badge-prioridade" style="background: #e2e8f0; color: #2d3748;">Protocolo em análise</span>
+            <span class="badge-prioridade" style="background: var(--borda-card); color: var(--texto-escuro);">Protocolo em análise</span>
 
             <section class="secao-ficha">
                 <h3>Dados do Tutor</h3>
@@ -165,7 +165,6 @@
     <div id="footer-placeholder"></div>
     <script src="../../script.js"></script>
     <script>
-        let linhaSelecionada = null;
         const modal = document.getElementById('modalFicha');
 
         document.addEventListener('click', (e) => {
@@ -185,7 +184,7 @@
             }            
             
             if (target.classList.contains('btn-faltou')) {
-                row.cells[4].innerHTML = '<strong style="color: #e53e3e;">FALTOU</strong>';
+                row.cells[4].innerHTML = '<strong style="color: var(--perigo);">FALTOU</strong>';
                 row.cells[5].innerHTML = '<button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>';
             }
         });

@@ -34,7 +34,7 @@
         }
 
         .titulo-agendamento span {
-            color: #0d3c35;
+            color: var(--verde-institucional);
             font-weight: 800;
         }
 
@@ -65,12 +65,12 @@
             width: 100%;
             appearance: none;
             -webkit-appearance: none;
-            background-color: #ffffff;
-            border: 1px solid #cbd5e1;
+            background-color: var(--branco);
+            border: 1px solid var(--borda-card);
             border-radius: 6px;
             padding: 10px 35px 10px 15px;
             font-size: 0.95rem;
-            color: #334155;
+            color: var(--texto-escuro);
             cursor: pointer;
             font-weight: 500;
             opacity: 0.7;
@@ -80,7 +80,7 @@
             content: 'v';
             font-family: monospace;
             font-size: 0.85rem;
-            color: #000000;
+            color: var(--texto-escuro);
             position: absolute;
             right: 15px;
             top: 50%;
@@ -165,8 +165,8 @@
             text-align: center;
         }
         .cal-dia {
-            background: #ffffff;
-            border: 1px solid #f0f0f0;
+            background: var(--branco);
+            border: 1px solid var(--borda-card);
             padding: 8px;
             font-size: 13px;
             border-radius: 4px;
@@ -187,13 +187,13 @@
         
         .dia-semana { font-size: 11px; color: var(--texto-mutado); font-weight: 700; }        
         .horario-disponivel {
-            background-color: #4b8a81;
-            color: #ffffff;
+            background-color: var(--verde-navbar);
+            color: var(--branco);
         }
 
         .horario-selecionado {
-            background-color: #f5a623;
-            color: #000000;
+            background-color: var(--amarelo-primario);
+            color: var(--texto-escuro);
         }
 
         .container-declaracao {
@@ -212,12 +212,12 @@
             width: 16px;
             height: 16px;
             cursor: pointer;
-            accent-color: #4b8a81;
+            accent-color: var(--verde-navbar);
         }
 
         .texto-declaracao {
             font-size: 0.92rem;
-            color: #334155;
+            color: var(--texto-escuro);
             line-height: 1.4;
         }
 
@@ -229,8 +229,8 @@
         }
 
         .btn-confirmar-agendamento {
-            background-color: #f5a623;
-            color: #000000;
+            background-color: var(--amarelo-primario);
+            color: var(--texto-escuro);
             border: none;
             border-radius: 6px;
             padding: 14px 40px;
@@ -271,7 +271,6 @@
         <h1 class="titulo-agendamento">Agendamento para: <span>André</span></h1>
 
         <form id="form-castracao" novalidate>
-            <!-- Campos escondidos para validar a seleção do calendário e horário -->
             <input type="hidden" id="input-data-selecionada" required>
             <input type="hidden" id="input-horario-selecionado" required>
 
@@ -304,7 +303,6 @@
                     <button type="button" id="next-month" class="cal-btn"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
                 <div class="cal-grid" id="cal-days-grid">                    
-                    <!-- Preenchido via JS -->
                 </div>
             </div>
         </section>
@@ -442,7 +440,12 @@
 
         document.getElementById('form-castracao').addEventListener('submit', (e) => {
             e.preventDefault();
-            window.location.href = "castracao-sucesso.html";
+            
+            if (e.target.checkValidity()) {
+                window.location.href = "castracao-sucesso.html";
+            } else {
+                e.target.reportValidity();
+            }
         });
     </script>
 </body>

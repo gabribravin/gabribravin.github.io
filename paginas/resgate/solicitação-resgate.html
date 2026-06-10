@@ -16,7 +16,7 @@
         }
 
         .titulo-pagina-principal {
-            margin-bottom: 8px; /* Reduz o espaço para aproximar do subtítulo */
+            margin-bottom: 8px; 
         }
 
         .subtitulo-resgate {
@@ -35,7 +35,7 @@
 
         .box-opcao-urgencia {
             background-color: #ffffff;
-            border: 1.5px solid #c53030; /* Borda vermelha marcante */
+            border: 1.5px solid var(--perigo); 
             border-radius: 10px;
             padding: 24px;
             margin-bottom: 20px;
@@ -56,7 +56,6 @@
             box-sizing: border-box;
         }
 
-        /* Círculos Indicadores Coloridos */
         .circulo-status {
             width: 32px;
             height: 32px;
@@ -66,14 +65,13 @@
         }
 
         .circulo-vermelho {
-            background-color: #c53030;
+            background-color: var(--perigo);
         }
 
         .circulo-verde-escuro {
             background-color: var(--verde-institucional);
         }
 
-        /* Conteúdo Interno dos Blocos */
         .conteudo-bloco {
             display: flex;
             flex-direction: column;
@@ -102,7 +100,6 @@
             font-weight: 500;
         }
 
-        /* Botão Vermelho de Plantão */
         .btn-plantao-urgencia {
             background-color: #c53030;
             color: #ffffff;
@@ -120,7 +117,6 @@
             background-color: #9b1c1c;
         }
 
-        /* Botão Verde Escuro de Formulário */
         .btn-formulario-programado {
             background-color: var(--verde-institucional);
             color: var(--branco);
@@ -138,7 +134,6 @@
             background-color: #12332e;
         }
 
-        /* Responsividade */
         @media (max-width: 650px) {
             .box-opcao-urgencia, .box-opcao-programado {
                 flex-direction: column;

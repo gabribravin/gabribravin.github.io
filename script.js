@@ -200,7 +200,7 @@ function showModalAcesso() {
                 <div style="display: flex; flex-direction: column; gap: 12px;">
                     <a href="${perfilPath}login.html" class="botao-acao-principal" style="max-width: 100%;">Já tenho uma conta</a>
                     <a href="${perfilPath}cadastro.html" class="botao-acao-secundaria" style="max-width: 100%;">Criar meu cadastro</a>
-                    <button onclick="this.closest('.camada-fundo-modal').remove()" style="background: none; border: none; color: #888; cursor: pointer; margin-top: 10px;">Depois eu faço isso</button>
+                    <button onclick="this.closest('.camada-fundo-modal').remove()" style="background: none; border: none; color: var(--texto-mutado); cursor: pointer; margin-top: 10px;">Depois eu faço isso</button>
                 </div>
             </div>
         </div>`;
@@ -223,5 +223,16 @@ function initLoginLogic(paths) {
             const back = sessionStorage.getItem('returnUrl');
             window.location.href = (back && !back.includes('login.html')) ? back : `${paths.pag}Perfil/solicitacoes.html`;
         }
+    });
+}
+
+function initNoValidate() {
+    document.querySelectorAll('form[novalidate]').forEach(form => {
+        form.addEventListener('submit', (e) => {
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                form.reportValidity();
+            }
+        });
     });
 }

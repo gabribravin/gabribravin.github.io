@@ -51,7 +51,7 @@
             justify-content: center; z-index: 2000; backdrop-filter: blur(4px);
         }
         .conteudo-modal-ficha {
-            background: white; padding: 40px; border-radius: 12px;
+            background: var(--branco); padding: 40px; border-radius: 12px;
             max-width: 750px; width: 95%; max-height: 90vh; overflow-y: auto; position: relative;
         }
         .grid-ficha { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -67,9 +67,9 @@
             display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;
         }
         .midia-box {
-            background: #f1f5f9; height: 100px; border-radius: 8px;             
+            background: #f1f5f9; height: 100px; border-radius: 8px;
             display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.8rem;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--borda-card);
         }
     </style>
 </head>
@@ -146,7 +146,7 @@
                     <td style="text-align: right; display: flex; gap: 5px; justify-content: flex-end;">
                         <button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>
                         <button class="btn-mini btn-despachar" style="background: var(--amarelo-primario);">Despachar</button>
-                        <button class="btn-mini btn-arquivar" style="background: #e53e3e; color: white;">Arquivar</button>
+                        <button class="btn-mini btn-arquivar" style="background: var(--perigo); color: white;">Arquivar</button>
                     </td>
                 </tr>
             </tbody>
@@ -199,8 +199,7 @@
     <script src="../../script.js"></script>
     <script>
         const modal = document.getElementById('modalFicha');
-        const btnFechar = document.getElementById('fecharFicha');
-
+        
         document.addEventListener('click', (e) => {
             const target = e.target;
             const row = target.closest('tr');
@@ -218,7 +217,7 @@
             }
             
             if (target.classList.contains('btn-arquivar')) {
-                row.cells[3].innerHTML = '<strong style="color: #e53e3e;">ARQUIVADA</strong>';
+                row.cells[3].innerHTML = '<strong style="color: var(--perigo);">ARQUIVADA</strong>';
                 row.cells[4].innerHTML = '<button class="btn-mini btn-ver-ficha" style="background: var(--verde-navbar); color: white;">Ficha</button>';
             }
         });
@@ -227,8 +226,6 @@
             console.log("Filtro aplicado");
         });
 
-        btnFechar.onclick = () => modal.style.display = 'none';
-        window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; }
     </script>
 </body>
 </html>
