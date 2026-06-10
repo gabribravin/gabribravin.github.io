@@ -90,33 +90,33 @@
                 <h2 class="header-formulario-titulo">Falta pouco para o início de uma grande amizade! 🐾</h2>
                 <p class="subtitulo-formulario">Responda essas perguntinhas rápidas para sabermos se você e o André combinam.</p>
 
-                <form action="solicitacoes.html" method="GET" novalidate>
+                <form action="sucesso.html" method="GET" novalidate id="form-adocao">
                     
                     <div class="bloco-pergunta-card">
                         <h3 class="pergunta-enunciado">1. Como é a sua residência?</h3>
-                        <label class="opcao-checkbox-label"><input type="radio" name="residencia" required> Casa com Quintal</label>
-                        <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Casa sem Quintal</label>
-                        <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Apartamento</label>
-                        <label class="opcao-checkbox-label"><input type="radio" name="residencia"> Sítio / Chácara</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="residencia" value="casa_quintal" required> Casa com Quintal</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="residencia" value="casa_sem_quintal"> Casa sem Quintal</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="residencia" value="apartamento"> Apartamento</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="residencia" value="sitio_chacara"> Sítio / Chácara</label>
                     </div>
 
                     <div class="bloco-pergunta-card">
                         <h3 class="pergunta-enunciado">2. A casa possui telas de proteção ou muros altos?</h3>
-                        <label class="opcao-checkbox-label"><input type="radio" name="telas" required> Sim</label>
-                        <label class="opcao-checkbox-label"><input type="radio" name="telas"> Não</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="telas" value="sim" required> Sim</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="telas" value="nao"> Não</label>
                     </div>
 
                     <div class="bloco-pergunta-card">
                         <h3 class="pergunta-enunciado">3. Você já possui outros animais em casa?</h3>
-                        <label class="opcao-checkbox-label"><input type="radio" name="outros_pets" required> Sim, cães/gatos</label>
-                        <label class="opcao-checkbox-label"><input type="radio" name="outros_pets"> Não possuo</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="outros_pets" value="sim_caes_gatos" required> Sim, cães/gatos</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="outros_pets" value="nao_possuo"> Não possuo</label>
                     </div>
 
                     <div class="bloco-pergunta-card">
                         <h3 class="pergunta-enunciado">4. O animal passará muito tempo sozinho?</h3>
-                        <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho" required> Não, sempre tem alguém</label>
-                        <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho"> Período Curto</label>
-                        <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho"> O dia todo</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho" value="nao_sempre_alguem" required> Não, sempre tem alguém</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho" value="periodo_curto"> Período Curto</label>
+                        <label class="opcao-checkbox-label"><input type="radio" name="tempo_sozinho" value="dia_todo"> O dia todo</label>
                     </div>
 
                     <div class="termo-guarda-box">
@@ -137,5 +137,12 @@
     <div id="footer-placeholder"></div>
 
     <script src="../../script.js"></script>
+    <script>
+        document.getElementById('form-adocao').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Aqui você pode adicionar lógica para enviar os dados via AJAX se necessário
+            window.location.href = 'sucesso.html';
+        });
+    </script>
 </body>
 </html>
